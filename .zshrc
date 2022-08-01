@@ -61,8 +61,6 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
-export PYTHONPATH='/home/klaudjan/work/eliwms-base-back/'
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
