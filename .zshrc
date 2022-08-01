@@ -1,0 +1,86 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.cache/zsh/.history
+HISTSIZE=1000
+SAVEHIST=1000
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/klaudjan/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Custom addition
+autoload -Uz compinit && compinit
+
+
+# show git branch
+
+# Load version control information
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%f'
+zstyle ':vcs_info:*' enable git
+
+set_virtualenv() {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="%F{cyan}[`basename \"$VIRTUAL_ENV\"`]%f"
+  fi
+}
+
+set_prompt(){
+    NEW_LINE=$'\n'
+    POSITION_LINE='%F{green}%n%f: %F{blue}%~%f'
+    COMMAND_LINE='%(?.%F{green}→.%F{red}→)%f  %# '
+    PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
+}
+
+precmd_functions+=( set_virtualenv )
+precmd_functions+=( set_prompt )
+
+# aliases:
+
+alias ll='ls -alF --color=auto'
+
+alias myip='curl -4 https://get.geojs.io/v1/ip'
+# copy and paste directly from terminal
+# install xclip with: sudo apt-get install xclip
+# You can then pipe the output into xclip to be copied into the clipboard
+alias cclip='xclip -selection clipboard'
+# or To paste the text you just copied, you shall use:
+alias vclip='xclip -o -selection clipboard'
+
+alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
+
+
+
+alias beli='cd ~/work/eliwms-base-back'
+alias feli='cd ~/work/eliwms-base-front'
+alias bsim='cd ~/work/bagsconfigurator'
+
+alias build='docker-compose -f local.yml build'
+alias up='docker-compose -f local.yml up -d'
+alias down='docker-compose -f local.yml down'
+alias drunk='docker-compose -f local.yml run --rm'
+alias dtest='docker-compose -f local.yml run --rm api pytest'
+alias dalembic='docker-compose -f local.yml run --rm -w /app/migrations api alembic'
+alias rmvolume='docker volume rm eliwms-base-back_db-data'
+alias rmmigrations='rm -r migrations/envs/local/*'
+
+export TENANTS_DB='/home/klaudjan/work/eliwms-base-back/tenants_db.ini'
+export PYTHONPATH='/home/klaudjan/work/eliwms-base-back/'
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
