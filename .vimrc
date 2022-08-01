@@ -53,7 +53,7 @@ map <C-p> "+P
 autocmd BufWritePre * %s/\s\+$//e
 
 " Pair the invisible characters with a simbol
-set listchars=eol:¬,trail:•
+set listchars=eol:<,trail:-
 " Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
 set list
 " In insert mode you can delete only what you have written in that moment, nothing else
