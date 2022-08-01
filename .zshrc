@@ -1,3 +1,6 @@
+# set vim has default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/.history
 HISTSIZE=1000
@@ -58,22 +61,6 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
-
-
-alias beli='cd ~/work/eliwms-base-back'
-alias feli='cd ~/work/eliwms-base-front'
-alias bsim='cd ~/work/bagsconfigurator'
-
-alias build='docker-compose -f local.yml build'
-alias up='docker-compose -f local.yml up -d'
-alias down='docker-compose -f local.yml down'
-alias drunk='docker-compose -f local.yml run --rm'
-alias dtest='docker-compose -f local.yml run --rm api pytest'
-alias dalembic='docker-compose -f local.yml run --rm -w /app/migrations api alembic'
-alias rmvolume='docker volume rm eliwms-base-back_db-data'
-alias rmmigrations='rm -r migrations/envs/local/*'
-
-export TENANTS_DB='/home/klaudjan/work/eliwms-base-back/tenants_db.ini'
 export PYTHONPATH='/home/klaudjan/work/eliwms-base-back/'
 
 # pyenv
