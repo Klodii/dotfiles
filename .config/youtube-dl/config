@@ -1,0 +1,5 @@
+# save the videos in this folder
+--output "~/video_downloads/%(title)s.%(ext)s"
+
+# save even the thumbnail
+--write-thumbnail
