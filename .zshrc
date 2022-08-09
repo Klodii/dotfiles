@@ -40,7 +40,7 @@ set_virtualenv() {
 set_prompt(){
     NEW_LINE=$'\n'
     POSITION_LINE='%F{green}%n%f: %F{blue}%~%f'
-    COMMAND_LINE='%(?.%F{green}→.%F{red}→)%f  %# '
+    COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
 }
 
