@@ -40,7 +40,14 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
-"In order to switch between buffers (when opening a file with the command :e) 
+"In order to switch between buffers (when opening a file with the command :e)
 "with tab rather than with :bn (buffer next) command and :bp (buffer previous) command
 nnoremap <C-Tab> :bn<CR>
 nnoremap <C-S-Tab> :bp<CR>
+
+"Copy selected text to system clipboard (requires gvim installed)
+vnoremap <C-c> "*Y :let @+=@*<CR>
+map <C-p> "+P
+
+"Automatically delete all trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
