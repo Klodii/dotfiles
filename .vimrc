@@ -51,3 +51,8 @@ map <C-p> "+P
 
 "Automatically delete all trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Pair the invisible characters with a simbol
+set listchars=eol:¬,trail:•
+" Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
+set list
