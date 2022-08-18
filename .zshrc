@@ -50,6 +50,9 @@ precmd_functions+=( set_prompt )
 # aliases:
 
 alias ll='ls -alF --color=auto'
+alias mv='mv -v'
+alias cp='cp -v'
+alias rm='rm -v'
 
 alias myip='curl -4 https://get.geojs.io/v1/ip'
 # copy and paste directly from terminal
