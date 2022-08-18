@@ -53,6 +53,7 @@ alias ll='ls -alF --color=auto'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -v'
+alias diff='diff --color=always'
 
 alias myip='curl -4 https://get.geojs.io/v1/ip'
 # copy and paste directly from terminal
