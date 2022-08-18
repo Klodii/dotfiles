@@ -42,8 +42,8 @@ inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 "In order to switch between buffers (when opening a file with the command :e)
 "with tab rather than with :bn (buffer next) command and :bp (buffer previous) command
-nnoremap <C-Tab> :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
 
 "Copy selected text to system clipboard (requires gvim installed)
 vnoremap <C-c> "*Y :let @+=@*<CR>
@@ -51,3 +51,10 @@ map <C-p> "+P
 
 "Automatically delete all trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Pair the invisible characters with a simbol
+set listchars=eol:¬,trail:•
+" Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
+set list
+" In insert mode you can delete only what you have written in that moment, nothing else
+set backspace=indent,eol "no start
