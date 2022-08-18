@@ -83,9 +83,14 @@ alias dotfile='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 
 # eliwms
-alias beli='cd ~/work/eliwms-base-back'
-alias feli='cd ~/work/eliwms-base-front'
-alias bsim='cd ~/work/bagsconfigurator'
+export BELI="$HOME/work/eliwms-base-back"
+alias beli="cd $BELI"
+
+export FELI="$HOME/work/eliwms-base-front"
+alias feli="cd $FELI"
+
+export BSIM="$HOME/work/bagsconfigurator"
+alias bsim="cd $BSIM"
 
 alias build='docker compose -f local.yml build'
 alias up='docker compose -f local.yml up -d'
