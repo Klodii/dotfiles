@@ -41,7 +41,7 @@ set_virtualenv() {
 
 set_prompt(){
     NEW_LINE=$'\n'
-    POSITION_LINE='%F{green}%n@%m%f: %F{blue}%~%f'
+    POSITION_LINE='%F{blue}%~%f'
     COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
 }
@@ -80,3 +80,21 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+
+# eliwms
+alias beli='cd ~/work/eliwms-base-back'
+alias feli='cd ~/work/eliwms-base-front'
+alias bsim='cd ~/work/bagsconfigurator'
+
+alias build='docker compose -f local.yml build'
+alias up='docker compose -f local.yml up -d'
+alias down='docker compose -f local.yml down'
+alias drun='docker compose -f local.yml run --rm'
+alias dtest='docker compose -f local.yml run --rm api pytest'
+alias dalembic='docker compose -f local.yml run --rm -w /app/migrations api alembic'
+alias rmvolume='docker volume rm eliwms-base-back_db-data'
+alias rmmigrations='rm -r migrations/envs/local/*'
+
+export PYTHONPATH='/home/klaudjan/work/eliwms-base-back/'
+export PATH="$HOME/work/eliwms-base-back/tools/local_db_switch/:$PATH"
