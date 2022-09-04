@@ -79,12 +79,15 @@ config config status.showUntrackedFiles no
 # Installation of dwm (dinamic window manager) and st by suckless.org
 Each of this packages are in the .conf folder.
 The configuration file are in
-- ~/.config/dwn-<version>/config.h
+- ~/.config/dwm-<version>/config.h
 - ~/.config/st-<version>/config.h
 
 
-# Installation
+## Installation
 Each package have a README file with some information on the installation.
 
-For dwn you must create a .xintrc file with a command to execute dwn; in the home directory you can fin .xintrc.sample that have already all the commands needed.
+For dwm you can choose different paths:
+- create .xinitrc file with a command to execute dwm and put it in the home direcory (a sample file can be found in /.config/dwm<version>/custom/.xinitrc.sample).
+- create startdwm file (you can make a copy of ~/.config/dwm-<version>/custom/.xinitrc.sample) and make it executable (`% chmod +x startdwm`) and move it in `/usr/local/bin/`. Then you need to move ~/.config/dwm-<version>/custom/dwm.desktop to `/usr/share/xsessions/`, with doing this you add the dwm session to the windows manager selection at login.
 
+I personally did the second option because with ubuntu (and two accounts) the first method didn't work.
