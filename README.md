@@ -76,4 +76,15 @@ fi;
 config checkout
 config config status.showUntrackedFiles no
 ```
+# Installation of dwm (dinamic window manager) and st by suckless.org
+Each of this packages are in the .conf folder.
+The configuration file are in
+- ~/.config/dwn-<version>/config.h
+- ~/.config/st-<version>/config.h
+
+
+# Installation
+Each package have a README file with some information on the installation.
+
+For dwn you must create a .xintrc file with a command to execute dwn; in the home directory you can fin .xintrc.sample that have already all the commands needed.
 
