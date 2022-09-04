@@ -78,3 +78,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias remote='ssh une@klaudjanpepaj.com'
