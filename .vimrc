@@ -58,3 +58,6 @@ set listchars=eol:¬,trail:•
 set list
 " In insert mode you can delete only what you have written in that moment, nothing else
 set backspace=indent,eol "no start
+
+" Recompile suckless programs automatically:
+autocmd BufWritePost config.h,config.def.h !sudo make clean install
