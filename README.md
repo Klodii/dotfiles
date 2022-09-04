@@ -91,3 +91,8 @@ For dwm you can choose different paths:
 - create startdwm file (you can make a copy of ~/.config/dwm-<version>/custom/.xinitrc.sample) and make it executable (`% chmod +x startdwm`) and move it in `/usr/local/bin/`. Then you need to move ~/.config/dwm-<version>/custom/dwm.desktop to `/usr/share/xsessions/`, with doing this you add the dwm session to the windows manager selection at login.
 
 I personally did the second option because with ubuntu (and two accounts) the first method didn't work.
+
+## Add wallpaper
+You need to install `xwallpaper` and designate a location for the image to use has a wallpaper, this location will be used by xwallpaper to render the image.
+
+In order to make the wallpaper persistent after each login we put the xwallpaper command in the .xinitrc or startdwm file, and the path of the image is `~/.config/wallpaper.png`
