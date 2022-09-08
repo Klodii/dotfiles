@@ -3,5 +3,6 @@ setxkbmap -option caps:escape
 
 # Add wallpaper
 xwallpaper --zoom ~/.config/wallpaper.png
+statusbar &
 
 exec dwm

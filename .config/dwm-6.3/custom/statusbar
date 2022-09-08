@@ -1,0 +1,18 @@
+#!/bin/sh
+
+delim='|'
+
+status(){
+    # internet connection status
+    sed "s/down/Internt down/;s/up/Internt up/" /sys/class/net/w*/operstate
+    echo "$delim"
+
+    date "+%d %b %Y (%a) %H:%M"
+    }
+
+while :; do
+    # tr is used to remove newlines because it does not render good
+    xsetroot -name "$(status | tr '\n\' ' ')"
+
+    sleep 1m
+done
