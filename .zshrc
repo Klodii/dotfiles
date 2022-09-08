@@ -98,6 +98,7 @@ alias down='docker compose -f local.yml down'
 alias drun='docker compose -f local.yml run --rm'
 alias dtest='docker compose -f local.yml run --rm api pytest'
 alias dalembic='docker compose -f local.yml run --rm -w /app/migrations api alembic'
+alias dattach='docker attach eliwms-base-back-api-1'
 alias rmvolume='docker volume rm eliwms-base-back_db-data'
 alias rmmigrations='rm -r migrations/envs/local/*'
 
