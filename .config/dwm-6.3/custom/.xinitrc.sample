@@ -1,7 +1,0 @@
-# remap caps lock to escape
-setxkbmap -option caps:escape
-
-# Add wallpaper
-xwallpaper --zoom ~/.config/wallpaper.png
-
-exec dwm
