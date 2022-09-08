@@ -76,26 +76,3 @@ fi;
 config checkout
 config config status.showUntrackedFiles no
 ```
-# Installation of dwm (dinamic window manager) and st by suckless.org
-Each of this packages are in the .conf folder.
-The configuration file are in
-- ~/.config/dwm-<version>/config.h
-- ~/.config/st-<version>/config.h
-
-## dwm dependences
-#todo
-
-
-## Installation
-Each package have a README file with some information on the installation.
-
-For dwm you can choose different paths:
-- create .xinitrc file with a command to execute dwm and put it in the home direcory (a sample file can be found in /.config/dwm<version>/custom/.xinitrc.sample).
-- create startdwm file (you can make a copy of ~/.config/dwm-<version>/custom/.xinitrc.sample) and move it in `/usr/local/bin/`. If you want the status bar you need to `cp ~/.config/dwm-\<version\>/custom/statusbar /usr/local/bin/`. Then you need to move ~/.config/dwm-<version>/custom/dwm.desktop to `/usr/share/xsessions/`, with doing this you add the dwm session to the windows manager selection at login. You can run install_session (located in ~/.config/dwm-\<version\>/custom/) to do it automatically, the script needs sudo authorizations and needs to be executable.
-
-I personally did the second option because with ubuntu (and two accounts) the first method didn't work.
-
-## Add wallpaper
-You need to install `xwallpaper` and designate a location for the image to use has a wallpaper, this location will be used by xwallpaper to render the image.
-
-In order to make the wallpaper persistent after each login we put the xwallpaper command in the .xinitrc or startdwm file, and the path of the image is `~/.config/wallpaper.png`

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cp -v .xinitrc.sample /usr/local/bin/startdwm
-cp -v statusbar /usr/local/bin/
-chmod -v +x /usr/local/bin/startdwm
-
-cp -v dwm.desktop /usr/share/xsessions/
