@@ -27,6 +27,6 @@ bind-key x pb-delete
 # color info red black bold
 # color article white default bold
 
-browser "brave-browser %u"
+browser "$BROWSER %u"
 macro , open-in-browser
-macro t set browser "mpv %u" ; open-in-browser ; set browser "brave-browser %u"
+macro m set browser "mpv %u" ; open-in-browser ; set browser "$BROWSER %u"

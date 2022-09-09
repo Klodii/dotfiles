@@ -1,6 +1,10 @@
 set autoindent " New lines inherit the indentation of previous lines.
 set expandtab " Convert tabs to spaces.
 set tabstop=4 " Indent using four spaces.
+set showmatch " Shows matching brackets
+set ruler " Always shows location in file (line#)
+set smarttab " Autotabs for certain code
+set shiftwidth=4 "Number of spaces to use for each step of (auto)indent.
 set hlsearch " Enable search highlighting.
 set ignorecase " Ignore case when searching.
 set incsearch " Incremental search that shows partial matches.
