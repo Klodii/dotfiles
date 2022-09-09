@@ -1,6 +1,7 @@
 # set vim has default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export BROWSER="brave-browser"
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/.history
 HISTSIZE=1000
