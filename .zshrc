@@ -3,9 +3,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export BROWSER="brave-browser"
 
-# add custom scripts to PATH
-export PATH="$PATH:$HOME/scripts"
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/.history
 HISTSIZE=1000
