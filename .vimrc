@@ -65,3 +65,38 @@ set backspace=indent,eol "no start
 
 " Recompile suckless programs automatically:
 autocmd BufWritePost config.h,config.def.h !sudo make clean install
+
+
+" Change the highlight color schem for Visual Mode
+" text under visual mode will have this font and color
+
+" `hi` highlight command
+" `Visual` set colors and font only for Visual mode
+" `cterm` possible values are
+"   - bold
+"   - underline
+"   - reverse
+"   - italic
+"   - none
+"
+" `ctermbg` sets the background color
+" `ctermfg` sets the foreground color
+" available colors:
+"     NR-16   NR-8    COLOR NAME
+"     0       0       Black
+"     1       4       DarkBlue
+"     2       2       DarkGreen
+"     3       6       DarkCyan
+"     4       1       DarkRed
+"     5       5       DarkMagenta
+"     6       3       Brown, DarkYellow
+"     7       7       LightGray, LightGrey, Gray, Grey
+"     8       0*      DarkGray, DarkGrey
+"     9       4*      Blue, LightBlue
+"     10      2*      Green, LightGreen
+"     11      6*      Cyan, LightCyan
+"     12      1*      Red, LightRed
+"     13      5*      Magenta, LightMagenta
+"     14      3*      Yellow, LightYellow
+"     15      7*      White
+hi Visual cterm=italic ctermbg=Yellow ctermfg=Black
