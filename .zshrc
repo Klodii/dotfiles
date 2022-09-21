@@ -1,6 +1,8 @@
 # set vim has default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export BROWSER="brave-browser"
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/.history
 HISTSIZE=1000
@@ -49,7 +51,7 @@ precmd_functions+=( set_prompt )
 
 # aliases:
 
-alias ll='ls -alF --color=auto'
+alias ll='ls -alFh --color=auto'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -v'
