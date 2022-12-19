@@ -93,8 +93,8 @@ export BSIM="$HOME/work/bagsconfigurator"
 alias bsim="cd $BSIM"
 
 alias build='docker compose -f local.yml build'
-alias up='docker compose -f local.yml up -d'
-alias down='docker compose -f local.yml down'
+alias dup='docker compose -f local.yml up -d'
+alias ddown='docker compose -f local.yml down'
 alias drun='docker compose -f local.yml run --rm'
 alias dtest='docker compose -f local.yml run --rm api pytest'
 alias dalembic='docker compose -f local.yml run --rm -w /app/migrations api alembic'
