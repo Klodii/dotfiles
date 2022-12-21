@@ -1,2 +1,3 @@
 require("klaudjan.remap")
-print("inside Klaudjan")
+require("klaudjan.options")
+require("klaudjan.autocmd")
