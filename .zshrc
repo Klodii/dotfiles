@@ -67,8 +67,6 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
-alias bat='batcat'
-
 # git
 alias gc='git checkout'
 alias gs='git status'
