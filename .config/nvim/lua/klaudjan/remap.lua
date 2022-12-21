@@ -29,3 +29,20 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- you don't loose the firt copied word from the paste registry
 -- so you can continuing paste the same word over other words
 vim.keymap.set("x", "<leader>p", "\"_dP")
+
+-- when deleting dont use the copy registry
+vim.keymap.set("n", "<leader>d", "\"_d")
+vim.keymap.set("v", "<leader>d", "\"_d")
+
+
+-- copy to clipboard
+vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+Y")
+
+-- substitute (all over the file) the word that the cursor is on with whatever your write
+vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- make the file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
