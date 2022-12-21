@@ -34,5 +34,3 @@ vim.opt.hlsearch = true  -- Enable search highlighting
 vim.opt.ignorecase = true  -- Ignore case when searching
 vim.opt.incsearch = true  -- Incremental search that shows partial matches
 vim.opt.smartcase = true  -- Automatically switch search to case-sensitive when search query contains an uppercase letter.
-
-vim.opt.statusline='%f  %m%r%h%w%=[%l,%v]      [%L,%p%%]'  -- Specified how to compose the statusline
