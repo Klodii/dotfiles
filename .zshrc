@@ -1,5 +1,5 @@
-# set vim has default editor
-export VISUAL=vim
+# set nvim has default editor
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export BROWSER="brave-browser"
 
@@ -67,6 +67,8 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
+alias bat='batcat'
+
 # git
 alias gc='git checkout'
 alias gs='git status'
@@ -79,4 +81,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias dotfile='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
