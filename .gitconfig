@@ -1,4 +1,5 @@
 [alias]
+    ll = log --oneline  # list logs
     last = log -1 HEAD
     undo = !git reset HEAD~1 --mixed  # Undo last commit
     amend = !git commit --amend --no-edit
