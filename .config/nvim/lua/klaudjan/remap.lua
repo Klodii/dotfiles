@@ -17,6 +17,9 @@ vim.keymap.set("i", "<Down>", "<ESC>:echoe 'Use j'<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Do not move the cursor while appending the line below
+vim.keymap.set("n", "J", "mzJ`z")
+
 -- After moving with C-u or C-d center the screen
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
