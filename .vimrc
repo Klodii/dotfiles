@@ -1,6 +1,10 @@
 set autoindent " New lines inherit the indentation of previous lines.
 set expandtab " Convert tabs to spaces.
 set tabstop=4 " Indent using four spaces.
+set showmatch " Shows matching brackets
+set ruler " Always shows location in file (line#)
+set smarttab " Autotabs for certain code
+set shiftwidth=4 "Number of spaces to use for each step of (auto)indent.
 set hlsearch " Enable search highlighting.
 set ignorecase " Ignore case when searching.
 set incsearch " Incremental search that shows partial matches.
@@ -58,3 +62,41 @@ set listchars=eol:<,trail:-
 set list
 " In insert mode you can delete only what you have written in that moment, nothing else
 set backspace=indent,eol "no start
+
+" Recompile suckless programs automatically:
+autocmd BufWritePost config.h,config.def.h !sudo make clean install
+
+
+" Change the highlight color schem for Visual Mode
+" text under visual mode will have this font and color
+
+" `hi` highlight command
+" `Visual` set colors and font only for Visual mode
+" `cterm` possible values are
+"   - bold
+"   - underline
+"   - reverse
+"   - italic
+"   - none
+"
+" `ctermbg` sets the background color
+" `ctermfg` sets the foreground color
+" available colors:
+"     NR-16   NR-8    COLOR NAME
+"     0       0       Black
+"     1       4       DarkBlue
+"     2       2       DarkGreen
+"     3       6       DarkCyan
+"     4       1       DarkRed
+"     5       5       DarkMagenta
+"     6       3       Brown, DarkYellow
+"     7       7       LightGray, LightGrey, Gray, Grey
+"     8       0*      DarkGray, DarkGrey
+"     9       4*      Blue, LightBlue
+"     10      2*      Green, LightGreen
+"     11      6*      Cyan, LightCyan
+"     12      1*      Red, LightRed
+"     13      5*      Magenta, LightMagenta
+"     14      3*      Yellow, LightYellow
+"     15      7*      White
+hi Visual cterm=italic ctermbg=Yellow ctermfg=Black
