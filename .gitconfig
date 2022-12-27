@@ -9,3 +9,23 @@
     undo = !git reset HEAD~1 --mixed  # Undo last commit
     amend = !git commit --amend --no-edit
 
+    # Make sure that the working directory is up to date with the origin.
+    #
+    # pull changes from remote, if there are any local commits, it'll rebase
+    # them to come after the commits that are pulled down.
+    # The `--prune` option removes remote-tracking branches to no longer
+    # exists on the remote.
+    # Usin the `!` prefix allows to use any command and not just git commands
+    # in the alias, execute everything in the shell
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    # retrive default branch [main/master]
+    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    # Deletes all branches merged into the specified branch (or the default branch if no branch is specified)
+    bclean = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; }; f"
+    # Switches to specified branch (or the dafult branch if no branch is specified), runs git up, then runs bclean.
+    bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; }; f"
+
+    # Show list of files in a conflict state.
+    conflicts = !git diff --name-only --diff-filter=U
+
+    date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
