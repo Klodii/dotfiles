@@ -27,11 +27,35 @@
     # the separator.
     default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     # Deletes all branches merged into the specified branch (or the default branch if no branch is specified)
-    bclean = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; }; f"
+    bclean = "!func() { \
+        DEFAULT=$(git default); \
+        git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; \
+        }; \
+        func"
     # Switches to specified branch (or the dafult branch if no branch is specified), runs git up, then runs bclean.
-    bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; }; f"
+    bdone = "!func() { \
+        DEFAULT=$(git default); \
+        git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; \
+        }; \
+        func"
 
     # Show list of files in a conflict state.
     conflicts = !git diff --name-only --diff-filter=U
 
     date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+
+    # switch branch, if the branch name is not provided search it through fuzzy finder
+    # DEPENDENCIES:
+    #   - fzf
+    sb = "!func() { \
+        if [ $1 ]; \
+        then \
+            git switch $1; \
+            exit $?; \
+        else \
+            FULL_BRANCH_NAME=$(git branch -a | fzf); \
+            BRANCH_NAME=$(echo $FULL_BRANCH_NAME | sed 's@remotes/origin/@@'); \
+            git checkout $BRANCH_NAME; \
+        fi \
+        }; \
+        func"
