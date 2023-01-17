@@ -1,7 +1,8 @@
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[s]earch [f]ile}' })
-vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'search only in [g]it [f]iles' })
-vim.keymap.set('n', '<leader>ss', function()
+vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[s]earch only in [g]it files' })
+vim.keymap.set('n', '<leader>sw', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end, { desc = '[s]earch in all files the [s]tring specified' })
-vim.keymap.set('n', '<leader>km', '<cmd>Telescope keymaps<cr>', { desc = 'list all [k]ey[m]aps' })
+end, { desc = '[s]earch in all files the [w]ord specified' })
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[s]earch in [h]elp tags' })
+vim.keymap.set('n', '<leader>sk', '<cmd>Telescope keymaps<cr>', { desc = 'search [k]eymap' })
