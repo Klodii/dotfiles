@@ -13,6 +13,8 @@ return require('packer').startup(function(use)
       -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
+  -- telescope plugins must be loaded by telescope
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- set colore scheme
   use({

@@ -64,3 +64,7 @@ vim.keymap.set("n",
                { silent = true, desc = 'Make file e[x]ecutable' }
               )
 
+
+-- move in quickfix list
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>", { desc = '[q]uickfix [p]revious item' })
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>", { desc = '[q]uickfix [n]ext item' })
