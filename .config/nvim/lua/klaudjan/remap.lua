@@ -68,3 +68,12 @@ vim.keymap.set("n",
 -- move in quickfix list
 vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>", { desc = '[q]uickfix [p]revious item' })
 vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>", { desc = '[q]uickfix [n]ext item' })
+
+-- highlight current word and all its duplicated around the file
+--
+-- first we need to activate the highlight for the serached word then, through the pipe, we concatenate
+-- the expression that adds the current word to the search registry.
+--
+-- / registry contains the last searched word, @/ permits to write in this registry
+-- \\ lua need thow of those to escape
+vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>", { desc = '[h]ighlight current word without going to next match' })
