@@ -3,6 +3,7 @@
     last = log -1 HEAD
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     st = status -sb
+    ca = commit -a
 
     # If the alias expansion is prefixed with an exclamation point,
     # it will be treated as a shell command. Note that shell commands
