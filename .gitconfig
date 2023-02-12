@@ -12,6 +12,14 @@
     undo = !git reset HEAD~1 --mixed  # Undo last commit
     amend = !git commit --amend --no-edit
 
+    current-branch = branch --show-current
+    # Reset the branch in order to be in line with origin
+    blackhole = "!func() { \
+        CURRENT_BRANCH=$(git current-branch); \
+        git reset --hard origin/$CURRENT_BRANCH; \
+        }; \
+        func"
+
     # Make sure that the working directory is up to date with the origin.
     #
     # pull changes from remote, if there are any local commits, it'll rebase
