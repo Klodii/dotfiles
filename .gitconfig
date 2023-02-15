@@ -10,8 +10,8 @@
     st = status -sb
     ca = commit -a
 
+    zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # Undo last commit
-    hard-undo = reset --hard HEAD~1 # Undo last commit
     # Reset the local branch in order to be in line with origin
     current-branch = branch --show-current
     blackhole = "!func() { \
