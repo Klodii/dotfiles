@@ -1,24 +1,26 @@
 [alias]
+    # If the alias expansion is prefixed with an exclamation point,
+    # it will be treated as a shell command. Note that shell commands
+    # will be executed from the top-level directory of a repository,
+    # which may not necessarily be the current directory.
+
     ll = log --oneline  # list logs
     last = log -1 HEAD
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     st = status -sb
     ca = commit -a
 
-    # If the alias expansion is prefixed with an exclamation point,
-    # it will be treated as a shell command. Note that shell commands
-    # will be executed from the top-level directory of a repository,
-    # which may not necessarily be the current directory.
-    undo = !git reset HEAD~1 --mixed  # Undo last commit
-    amend = !git commit --amend --no-edit
-
+    undo = reset --mixed HEAD~1 # Undo last commit
+    hard-undo = reset --hard HEAD~1 # Undo last commit
+    # Reset the local branch in order to be in line with origin
     current-branch = branch --show-current
-    # Reset the branch in order to be in line with origin
     blackhole = "!func() { \
         CURRENT_BRANCH=$(git current-branch); \
         git reset --hard origin/$CURRENT_BRANCH; \
         }; \
         func"
+
+    amend = commit --amend --no-edit
 
     # Make sure that the working directory is up to date with the origin.
     #
