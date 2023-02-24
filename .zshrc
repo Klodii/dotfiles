@@ -74,4 +74,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

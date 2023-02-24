@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> "$HOME/.zshrc"
+echo "alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> "$HOME/.zshrc"
 source $HOME/.zshrc
 
 BACKUP_FOLDER="$HOME/.dotfiles-backup"
@@ -8,12 +8,12 @@ mkdir -p $BACKUP_FOLDER
 
 REPO_URL="git@github.com:Klodii/dotfiles.git"
 git clone --bare $REPO_URL $HOME/.dotfiles
-dotfiles checkout
+.files checkout
 if [ $? = 0 ]; then
     echo "Checked out dotfiles.";
 else
     echo "Backing up pre-existing dot files.";
-    dotfiles checkout 2>&1 | egrep "^\ *\." | awk {'print $1'} | xargs -I{} mv {} $BACKUP_FOLDER/{}
-    dotfiles checkout
+    .files checkout 2>&1 | egrep "^\ *\." | awk {'print $1'} | xargs -I{} mv {} $BACKUP_FOLDER/{}
+    .files checkout
 fi;
-dotfiles config --local status.showUntrackedFiles no
+.files config --local status.showUntrackedFiles no
