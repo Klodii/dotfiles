@@ -77,3 +77,5 @@ vim.keymap.set("n", "<F7>", "<cmd>cnext<cr>", { desc = 'quickfix next item' })
 -- / registry contains the last searched word, @/ permits to write in this registry
 -- \\ lua need thow of those to escape
 vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>", { desc = '[h]ighlight current word without going to next match' })
+
+vim.keymap.set("n", "<leader>n", "<cmd>echo expand('%')<cr>", { desc = 'Print file path' })
