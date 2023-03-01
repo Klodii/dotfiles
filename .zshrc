@@ -44,6 +44,9 @@ set_prompt(){
     POSITION_LINE='%F{green}%n@%m%f: %F{blue}%~%f'
     COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
+    # add a character to the right side of the prompt
+    # in this way it becomes more easier to identify the prompt row
+    RPROMPT='«'
 }
 
 precmd_functions+=( set_virtualenv )
