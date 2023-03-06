@@ -30,4 +30,21 @@ language you are using is presente in the installed list of Mason (`:Mason`).
 Mason is the plugin that handles the languages.
 
 
+# VIM usefull keys
 
+Indentation
+    - Insert mode: `^-t`, `^-d` to indent current line forward, backwords
+    - Visual mode: `>`, `<` to indent current line forward, backwords
+    - Visual mode: `=` to make vim autoindent correctly the selected rows
+
+Upper/Lower case
+    - Normal mode:
+        - `~` change to upper/lower case the character under the cursor
+        - `gu<movement>` to make lowercase all character found in the movement
+        - `gU<movement>` to make uppercase all character found in the movement
+
+Register commands
+    - Normal mode:
+        - `q<a-z>` to begin record all keys and commands executed. The registration
+                   goes to the <a-z> character selected.
+        - `@<a-z><movement>` to execute the recorded commands
