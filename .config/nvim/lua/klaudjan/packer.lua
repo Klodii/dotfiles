@@ -73,6 +73,9 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- indentation
+  use "lukas-reineke/indent-blankline.nvim"
+
   if packer_bootstrap then
     require('packer').sync()
   end

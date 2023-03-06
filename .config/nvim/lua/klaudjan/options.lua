@@ -19,7 +19,7 @@ vim.opt.ruler = true -- Always show cursor position
 vim.opt.confirm = true  -- Display a confirmation dialog when closing an unsaved file
 vim.opt.backspace = indent,eol  -- In insert mode you can delete only what you have written in that moment, nothing else
 vim.opt.listchars = {
-    eol = '¬',
+    eol = '↴',
     trail = '•'
 }  -- Pair the invisible characters with a simbol
 vim.opt.list = true  -- Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
