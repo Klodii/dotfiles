@@ -72,3 +72,7 @@
         fi \
         }; \
         func"
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
