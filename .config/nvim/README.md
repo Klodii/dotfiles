@@ -48,3 +48,7 @@ Register commands
         - `q<a-z>` to begin record all keys and commands executed. The registration
                    goes to the <a-z> character selected.
         - `@<a-z><movement>` to execute the recorded commands
+
+Close suggestion window:
+    - Insert mode:
+        - `crl-e` to close the suggestion window that appear while you are typing
