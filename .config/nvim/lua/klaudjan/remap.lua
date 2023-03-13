@@ -66,8 +66,10 @@ vim.keymap.set("n",
 
 
 -- move in quickfix list
-vim.keymap.set("n", "<F6>", "<cmd>cprev<cr>", { desc = 'quickfix previous item' })
-vim.keymap.set("n", "<F7>", "<cmd>cnext<cr>", { desc = 'quickfix next item' })
+vim.keymap.set("n", "<F7>", "<cmd>copen<cr>", { desc = 'open quickfix list' })
+vim.keymap.set("n", "<F8>", "<cmd>cnext<cr>", { desc = 'quickfix next item' })
+vim.keymap.set("n", "<F9>", "<cmd>cprev<cr>", { desc = 'quickfix previous item' })
+vim.keymap.set("n", "<F10>", "<cmd>cclose<cr>", { desc = 'close quickfix list' })
 
 -- highlight current word and all its duplicated around the file
 --
