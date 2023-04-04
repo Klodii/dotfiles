@@ -1,4 +1,5 @@
 vim.opt.guicursor = ""  -- To make the cursor fat even in insert mode
+vim.opt.cursorline = true  -- To make the line of the cursor highlighted
 
 vim.opt.number = true  -- Show line numbers on the sidebar
 vim.opt.relativenumber = true  -- Show line number on the current line and relative numbers on all other lines
