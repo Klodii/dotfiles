@@ -1,5 +1,6 @@
 -- telescope plugins must be loaded
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "fzf"
 
 
 local builtin = require('telescope.builtin')

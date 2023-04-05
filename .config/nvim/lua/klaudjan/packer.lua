@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
   }
   -- telescope plugins must be loaded by telescope
   use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- set colore scheme
   use({
