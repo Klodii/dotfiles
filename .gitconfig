@@ -7,6 +7,7 @@
     ll = log --oneline  # list logs
     last = log -1 HEAD
     pdiff = diff HEAD^ HEAD  # diff with previous commit
+    dt = difftool
     st = status -sb
     ca = commit -a
 
