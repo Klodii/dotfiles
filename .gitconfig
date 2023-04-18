@@ -5,7 +5,7 @@
     # which may not necessarily be the current directory.
 
     ll = log --oneline  # list logs
-    last = log -1 HEAD
+    last = show  # show information about the lastest commit
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     dt = difftool
     st = status -sb
@@ -67,13 +67,25 @@
             git switch $1; \
             exit $?; \
         else \
-            FULL_BRANCH_NAME=$(git branch -a | fzf); \
+        FULL_BRANCH_NAME=$(git branch -a | fzf --height '90%' --header 'Choose the branch into swith' --reverse --border --ansi --preview 'git show --color=always -1 {1}'); \
             BRANCH_NAME=$(echo $FULL_BRANCH_NAME | sed 's@remotes/origin/@@'); \
             git checkout $BRANCH_NAME; \
         fi \
         }; \
         func"
+
+    # Choose which commit to cherry pick, form all branches
+    fcherry = "!func() { \
+        commit_hash=$(git log --pretty=format:'%h %s' --branches='*' \
+        | fzf --height '90%' --header 'Which commit to cherry pick?' --reverse --border --ansi --preview 'git show --color=always {1}' \
+        | awk '{print $1}'); \
+        if [ -n "$commit" ]; \
+        then \
+            git cherry-pick $commit_hash; \
+        fi \
+        }; \
+        func"
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
