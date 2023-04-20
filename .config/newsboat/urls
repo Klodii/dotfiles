@@ -8,6 +8,7 @@ http://lxer.com/module/newswire/headlines.rss
 
 # Persons
 https://lukesmith.xyz/index.xml
+https://martinfowler.com/feed.atom
 
 # Youtube Channels
 # to get the chanel_id go to a video and open the source file, search for the 'channelId'
