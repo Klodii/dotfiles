@@ -54,7 +54,7 @@ precmd_functions+=( set_prompt )
 
 # aliases:
 
-alias ll='ls -alFh --color=auto'
+alias ll='ls -AlFh --color=auto'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -v'
