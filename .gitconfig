@@ -85,14 +85,15 @@
         fi \
         }; \
         func"
+
 [diff]
     tool = nvimdiff
 [difftool]
     prompt = false
 [merge]
     tool = nvimdiff
+[mergetool]
     prompt = false
-    conflictstyle = diff3
 # nvimdiff shortcuts:
 # :diffg RE - get from REMOTE
 # :diffg BA - get from BASE
