@@ -5,7 +5,7 @@
     # which may not necessarily be the current directory.
 
     ll = log --oneline  # list logs
-    last = show  # show information about the lastest commit
+    last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     dt = difftool
     st = status -sb
