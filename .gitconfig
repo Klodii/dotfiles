@@ -86,6 +86,17 @@
         }; \
         func"
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 [difftool]
     prompt = false
+[merge]
+    tool = nvimdiff
+    prompt = false
+    conflictstyle = diff3
+# nvimdiff shortcuts:
+# :diffg RE - get from REMOTE
+# :diffg BA - get from BASE
+# :diffg LO - get from LOCAL
+# ]c - Jump to the next change.
+# [c - Jump to the previous change.
+# :cq - exit withou applying any editing
