@@ -1,12 +1,31 @@
-# set nvim has default editor
-export VISUAL=nvim
+export VISUAL='vi' # set a default that should always work
+# overwrite VISUAL if we can find nvim
+# we can enhance the editor search by searching in each directory of $PATH
+# true if file exist and is executable
+[ -x "/usr/local/bin/nvim" ] && export VISUAL='nvim'
+
 export EDITOR="$VISUAL"
+alias edit="$VISUAL" # provide a command to use on all systems
+
 export BROWSER="brave-browser"
 
+# usefull function
+# usage: mcd <dir>
+function mcd {
+    local newdir='_mcd_command_failed'
+    if [ -d "$1" ]; then
+        echo "$1 already exists"
+        newdir="$1"
+    else
+        command mkdir -p "$1" && newdir="$1"
+    fi
+    builtin cd "$newdir"
+}
+
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.cache/zsh/.history
-HISTSIZE=1000
-SAVEHIST=1000
+export HISTFILE=~/.cache/zsh/.history
+export HISTSIZE=1000
+export SAVEHIST=1000
 unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
