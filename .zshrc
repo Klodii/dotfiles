@@ -1,9 +1,13 @@
 export VISUAL='vi' # set a default that should always work
 # overwrite VISUAL if we can find nvim
 # we can enhance the editor search by searching in each directory of $PATH
-# true if file exist and is executable
-[ -x "/usr/local/bin/nvim" ] && export VISUAL='nvim'
-
+PATH_SPACED=${PATH//:/ } # separate each path by space instead of :
+# =~ tels zsh to force whitespace splitting and filename expansion
+# it is not necessary with bash
+for individual_path in ${=~PATH_SPACED}; do
+    # true if file exist and is executable
+    [ -x "$individual_path/nvim" ] && export VISUAL='nvim' && break
+done
 export EDITOR="$VISUAL"
 alias edit="$VISUAL" # provide a command to use on all systems
 
