@@ -67,17 +67,17 @@
             git switch $1; \
             exit $?; \
         else \
-        FULL_BRANCH_NAME=$(git branch -a | fzf --height '90%' --header 'Choose the branch into swith' --reverse --border --ansi --preview 'git show --color=always -1 {1}'); \
+        FULL_BRANCH_NAME=$(git branch -a | fzf --height '90%' --header 'Choose the branch into swith' --reverse --border --ansi --preview-label='[Last diff]' --preview 'git show --color=always -1 {1}'); \
             BRANCH_NAME=$(echo $FULL_BRANCH_NAME | sed 's@remotes/origin/@@'); \
             git checkout $BRANCH_NAME; \
         fi \
         }; \
         func"
 
-    # Choose which commit to cherry pick, form all branches
+    # Choose which commit to cherry pick, from all branches
     fcherry = "!func() { \
         commit_hash=$(git log --pretty=format:'%h %s' --branches='*' \
-        | fzf --height '90%' --header 'Which commit to cherry pick?' --reverse --border --ansi --preview 'git show --color=always {1}' \
+        | fzf --height '90%' --header 'Which commit to cherry pick?' --reverse --border --ansi --preview-label='[Commit diff]' --preview 'git show --color=always {1}' \
         | awk '{print $1}'); \
         if [ -n "$commit" ]; \
         then \
@@ -86,18 +86,44 @@
         }; \
         func"
 
+    # select the stash to apply
+    # a stash name has this format:
+    # "stash@{0}: WIP on main: commit message"
+    # only the first part identifies the a shas: "stash@{0}", so we need to
+    # extract it from the string.
+    # for the fzf preview, we set has the delimiter ":" so in this case
+    # we can access to the stash_id by selecting the first part of the parameter
+    # selected by the user, with: {1} ({} will give all the string)
+    #
+    # After getting the stash string of our choice (full_stash) we perform
+    # a bash string manipulation operation (%%:*) to remove the longest rear-anchored pattern
+    sstash = "!func() { \
+        full_stash=$(git stash list \
+        | fzf --height '90%' --header 'Which stash to apply?' --reverse --border --ansi --delimiter : --preview-label='[Stash diff]' --preview 'git stash show -p --color=always {1}' \
+        ); \
+        stash_id=${full_stash%%:*}; \
+        if [ -n "$stash_id" ]; \
+        then \
+            git stash apply $stash_id; \
+        fi \
+        }; \
+        func"
+
+
+
 [diff]
     tool = nvimdiff
+    # Leged for nvimdiff
+    # nvimdiff shortcuts:
+    # :diffg RE - get from REMOTE
+    # :diffg BA - get from BASE
+    # :diffg LO - get from LOCAL
+    # ]c - Jump to the next change.
+    # [c - Jump to the previous change.
+    # :cq - exit withou applying any editing
 [difftool]
     prompt = false
 [merge]
     tool = nvimdiff
 [mergetool]
     prompt = false
-# nvimdiff shortcuts:
-# :diffg RE - get from REMOTE
-# :diffg BA - get from BASE
-# :diffg LO - get from LOCAL
-# ]c - Jump to the next change.
-# [c - Jump to the previous change.
-# :cq - exit withou applying any editing
