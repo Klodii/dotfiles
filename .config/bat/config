@@ -1,0 +1,5 @@
+# To list all the themes available and preview them.
+# Note: you need to have installed fzf
+# bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
+--theme=gruvbox-dark
+
