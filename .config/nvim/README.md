@@ -29,6 +29,13 @@ If you do not see something like this when you open your file check if the
 language you are using is presente in the installed list of Mason (`:Mason`).
 Mason is the plugin that handles the languages.
 
+## Debug Adapter Protocol(DAP)
+Like LSP, DAP is a protocol that put itself in the middle, between the code and
+the debugger. So even with different codes, you can use the same DAP structure
+to debug it.
+So, the DAP handles the `step in`, `continue` and other debbugging commands
+for different languages. The plugin we use is called `nvim-dap`.
+
 
 # VIM usefull keys
 
