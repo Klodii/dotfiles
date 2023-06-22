@@ -10,6 +10,7 @@
     dt = difftool
     st = status -sb
     ca = commit -a
+    update = add -u  # Stage modified and deleted files only, do not add untracked files (new files)
 
     zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # Undo last commit
