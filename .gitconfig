@@ -68,6 +68,7 @@
             git switch $1; \
             exit $?; \
         else \
+        git fetch; \
         FULL_BRANCH_NAME=$(git branch -a | fzf --height '90%' --header 'Choose the branch into swith' --reverse --border --ansi --preview-label='[Last diff]' --preview 'git show --color=always -1 {1}'); \
             BRANCH_NAME=$(echo $FULL_BRANCH_NAME | sed 's@remotes/origin/@@'); \
             git checkout $BRANCH_NAME; \
