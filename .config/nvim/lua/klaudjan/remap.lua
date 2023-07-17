@@ -88,6 +88,6 @@ vim.keymap.set("n", "`j", "<C-W>j", { desc = 'Move to the below window' })
 vim.keymap.set("n", "`k", "<C-W>k", { desc = 'Move to the above window' })
 vim.keymap.set("n", "`l", "<C-W>l", { desc = 'Move to the right window' })
 vim.keymap.set("n", "``", "<C-W>w", { desc = 'Move through all opened windows' })
-vim.keymap.set("n", "`<", "<C-W><", { desc = 'Resize window to the left' })
-vim.keymap.set("n", "`>", "<C-W>>", { desc = 'Resize window to the right' })
+vim.keymap.set("n", "`,", "<C-W><", { desc = 'Make the window horizontally larger' })
+vim.keymap.set("n", "`.", "<C-W>>", { desc = 'Make the window horizontally shorter' })
 
