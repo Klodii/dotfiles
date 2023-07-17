@@ -81,3 +81,13 @@ vim.keymap.set("n", "<F5>", "<cmd>cclose<cr>", { desc = 'close quickfix list' })
 vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>", { desc = '[h]ighlight current word without going to next match' })
 
 vim.keymap.set("n", "<leader>n", "<cmd>echo expand('%')<cr>", { desc = 'Print file path' })
+
+-- windows management
+vim.keymap.set("n", "`h", "<C-W>h", { desc = 'Move to the left window' })
+vim.keymap.set("n", "`j", "<C-W>j", { desc = 'Move to the below window' })
+vim.keymap.set("n", "`k", "<C-W>k", { desc = 'Move to the above window' })
+vim.keymap.set("n", "`l", "<C-W>l", { desc = 'Move to the right window' })
+vim.keymap.set("n", "``", "<C-W>w", { desc = 'Move through all opened windows' })
+vim.keymap.set("n", "`<", "<C-W><", { desc = 'Resize window to the left' })
+vim.keymap.set("n", "`>", "<C-W>>", { desc = 'Resize window to the right' })
+
