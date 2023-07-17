@@ -91,3 +91,4 @@ vim.keymap.set("n", "``", "<C-W>w", { desc = 'Move through all opened windows' }
 vim.keymap.set("n", "`,", "<C-W><", { desc = 'Make the window horizontally larger' })
 vim.keymap.set("n", "`.", "<C-W>>", { desc = 'Make the window horizontally shorter' })
 
+vim.keymap.set("n", "<leader>S", "<cmd>:lua require('klaudjan.utils').get_scratch()<cr>", { desc = 'Open a scratch buffer in a new tab' })
