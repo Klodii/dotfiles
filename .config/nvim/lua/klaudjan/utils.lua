@@ -26,8 +26,32 @@ function get_scratch()
     vim.opt_local.swapfile = false
 end
 
+function circle(char)
+    -- circle the current word with the string passed
+
+    local prefix = char or '"'
+    local suffix = prefix
+    if prefix == '"' or prefix == "'" then
+        -- like pass in python
+    elseif prefix == '(' or prefix == ')' then
+        prefix = '('
+        suffix = ')'
+    elseif prefix == '<' or prefix == '>' then
+        prefix = '<'
+        suffix = '>'
+    end
+
+
+    -- expand('<cword>') to get the current word under cursor
+    local current_word = vim.call('expand','<cword>')
+    -- change case
+    local circled_word = prefix .. current_word .. suffix
+    vim.cmd("normal! ciw" ..  circled_word)
+end
+
 -- the return table is used to permit the retrive of the functions with
 -- :lua require("klaudjan.utils").function_name()
 return {
-    get_scratch = get_scratch
+    get_scratch = get_scratch,
+    circle = circle
 }
