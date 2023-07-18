@@ -103,3 +103,6 @@ autocmd BufWritePost config.h,config.def.h !sudo make clean install
 hi Visual cterm=italic ctermbg=Yellow ctermfg=Black
 colorscheme slate
 set cursorline  " To make the line of the cursor highlighted
+
+set modeline
+set ls=2

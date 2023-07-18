@@ -80,7 +80,8 @@ vim.keymap.set("n", "<F5>", "<cmd>cclose<cr>", { desc = 'close quickfix list' })
 -- \\ lua need thow of those to escape
 vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>", { desc = '[h]ighlight current word without going to next match' })
 
-vim.keymap.set("n", "<leader>n", "<cmd>echo expand('%')<cr>", { desc = 'Print file path' })
+-- Found later that with ctrl-g we can print the relative file path, :help ctrl-g for more info
+vim.keymap.set("n", "<leader>n", "<cmd>let @+ = expand('%')<cr><cmd>echo @+<cr>", { desc = 'Copy in clipboard and print file path, relative to the workingdir ' })
 
 -- windows management
 vim.keymap.set("n", "`h", "<C-W>h", { desc = 'Move to the left window' })
