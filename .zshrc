@@ -92,8 +92,6 @@ alias cclip='xclip -selection clipboard'
 alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
-# rename all files in the current directory in a linux manner
-alias lixren='rename "y/A-Z /a-z\_/" *'
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
