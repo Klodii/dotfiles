@@ -75,8 +75,8 @@ set_prompt(){
 precmd_functions+=( set_virtualenv )
 precmd_functions+=( set_prompt )
 
+export PATH="$PATH:$HOME/bin"
 # aliases:
-
 alias ll='ls -AlFh --color=auto'
 alias mv='mv -v'
 alias cp='cp -v'
