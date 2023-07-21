@@ -100,4 +100,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# Source the work related configuration
+WORK_CONFIGURATION_PATH="$HOME/work/.zshrc"
+[ -f $WORK_CONFIGURATION_PATH ] && source $WORK_CONFIGURATION_PATH
+
 alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
