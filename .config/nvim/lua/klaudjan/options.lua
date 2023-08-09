@@ -15,6 +15,7 @@ vim.opt.smartcase = true -- Automatically switch search to case-sensitive when s
 vim.opt.scrolloff = 8 -- The number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 5 -- The number  of screen columns to keep to the left and right of the cursor.
 vim.opt.colorcolumn = "80"  -- Color a column, used to check when reaceah a certain limit
+vim.opt.textwidth = 80  -- line break when reaced a certain limit, new text will go in new line
 vim.opt.laststatus = 2 -- Always display the status basr
 vim.opt.ruler = true -- Always show cursor position
 vim.opt.confirm = true  -- Display a confirmation dialog when closing an unsaved file
