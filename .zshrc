@@ -93,6 +93,13 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
+# the command bat is called batcat in Ubuntu, it is too long
+# so, if the command batcat exists (--version does not exit with 1) then we
+# will create the alias to abbreviate the command name.
+# we redirect the stdout and stderror (2>&1) to the stdout and redirect this in
+# /dev/null, to avoid print messages on the terminal
+batcat --version > /dev/null 2>&1 && alias bat='batcat'
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
