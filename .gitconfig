@@ -11,6 +11,9 @@
     st = status -sb
     ca = commit -a
     update = add -u  # Stage modified and deleted files only, do not add untracked files (new files)
+    amend = commit --amend --no-edit
+    conflicts = !git diff --name-only --diff-filter=U # Show list of files in a conflict state.
+    date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 
     zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # Undo last commit
@@ -22,7 +25,6 @@
         }; \
         func"
 
-    amend = commit --amend --no-edit
 
     # Make sure that the working directory is up to date with the origin.
     #
@@ -54,10 +56,6 @@
         }; \
         func"
 
-    # Show list of files in a conflict state.
-    conflicts = !git diff --name-only --diff-filter=U
-
-    date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 
     # switch branch, if the branch name is not provided search it through fuzzy finder
     # DEPENDENCIES:
@@ -109,7 +107,6 @@
         fi \
         }; \
         func"
-
 
 
 [diff]
