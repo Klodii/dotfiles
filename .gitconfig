@@ -4,6 +4,16 @@
     # will be executed from the top-level directory of a repository,
     # which may not necessarily be the current directory.
 
+    # retrive default branch [main/master]
+    #
+    # In the sed command below we see `@` as a separator insted of the more
+    # common `/`. It is done to avoid escapig the string
+    # (refs\/remotes\/origin\/). Seed takes whatever follows the `s` as
+    # the separator.
+    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+
+    # current logs, show logs that are in the current branch but not in the default one
+    cl = !git log --no-merges --pretty='%C(yellow)%h%d %Creset%an %Cgreen%ar:%Creset %s' --graph $(git default)..HEAD
     ll = log --oneline  # list logs
     last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
@@ -36,13 +46,6 @@
     # in the alias, execute everything in the shell
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
-    # retrive default branch [main/master]
-    #
-    # In the sed command below we see `@` as a separator insted of the more
-    # common `/`. It is done to avoid escapig the string
-    # (refs\/remotes\/origin\/). Seed takes whatever follows the `s` as
-    # the separator.
-    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     # Deletes all branches merged into the specified branch (or the default branch if no branch is specified)
     bclean = "!func() { \
         DEFAULT=$(git default); \
