@@ -4,21 +4,6 @@
     # will be executed from the top-level directory of a repository,
     # which may not necessarily be the current directory.
 
-    # retrive default branch [main/master]
-    #
-    # In the sed command below we see `@` as a separator insted of the more
-    # common `/`. It is done to avoid escapig the string
-    # (refs\/remotes\/origin\/). Seed takes whatever follows the `s` as
-    # the separator.
-    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
-
-    # current logs, show logs that are in the current branch but not in the
-    # passed one ($1) or default if no branch is passed
-    cl = "!func() { \
-        DEFAULT=$(git default); \
-        git log --no-merges --pretty='%C(yellow)%h%d %Creset%an %Cgreen%ar:%Creset %s' --graph ${1-$DEFAULT}..HEAD; \
-        }; \
-        func"
     ll = log --oneline  # list logs
     last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
@@ -40,7 +25,6 @@
         }; \
         func"
 
-
     # Make sure that the working directory is up to date with the origin.
     #
     # pull changes from remote, if there are any local commits, it'll rebase
@@ -50,6 +34,22 @@
     # Usin the `!` prefix allows to use any command and not just git commands
     # in the alias, execute everything in the shell
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
+    # retrive default branch [main/master]
+    #
+    # In the sed command below we see `@` as a separator insted of the more
+    # common `/`. It is done to avoid escapig the string
+    # (refs\/remotes\/origin\/). Seed takes whatever follows the `s` as
+    # the separator.
+    default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+
+    # current logs, show logs that are in the current branch but not in the
+    # passed one ($1) or default if no branch is passed
+    cl = "!func() { \
+        DEFAULT=$(git default); \
+        git log --no-merges --pretty='%C(yellow)%h%d %Creset%an %Cgreen%ar:%Creset %s' --graph ${1-$DEFAULT}..HEAD; \
+        }; \
+        func"
 
     # Deletes all branches merged into the specified branch (or the default branch if no branch is specified)
     bclean = "!func() { \
