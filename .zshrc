@@ -69,7 +69,7 @@ set_prompt(){
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
     # add a character to the right side of the prompt
     # in this way it becomes more easier to identify the prompt row
-    RPROMPT='«'
+    RPROMPT='%F{blue}« %*'
 }
 
 precmd_functions+=( set_virtualenv )
