@@ -17,6 +17,7 @@
     untracked = ls-files --others --exclude-standard
     rmu = !git clean -d # remove untracked files and directories, if clean.requireForce is not set to false, you have to add the -f flagg
     addu = !git untracked | xargs git add # add untracked files
+    wy = whatchanged --since="yesterday"
 
     zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # Undo last commit
