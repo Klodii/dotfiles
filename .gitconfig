@@ -15,8 +15,8 @@
     conflicts = !git diff --name-only --diff-filter=U # Show list of files in a conflict state.
     date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
     untracked = ls-files --others --exclude-standard
-    rmu = !git untracked | xargs rm -v # remove untracked files
-    addu = !git untracked | xargs git add # remove untracked files
+    rmu = !git clean -d # remove untracked files and directories, if clean.requireForce is not set to false, you have to add the -f flagg
+    addu = !git untracked | xargs git add # add untracked files
 
     zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # Undo last commit
