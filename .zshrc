@@ -26,22 +26,26 @@ function mcd {
     builtin cd "$newdir"
 }
 
-# Lines configured by zsh-newuser-install
+# zsh configuration start
+setopt correct                                                  # Auto correct mistakes
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace                                          # Don't save commands that start with space
+
 export HISTFILE=~/.cache/zsh/.history
 export HISTSIZE=1000
 export SAVEHIST=1000
 unsetopt beep
 bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/klaudjan/.zshrc'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-# Custom addition
 autoload -Uz compinit && compinit
+
+## Plugins section: Enable fish style features
+# Use syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh configuration end
 
 
 # show git branch
@@ -79,7 +83,7 @@ export PATH="$PATH:$HOME/bin"
 # aliases:
 alias ll='ls -AlFh --color=auto'
 alias mv='mv -v'
-alias cp='cp -v'
+alias cp='cp -v -i' # verbose and confirm before overwriting something
 alias rm='rm -v'
 alias diff='diff --color=always'
 
