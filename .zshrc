@@ -86,6 +86,7 @@ alias mv='mv -v'
 alias cp='cp -v -i' # verbose and confirm before overwriting something
 alias rm='rm -v'
 alias diff='diff --color=always'
+alias extract='tar -xf' # extract (-x) the archive file (-f) specified. It must be .tar.gz
 
 alias myip='curl -4 https://get.geojs.io/v1/ip'
 # copy and paste directly from terminal
