@@ -29,6 +29,20 @@ If you do not see something like this when you open your file check if the
 language you are using is presente in the installed list of Mason (`:Mason`).
 Mason is the plugin that handles the languages.
 
+### LSP servers that I use
+You may need to install `npm` to install these servers through Mason
+- bash-language-server: Bash
+- dockerfile-language-server: Docker
+- html-lsp: HTML
+- json-lsp: JSON
+- ltex-ls: Text, Markdown, LaTeX
+- pyright: Python
+- sqlls: SQL
+- taplo: TOML
+- vim-language-server: VimScript
+- yaml-language-server: YAML
+
+
 
 # VIM usefull keys
 
