@@ -43,8 +43,15 @@ autoload -Uz compinit && compinit
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+LINUX_PATH='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+MAC_PATH='/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+if [ -f "$LINUX_PATH" ]; then
+    source "$LINUX_PATH"
+elif [ -f "$MAC_PATH" ]; then
+    source "$MAC_PATH"
+else
+    echo "zsh syntax highlighting plugin is not installed"
+fi
 # zsh configuration end
 
 
