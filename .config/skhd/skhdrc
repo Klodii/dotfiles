@@ -1,3 +1,4 @@
 # Open terminal
-ctrl - backspace : open -na alacritty
+alt - backspace : open -na alacritty
+alt - w : open -na /Applications/Brave\ Browser.app
 
