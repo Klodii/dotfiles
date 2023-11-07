@@ -1,0 +1,3 @@
+# Open terminal
+ctrl - backspace : open -na alacritty
+
