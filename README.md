@@ -71,3 +71,10 @@ Doing so enables you to download the file with `curl` and execue it with a singl
 curl -Lks <url to script> | /bin/bash
 ```
 
+
+## zsh plugins
+- plugin that adds syntax highlighting: https://github.com/zsh-users/zsh-syntax-highlighting
+
+## MacOs
+- Terminal used: Alacritty: https://alacritty.org/
+- Hotkey daemon: https://github.com/koekeishiya/skhd
