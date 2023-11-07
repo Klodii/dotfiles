@@ -1,3 +1,5 @@
+# MacOs keybinding using skdh deamon
+#
 # Open terminal
 alt - return : open -na alacritty
 alt - backspace : open -na alacritty
@@ -5,3 +7,8 @@ alt - backspace : open -na alacritty
 # Open browser
 alt - w : open -na /Applications/Brave\ Browser.app
 
+# Shutdown using AppleScript (osasript)
+alt + shift - s : osascript -e 'tell app "System Events" to shut down'
+alt + shift - r : osascript -e 'tell app "System Events" to restart'
+alt + shift - q : osascript -e 'tell app "System Events" to  «event aevtrlgo»' # logout - "quit"
+alt + shift - l : osascript -e 'tell app "System Events" to sleep' # lock screen
