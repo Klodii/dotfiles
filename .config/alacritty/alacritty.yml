@@ -18,7 +18,7 @@ window:
   dynamic_padding: false
 
   # Window decorations
-  #decorations: buttonless
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -29,7 +29,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
   # Background opacity
   opacity: 1
