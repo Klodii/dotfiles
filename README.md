@@ -78,3 +78,7 @@ curl -Lks <url to script> | /bin/bash
 ## MacOs
 - Terminal used: Alacritty: https://alacritty.org/
 - Hotkey daemon: https://github.com/koekeishiya/skhd
+- Window manager: https://github.com/koekeishiya/yabai (website were it is
+  listed how to install it
+  https://flat-pasta-dc7.notion.site/Yabai-8da3b829872d432fac43181b7ff628fc)
+
