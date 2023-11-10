@@ -59,17 +59,16 @@ alt - 0 : yabai -m space --focus 10
 
 ## focus monitor
 alt - 0x30  : yabai -m display --focus recent # 0x30 keycode of tab
-alt - 0x2F  : yabai -m display --focus prev || yabai -m display --focus last # 0x2F keycode of .
-alt - 0x2B  : yabai -m display --focus next || yabai -m display --focus first # 0x2F keycode of ,
+alt - 0x2B  : yabai -m display --focus prev || yabai -m display --focus last # 0x2B keycode of ,
+alt - 0x2F : yabai -m display --focus next || yabai -m display --focus first # 0x2F keycode of .
 #ctrl + alt - 1  : yabai -m display --focus 1
 #ctrl + alt - 2  : yabai -m display --focus 2
 #ctrl + alt - 3  : yabai -m display --focus 3
 
 # send window to monitor and follow focus
-alt + shift - 0x30 : yabai -m window --display recent && yabai -m display --focus recent
-alt + shift - 0x2F : yabai -m window --display prev && yabai -m display --focus prev
-alt + shift - 0x2B : yabai -m window --display next && yabai -m display --focus next
-alt + shift - 1 : yabai -m window --display 1 && yabai -m display --focus 1
-alt + shift - 2 : yabai -m window --display 2 && yabai -m display --focus 2
-alt + shift - 3 : yabai -m window --display 3 && yabai -m display --focus 3
-
+alt + shift - 0x30 : yabai -m window --display recent && yabai -m display --focus recent # 0x30 keycode of tab
+alt + shift - 0x2B : yabai -m window --display prev && yabai -m display --focus prev # 0x2B keycode of ,
+alt + shift - 0x2F : yabai -m window --display next && yabai -m display --focus next # 0x2F keycode of .
+# alt + shift - 1 : yabai -m window --display 1 && yabai -m display --focus 1
+# alt + shift - 2 : yabai -m window --display 2 && yabai -m display --focus 2
+# alt + shift - 3 : yabai -m window --display 3 && yabai -m display --focus 3
