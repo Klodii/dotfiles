@@ -113,11 +113,6 @@ alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 # /dev/null, to avoid print messages on the terminal
 batcat --version > /dev/null 2>&1 && alias bat='batcat'
 
-# for linux users
-# the trainling & operator at the end of the command is used to put the command
-# into background
-alias pgadmin='/usr/pgadmin4/bin/pgadmin4 > /dev/null 2>@1 &'
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
