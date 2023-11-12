@@ -43,15 +43,9 @@ autoload -Uz compinit && compinit
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
-LINUX_PATH='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-MAC_PATH='/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-if [ -f "$LINUX_PATH" ]; then
-    source "$LINUX_PATH"
-elif [ -f "$MAC_PATH" ]; then
-    source "$MAC_PATH"
-else
-    echo "zsh syntax highlighting plugin is not installed"
-fi
+SYNTAX_PLUGIN_LINUX_PATH='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+SYNTAX_PLUGIN_MAC_PATH='/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+source $SYNTAX_PLUGIN_LINUX_PATH > /dev/null 2>&1 || source $SYNTAX_PLUGIN_MAC_PATH > /dev/null 2>&1 || echo "zsh syntax highlighting plugin is not installed"
 # zsh configuration end
 
 
@@ -104,7 +98,6 @@ alias cclip='xclip -selection clipboard'
 alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
-
 
 # the command bat is called batcat in Ubuntu, it is too long
 # so, if the command batcat exists (--version does not exit with 1) then we
