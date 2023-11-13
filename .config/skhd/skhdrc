@@ -5,7 +5,6 @@
 
 
 alt - return : open -na alacritty # Open terminal
-alt - backspace : open -na alacritty # Open terminal
 alt - w : open -na /Applications/Brave\ Browser.app # Open browser
 
 # Shutdown using AppleScript (osasript)
