@@ -1,0 +1,4 @@
+#!/bin/sh
+
+PERSON_CALLING=$TUPLE_TRIGGER_CALLER_FULL_NAME
+say “${PERSON_CALLING} would like to pair with you”
