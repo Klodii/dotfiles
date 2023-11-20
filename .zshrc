@@ -105,6 +105,8 @@ alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 # we redirect the stdout and stderror (2>&1) to the stdout and redirect this in
 # /dev/null, to avoid print messages on the terminal
 batcat --version > /dev/null 2>&1 && alias bat='batcat'
+# arhclinux open command is named xdg-open
+xdg-open --help > /dev/null 2>&1 && alias open='xdg-open'
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
