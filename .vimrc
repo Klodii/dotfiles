@@ -2,7 +2,7 @@ set autoindent " New lines inherit the indentation of previous lines.
 set expandtab " Convert tabs to spaces.
 set tabstop=4 " Indent using four spaces.
 set showmatch " Shows matching brackets
-set ruler " Always shows location in file (line#)
+set ruler " Always shows cursor position(line#)
 set smarttab " Autotabs for certain code
 set shiftwidth=4 "Number of spaces to use for each step of (auto)indent.
 set hlsearch " Enable search highlighting.
@@ -13,9 +13,9 @@ set scrolloff=8 " The number of screen lines to keep above and below the cursor.
 set colorcolumn=80  "  Color a column, used to check when reaceah a certain limit
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
 set laststatus=2 " Always display the status bar.
-set ruler " Always show cursor position.
 set number " Show line numbers on the sidebar.
 set relativenumber " Show line number on the current line and relative numbers on all other lines.
+set cursorline  " To make the line of the cursor highlighted
 " set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
 set confirm " Display a confirmation dialog when closing an unsaved file.
@@ -30,6 +30,28 @@ syntax on " Turn on syntax highlighting.
 set backspace=indent,eol,start
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
+
+set modeline
+set ls=2
+
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+
+" Pair the invisible characters with a simbol
+set listchars=eol:¬,trail:•,tab:▸-
+" Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
+set list
+" In insert mode you can delete only what you have written in that moment, nothing else
+set backspace=indent,eol "no start
+
+"Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
+"Also add the following keybind
+"Copy selected text to system clipboard (requires gvim installed)
+vnoremap <C-c> "*Y :let @+=@*<CR>
+map <C-p> "+P
+
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
 " for movement, rather than using more efficient movement commands, is also a
@@ -50,23 +72,13 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 
-"Copy selected text to system clipboard (requires gvim installed)
-vnoremap <C-c> "*Y :let @+=@*<CR>
-map <C-p> "+P
 
 "Automatically delete all trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" Pair the invisible characters with a simbol
-set listchars=eol:¬,trail:•
-" Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
-set list
-" In insert mode you can delete only what you have written in that moment, nothing else
-set backspace=indent,eol "no start
 
 " Recompile suckless programs automatically:
 autocmd BufWritePost config.h,config.def.h !sudo make clean install
-
 
 " Change the highlight color schem for Visual Mode
 " text under visual mode will have this font and color
@@ -102,7 +114,3 @@ autocmd BufWritePost config.h,config.def.h !sudo make clean install
 "     15      7*      White
 hi Visual cterm=italic ctermbg=Yellow ctermfg=Black
 colorscheme slate
-set cursorline  " To make the line of the cursor highlighted
-
-set modeline
-set ls=2

@@ -22,7 +22,8 @@ vim.opt.confirm = true  -- Display a confirmation dialog when closing an unsaved
 vim.opt.backspace = indent,eol  -- In insert mode you can delete only what you have written in that moment, nothing else
 vim.opt.listchars = {
     eol = '↴',
-    trail = '•'
+    trail = '•',
+    tab = '▸- ' -- Given that we converted tabs into spaces (vim.opt.expandtab) we will not see this character
 }  -- Pair the invisible characters with a simbol
 vim.opt.list = true  -- Show all invisible characters (spaces, tabs, eol, ...) if defined in listchars
 
