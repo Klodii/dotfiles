@@ -1,15 +1,7 @@
 export VISUAL='vi' # set a default that should always work
-# overwrite VISUAL if we can find nvim
-# we can enhance the editor search by searching in each directory of $PATH
-PATH_SPACED=${PATH//:/ } # separate each path by space instead of :
-# =~ tels zsh to force whitespace splitting and filename expansion
-# it is not necessary with bash
-for individual_path in ${=~PATH_SPACED}; do
-    # true if file exist and is executable
-    [ -x "$individual_path/nvim" ] && export VISUAL='nvim' && break
-done
+# overwrite VISUAL if nvim is installed
+hash nvim && export VISUAL='nvim'
 export EDITOR="$VISUAL"
-alias edit="$VISUAL" # provide a command to use on all systems
 
 export BROWSER="brave-browser"
 
@@ -82,6 +74,7 @@ precmd_functions+=( set_prompt )
 
 export PATH="$PATH:$HOME/bin"
 # aliases:
+alias edit="$VISUAL" # provide a command to use on all systems
 alias ll='ls -AlFh --color=auto'
 alias mv='mv -v'
 alias cp='cp -v -i' # verbose and confirm before overwriting something
