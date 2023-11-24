@@ -10,24 +10,27 @@
     dt = difftool
     st = status -sb
     ca = commit -a
-    update = add -u  # Stage modified and deleted files only, do not add untracked files (new files)
+    update = add -u  # stage modified and deleted files only, do not add untracked files (new files)
     amend = commit --amend --no-edit
-    conflicts = !git diff --name-only --diff-filter=U # Show list of files in a conflict state.
+    conflicts = !git diff --name-only --diff-filter=U # show list of files in a conflict state.
     date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
     untracked = ls-files --others --exclude-standard
     rmu = !git clean -d # remove untracked files and directories, if clean.requireForce is not set to false, you have to add the -f flagg
     addu = !git untracked | xargs git add # add untracked files
     wy = whatchanged --since="yesterday"
+    whoami = config user.email # show the user email for the current repository.
+    reb = "!func() { git rebase -i HEAD~$1; }; func" Interactive rebase with the given number of latest commits
 
-    zero = reset --hard HEAD # Remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
-    undo = reset --mixed HEAD~1 # Undo last commit
-    # Reset the local branch in order to be in line with origin
+    zero = reset --hard HEAD # remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
+    undo = reset --mixed HEAD~1 # undo last commit
+    # reset the local branch in order to be in line with origin
     current-branch = branch --show-current
     blackhole = "!func() { \
         CURRENT_BRANCH=$(git current-branch); \
         git reset --hard origin/$CURRENT_BRANCH; \
         }; \
         func"
+
 
     # Make sure that the working directory is up to date with the origin.
     #
@@ -120,8 +123,40 @@
         }; \
         func"
 
+[core]
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+   #  Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
 
 [diff]
+    # Detect copies as well as renames
+    renames = copies
+
     tool = nvimdiff
     # Leged for nvimdiff
     # nvimdiff shortcuts:
@@ -135,5 +170,7 @@
     prompt = false
 [merge]
     tool = nvimdiff
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
 [mergetool]
     prompt = false
