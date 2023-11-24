@@ -1,13 +1,20 @@
+# Exports
 export VISUAL='vi' # set a default that should always work
-# overwrite VISUAL if nvim is installed
-hash nvim && export VISUAL='nvim'
+hash nvim && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
 export EDITOR="$VISUAL"
+export PATH="$PATH:$HOME/bin"
+
+# shell history
+export HISTFILE=~/.cache/zsh/.history # make sure the directory exists, otherwise the file will not be created
+export HISTSIZE=1000
+export SAVEHIST=1000
 
 export BROWSER="brave-browser"
 
-# usefull function
-# usage: mcd <dir>
+# Functions
 function mcd {
+    # usage: mcd <dir>
+    # create a dir and cd into it
     local newdir='_mcd_command_failed'
     if [ -d "$1" ]; then
         echo "$1 already exists"
@@ -19,18 +26,13 @@ function mcd {
 }
 
 # zsh configuration start
-setopt correct                                                  # Auto correct mistakes
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
-setopt histignorespace                                          # Don't save commands that start with space
-
-export HISTFILE=~/.cache/zsh/.history
-export HISTSIZE=1000
-export SAVEHIST=1000
+setopt correct            # Auto correct mistakes
+setopt nobeep             # No beep
+setopt appendhistory      # Immediately append history instead of overwriting
+setopt inc_append_history # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace    # Don't save commands that start with space
 unsetopt beep
 bindkey -v
-
 autoload -Uz compinit && compinit
 
 ## Plugins section: Enable fish style features
@@ -41,8 +43,7 @@ source $SYNTAX_PLUGIN_LINUX_PATH > /dev/null 2>&1 || source $SYNTAX_PLUGIN_MAC_P
 # zsh configuration end
 
 
-# show git branch
-
+# Prompt
 # Load version control information
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -72,8 +73,10 @@ set_prompt(){
 precmd_functions+=( set_virtualenv )
 precmd_functions+=( set_prompt )
 
-export PATH="$PATH:$HOME/bin"
-# aliases:
+# Aliases
+# my git alias for dotflies repository
+alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 alias edit="$VISUAL" # provide a command to use on all systems
 alias ll='ls -AlFh --color=auto'
 alias mv='mv -v'
@@ -112,4 +115,3 @@ fi
 WORK_CONFIGURATION_PATH="$HOME/work/.zshrc"
 [ -f $WORK_CONFIGURATION_PATH ] && source $WORK_CONFIGURATION_PATH
 
-alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
