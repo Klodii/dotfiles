@@ -1,6 +1,6 @@
 # Exports
 export VISUAL='vi' # set a default that should always work
-hash nvim && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
+hash nvim 2> /dev/null && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
 export EDITOR="$VISUAL"
 export PATH="$PATH:$HOME/bin"
 
@@ -95,14 +95,19 @@ alias vclip='xclip -o -selection clipboard'
 
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
 
-# the command bat is called batcat in Ubuntu, it is too long
-# so, if the command batcat exists (--version does not exit with 1) then we
-# will create the alias to abbreviate the command name.
-# we redirect the stdout and stderror (2>&1) to the stdout and redirect this in
-# /dev/null, to avoid print messages on the terminal
-batcat --version > /dev/null 2>&1 && alias bat='batcat'
-# arhclinux open command is named xdg-open
-xdg-open --help > /dev/null 2>&1 && alias open='xdg-open'
+# Normalize `bat`, the command is called batcat in Ubuntu
+hash batcat 2> /dev/null && alias bat='batcat'
+
+# Normalize `open` across Linux, macOS, and Windows.
+OPERATNG_SYSTEM=$(uname -s)
+if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
+    if grep -q Microsoft /proc/version; then
+        # Ubuntu on Windows using the Linux subsystem
+        alias open='explorer.exe';
+    else
+        alias open='xdg-open';
+    fi
+fi
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
