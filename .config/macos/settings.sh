@@ -72,10 +72,6 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
