@@ -17,10 +17,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName "0x6D746873"
-#sudo scutil --set HostName "0x6D746873"
-#sudo scutil --set LocalHostName "0x6D746873"
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
+MAC_NAME="Mac-Klodii"
+# sudo scutil --set ComputerName "$MAC_NAME"
+# sudo scutil --set HostName "$MAC_NAME"
+# sudo scutil --set LocalHostName "$MAC_NAME"
+# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$MAC_NAME"
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -147,11 +148,12 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
-#defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# OR
+# Set a slow keyboard repeat rate
+# To deincentivise holding keys, instead of using vim key bindings
+defaults write NSGlobalDomain KeyRepeat -int 30
+defaults write NSGlobalDomain InitialKeyRepeat -int 94
 
 
 # Set language and text formats
