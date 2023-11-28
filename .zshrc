@@ -109,14 +109,6 @@ if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
     fi
 fi
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
 # Source the work related configuration
 WORK_CONFIGURATION_PATH="$HOME/work/.zshrc"
 [ -f $WORK_CONFIGURATION_PATH ] && source $WORK_CONFIGURATION_PATH
-
