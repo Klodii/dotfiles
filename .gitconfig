@@ -19,7 +19,7 @@
     addu = !git untracked | xargs git add # add untracked files
     wy = whatchanged --since="yesterday"
     whoami = config user.email # show the user email for the current repository.
-    reb = "!func() { git rebase -i HEAD~$1; }; func" Interactive rebase with the given number of latest commits
+    ri = "!func() { git rebase -i HEAD~$1; }; func" # interactive rebase with the given number of latest commits
 
     zero = reset --hard HEAD # remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
     undo = reset --mixed HEAD~1 # undo last commit
