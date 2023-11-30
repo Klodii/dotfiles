@@ -1,6 +1,10 @@
 # Exports
 export BIN_HOME="$HOME/.local/bin" # locations of my scripts, following XDG base directory specifications
 export PATH="$PATH:$BIN_HOME"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 
 export VISUAL='vi' # set a default that should always work
 hash nvim 2> /dev/null && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
@@ -8,7 +12,7 @@ export EDITOR="$VISUAL"
 
 
 # shell history
-export HISTFILE=~/.cache/zsh/.history # make sure the directory exists, otherwise the file will not be created
+export HISTFILE="$XDG_CACHE_HOME/zsh/.history" # make sure the directory exists, otherwise the file will not be created
 export HISTSIZE=1000
 export SAVEHIST=1000
 
