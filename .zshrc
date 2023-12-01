@@ -76,31 +76,30 @@ SYNTAX_PLUGIN_MAC_PATH='/usr/local/share/zsh-syntax-highlighting/zsh-syntax-high
 source $SYNTAX_PLUGIN_LINUX_PATH > /dev/null 2>&1 || source $SYNTAX_PLUGIN_MAC_PATH > /dev/null 2>&1 || echo "zsh syntax highlighting plugin is not installed"
 
 # prompt
+setopt prompt_subst # the prompt string is first subjected to parameter expansion, command substitution and arithmetic expansion
 autoload -Uz vcs_info # load version control information
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
-set_virtualenv() {
+function precmd_vcs_info { vcs_info }
+function set_virtualenv {
   if test -z "$VIRTUAL_ENV" ; then
       PYTHON_VIRTUALENV=""
   else
       PYTHON_VIRTUALENV="%F{cyan}[`basename \"$VIRTUAL_ENV\"`]%f"
   fi
 }
-
-set_prompt(){
+function set_prompt {
     NEW_LINE=$'\n'
     POSITION_LINE='%F{green}%n@%m%f: %F{blue}%~%f'
     COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
+
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
     RPROMPT='%F{blue}« %*'
 }
 
-precmd_functions+=( set_virtualenv )
-precmd_functions+=( set_prompt )
+# 'precmd' is a zsh hook that execute, each functions in precmd_functions, before your prompt is displayed
+precmd_functions+=( precmd_vcs_info set_virtualenv set_prompt )
 # zsh configuration END
 
 # source the work related configuration
