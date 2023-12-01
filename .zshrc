@@ -1,15 +1,14 @@
 # Exports
+export XDG_DATA_HOME="$HOME/.local/share" # user-specific data files should be store
+export XDG_STATE_HOME="$HOME/.local/state" # user-specific state files should be stored
+export XDG_CONFIG_HOME="$HOME/.config" # user-specific configuration files should be stored
+export XDG_CACHE_HOME="$HOME/.cache" # user-specific non-essential (cached) data should be stored
 export BIN_HOME="$HOME/.local/bin" # locations of my scripts, following XDG base directory specifications
 export PATH="$PATH:$BIN_HOME"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
 
 export VISUAL='vi' # set a default that should always work
 hash nvim 2> /dev/null && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
 export EDITOR="$VISUAL"
-
 
 # shell history
 export HISTFILE="$XDG_CACHE_HOME/zsh/.history" # make sure the directory exists, otherwise the file will not be created
@@ -81,7 +80,6 @@ precmd_functions+=( set_virtualenv )
 precmd_functions+=( set_prompt )
 
 # Aliases
-# my git alias for dotflies repository
 alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias edit="$VISUAL" # provide a command to use on all systems
@@ -93,19 +91,13 @@ alias diff='diff --color=always'
 alias extract='tar -xf' # extract (-x) the archive file (-f) specified. It must be .tar.gz
 
 alias myip='curl -4 https://get.geojs.io/v1/ip'
-# copy and paste directly from terminal
-# install xclip with: sudo apt-get install xclip
-# You can then pipe the output into xclip to be copied into the clipboard
-alias cclip='xclip -selection clipboard'
-# or To paste the text you just copied, you shall use:
-alias vclip='xclip -o -selection clipboard'
+alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
+alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
+alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
 
-alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip'
+hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 
-# Normalize `bat`, the command is called batcat in Ubuntu
-hash batcat 2> /dev/null && alias bat='batcat'
-
-# Normalize `open` across Linux, macOS, and Windows.
+# Normalize 'open' across Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
 if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
     if grep -q Microsoft /proc/version; then
