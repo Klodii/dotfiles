@@ -104,4 +104,5 @@ precmd_functions+=( precmd_vcs_info set_virtualenv set_prompt )
 
 # source the work related configuration
 WORK_CONFIGURATION_PATH="$HOME/work/.zshrc"
-[ -f $WORK_CONFIGURATION_PATH ] && source $WORK_CONFIGURATION_PATH
+# using if instead of && to prevent the .zshrc to have a exit status different than 0
+if [ -f $WORK_CONFIGURATION_PATH ]; then source $WORK_CONFIGURATION_PATH; fi
