@@ -1,4 +1,5 @@
 # exports
+## clean home
 export XDG_DATA_HOME="$HOME/.local/share" # where user-specific data files should be store
 export XDG_STATE_HOME="$HOME/.local/state" # where user-specific state files should be stored
 export XDG_CONFIG_HOME="$HOME/.config" # where user-specific configuration files should be stored
@@ -6,8 +7,13 @@ export XDG_CACHE_HOME="$HOME/.cache" # where user-specific non-essential (cached
 export BIN_HOME="$HOME/.local/bin" # where user-specific executable files may be written
 export PATH="$PATH:$BIN_HOME"
 
-export VISUAL='vi' # set a default that should always work
-hash nvim 2> /dev/null && export VISUAL='nvim' # overwrite VISUAL if nvim is installed
+if hash nvim 2> /dev/null ; then
+    export VISUAL='nvim'
+    export MANPAGER='nvim --cmd ":lua vim.g.noplugins=1" +Man!'
+else
+    export VISUAL='vi'
+    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+fi
 export EDITOR="$VISUAL"
 
 # shell history
