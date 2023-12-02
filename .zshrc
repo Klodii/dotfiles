@@ -7,6 +7,7 @@ export XDG_CACHE_HOME="$HOME/.cache" # where user-specific non-essential (cached
 export BIN_HOME="$HOME/.local/bin" # where user-specific executable files may be written
 export PATH="$PATH:$BIN_HOME"
 
+# editor
 if hash nvim 2> /dev/null ; then
     export VISUAL='nvim'
     export MANPAGER='nvim --cmd ":lua vim.g.noplugins=1" +Man!'
@@ -15,6 +16,21 @@ else
     export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 fi
 export EDITOR="$VISUAL"
+
+# language
+#export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+export LC_MONETARY=it_IT.UTF-8
+export LC_NUMERIC=it_IT.UTF-8
+export LC_TIME=it_IT.UTF-8
+
+export LESSCHARSET=utf-8
+
 
 # shell history
 export HISTFILE="$XDG_CACHE_HOME/zsh/.history" # make sure the directory exists, otherwise the file will not be created
