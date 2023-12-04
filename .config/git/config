@@ -168,6 +168,8 @@
     # :cq - exit withou applying any editing
 [difftool]
     prompt = false
+[difftool "nvimdiff"]
+	cmd = "nvim --cmd \":lua vim.g.noplugins=1\" -d \"$LOCAL\" \"$REMOTE\""
 [merge]
     tool = nvimdiff
     # Include summaries of merged commits in newly created merge commit messages
