@@ -88,6 +88,7 @@ setopt histignorespace    # don't save commands that start with space
 unsetopt beep             # no beep
 bindkey -v                # enable vim mode
 autoload -Uz compinit && compinit
+bindkey -s "^e" "edit .\n" # edit (alias) the current directory
 
 # plugins
 ## syntax highlighting
