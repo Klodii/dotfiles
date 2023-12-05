@@ -1,11 +1,21 @@
 # exports
-## clean home
+# clean home
 export XDG_DATA_HOME="$HOME/.local/share" # where user-specific data files should be store
 export XDG_STATE_HOME="$HOME/.local/state" # where user-specific state files should be stored
 export XDG_CONFIG_HOME="$HOME/.config" # where user-specific configuration files should be stored
 export XDG_CACHE_HOME="$HOME/.cache" # where user-specific non-essential (cached) data should be stored
 export BIN_HOME="$HOME/.local/bin" # where user-specific executable files may be written
 export PATH="$PATH:$BIN_HOME"
+
+# shell history
+export HISTFILE="$XDG_CACHE_HOME/zsh/history" # make sure the directory exists, otherwise the file will not be created
+export HISTSIZE=1000
+export SAVEHIST=1000
+
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+
 
 # editor
 if hash nvim 2> /dev/null ; then
@@ -29,11 +39,6 @@ export LC_MESSAGES=en_US.UTF-8
 export LC_MONETARY=it_IT.UTF-8
 export LC_NUMERIC=it_IT.UTF-8
 export LC_TIME=it_IT.UTF-8
-
-# shell history
-export HISTFILE="$XDG_CACHE_HOME/zsh/.history" # make sure the directory exists, otherwise the file will not be created
-export HISTSIZE=1000
-export SAVEHIST=1000
 
 export BROWSER="brave-browser"
 
