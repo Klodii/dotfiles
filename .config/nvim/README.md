@@ -45,6 +45,13 @@ You may need to install `npm` to install these servers through Mason
 
 
 # VIM usefull keys
+`^` = `Ctrl`
+
+Movements
+    Visual mode: `0` goes to beginning of the line
+    Visual mode: `_` or `^` goes to first non-blank character of the line
+    Visual mode: `g_` goes to the last non-blank character of the line
+    Visual mode: `_vg_` will select from first non-blank character to last non-blank character
 
 Indentation
     - Insert mode: `^-t`, `^-d` to indent current line forward, backwords
@@ -65,7 +72,8 @@ Register commands
 
 Close suggestion window:
     - Insert mode:
-        - `crl-e` to close the suggestion window that appear while you are typing
+        - `^-e` to open/close the suggestion window that appear while you are typing
+
 
 Open history list:
 Vim can show and make you select the previous commands/searched executed,
