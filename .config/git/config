@@ -9,6 +9,7 @@
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     dt = difftool
     st = status -sb
+    c = commit
     ca = commit -a
     update = add -u  # stage modified and deleted files only, do not add untracked files (new files)
     amend = commit --amend --no-edit
