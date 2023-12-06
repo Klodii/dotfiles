@@ -94,6 +94,7 @@ unsetopt beep             # no beep
 bindkey -v                # enable vim mode
 autoload -Uz compinit && compinit
 bindkey -s "^e" "edit .\n" # edit (alias) the current directory
+bindkey -s "^r" "source $HOME/.zshrc\n" # refresh zsh configuration
 
 # plugins
 ## syntax highlighting
