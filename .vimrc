@@ -23,11 +23,6 @@ set confirm " Display a confirmation dialog when closing an unsaved file.
 set backupdir=~/.cache/vim/backup//,. " Directory to store backup files.
 set dir=~/.cache/vim/swap//,. " Directory to store swap files. The double slash at the end ensures that there is no conflict in case of two files having the same name,The ,. allow vim to use the current directory if the former doesn't exist.
 syntax on " Turn on syntax highlighting.
-" The backspace key has slightly unintuitive behavior by default. For example,
-" by default, you can't backspace before the insertion point set with 'i'.
-" This configuration makes backspace behave more reasonably, in that you can
-" backspace over anything.
-set backspace=indent,eol,start
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
