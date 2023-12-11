@@ -12,7 +12,6 @@ export HISTFILE="$XDG_CACHE_HOME/zsh/history" # make sure the directory exists, 
 export HISTSIZE=1000
 export SAVEHIST=1000
 
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 
