@@ -85,7 +85,6 @@ if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
 fi
 
 # zsh configuration START
-setopt correct            # auto correct mistakes
 setopt appendhistory      # append history instead of overwriting
 setopt inc_append_history # commands are added to the history immediately, otherwise only when shell exits
 setopt histignorespace    # don't save commands that start with space
