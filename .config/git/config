@@ -37,7 +37,7 @@
     #
     # pull changes from remote, if there are any local commits, it'll rebase
     # them to come after the commits that are pulled down.
-    # The `--prune` option removes remote-tracking branches to no longer
+    # The `--prune` option removes remote-tracking branches that no longer
     # exists on the remote.
     # Usin the `!` prefix allows to use any command and not just git commands
     # in the alias, execute everything in the shell
