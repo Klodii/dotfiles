@@ -44,6 +44,9 @@
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
     # retrive default branch [main/master]
+    # symbolic-ref contains the local representation, of the default branch, *locally*.
+    # For this reason, it may be out of date or unavailable. To update it run
+    # `git remote set-head origin --auto`
     #
     # In the sed command below we see `@` as a separator insted of the more
     # common `/`. It is done to avoid escapig the string
