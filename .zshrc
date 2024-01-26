@@ -81,6 +81,8 @@ if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
         alias open='explorer.exe';
     else
         alias open='xdg-open';
+        hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
+
     fi
 fi
 
