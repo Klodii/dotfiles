@@ -11,7 +11,7 @@ To install the configuration in your system you have to
  Add this line to your `.zshrc` or `.bashrc`
 
  ```
- alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+ alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
  ```
 
  Restart the terminal or run `$ source ~/.zhsrc` or `$ source ~/.bashrc` to load
@@ -27,7 +27,7 @@ To install the configuration in your system you have to
  3. Checkout the actual content from the bare repository to your $HOME:
 
  ```
- .files checkout
+ .f checkout
  ```
  The step before might fail with a message like:
 
@@ -48,11 +48,11 @@ To install the configuration in your system you have to
 
 4. Set the flag `showUntrackedFiles` to `no`,
 this is done to hide files we are not explicitly tracking yet.
-This is so that when you type `.files status` and other commands later,
+This is so that when you type `.f status` and other commands later,
 files you are not interested in tracking will not show up as untracked.
 
 ```
-.files config --local status.showUntrackedFiles no
+.f config --local status.showUntrackedFiles no
 ```
 
 # Installation through script

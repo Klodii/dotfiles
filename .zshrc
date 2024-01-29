@@ -56,7 +56,7 @@ function mcd {
 }
 
 # aliases
-alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias edit="$VISUAL" # provide a command to use on all systems
 alias ll='ls -AlFh --color=auto'
