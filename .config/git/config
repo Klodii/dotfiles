@@ -4,7 +4,7 @@
     # will be executed from the top-level directory of a repository,
     # which may not necessarily be the current directory.
 
-    ll = log --oneline -n15 # list last 15 logs
+    ll = "!func() { git log --oneline -n${1-15}; }; func" # list last 15 logs if no other value is passed
     last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
     dt = difftool
