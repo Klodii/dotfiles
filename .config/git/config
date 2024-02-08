@@ -26,7 +26,7 @@
 
 
     zero = reset --hard HEAD # remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
-    undo = reset --mixed HEAD~1 # undo last commit
+    undo = "!func() { git reset --mixed HEAD~$1; }; func" # undo the number of latest commits passed
     # reset the local branch in order to be in line with origin
     current-branch = branch --show-current
     blackhole = "!func() { \
