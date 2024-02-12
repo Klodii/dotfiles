@@ -55,6 +55,13 @@ function mcd {
     builtin cd "$newdir"
 }
 
+function :qa {
+    while tmux next-window 2> /dev/null; do
+        tmux kill-window
+    done
+    tmux kill-window
+}
+
 # aliases
 alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -70,6 +77,7 @@ alias myip='curl -4 https://get.geojs.io/v1/ip'
 alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
 alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
+alias :q='exit'
 
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 
