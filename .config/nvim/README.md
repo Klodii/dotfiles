@@ -20,7 +20,9 @@ plugin definitions
 `:filetype plugin on`
 
 ## Checkhealt
-To optimize or check if there are some warnings or errors run `:checkhealt`
+To optimize or check if there are some warnings or errors run `:checkhealt`.
+If there is any error, try to run `:TSUpdate`, the udpate might fix the error.
+
 
 ## Language Server Protocol (LSP)
 LSP is used to make nvim understand the language you are using and giving you
