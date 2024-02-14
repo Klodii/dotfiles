@@ -39,7 +39,6 @@ export LC_MONETARY=it_IT.UTF-8
 export LC_NUMERIC=it_IT.UTF-8
 export LC_TIME=it_IT.UTF-8
 
-export BROWSER="brave-browser"
 
 # functions
 function mcd {
@@ -81,16 +80,19 @@ alias :q='exit'
 
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 
-# normalize 'open' across Linux, macOS, and Windows.
+# normalize aliases and cross Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
-if [ ! $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin if in a MacOS
+if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=MacOS
+    alias fm='open .'
+    export BROWSER="/Applications/Brave Browser.app/"
+else
     if grep -q Microsoft /proc/version; then
         # Ubuntu on Windows using the Linux subsystem
         alias open='explorer.exe';
     else
         alias open='xdg-open';
         hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
-
+        export BROWSER="brave-browser"
     fi
 fi
 
