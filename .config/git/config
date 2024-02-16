@@ -66,6 +66,16 @@
         }; \
         func"
 
+    # summarise all the commits, subjects and body messages, that are in current
+    # branch but not in the passed one ($1) or dfault if no branch is passed
+    # the return message is usually copied and pasted in merge request
+    # description.
+    summ-cl = "!func() { \
+        DEFAULT=$(git default); \
+        git log --no-merges --pretty='%s\n%b' --graph ${1-$DEFAULT}..HEAD; \
+        }; \
+        func"
+
     # Deletes all branches merged into the specified branch (or the default branch if no branch is specified)
     bclean = "!func() { \
         DEFAULT=$(git default); \
