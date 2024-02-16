@@ -101,3 +101,7 @@ vim.keymap.set("n", "<leader>(", "<cmd>:lua require('klaudjan.utils').circle('('
 vim.keymap.set("n", "<leader>)", "<cmd>:lua require('klaudjan.utils').circle(')')<cr>", { desc = 'Circle the current word with () characters' })
 vim.keymap.set("n", "<leader><", "<cmd>:lua require('klaudjan.utils').circle('<')<cr>", { desc = 'Circle the current word with <> characters' })
 vim.keymap.set("n", "<leader>>", "<cmd>:lua require('klaudjan.utils').circle('>')<cr>", { desc = 'Circle the current word with <> characters' })
+
+-- open same file in a split buffer
+vim.keymap.set("n", "<leader>os", "<cmd>split<cr>", { desc = 'open file in horizontal split' })
+vim.keymap.set("n", "<leader>vs", "<cmd>vsplit<cr>", { desc = 'open file in vertical split' })
