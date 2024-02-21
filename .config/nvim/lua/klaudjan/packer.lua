@@ -85,6 +85,12 @@ return require('packer').startup(function(use)
       end
   }
 
+  -- help you establish good command workflow and habit
+  use {
+      "m4xshen/hardtime.nvim",
+      requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
