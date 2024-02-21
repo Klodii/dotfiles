@@ -10,6 +10,7 @@ _load_weather() {
 
 # Weather data
 weather_segment() {
+    local TMPDIR='/tmp'
 	local -r TMP_WEATHER_FILE="$TMPDIR/weather.tmp"
 	local -r REFRESH_RATE=$((60 * 60)) # 60 minutes
 
