@@ -90,6 +90,8 @@ return require('packer').startup(function(use)
       "m4xshen/hardtime.nvim",
       requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
   }
+  -- notification plugin, particularly useful with the hardtime pulgin
+  use 'rcarriga/nvim-notify'
 
   if packer_bootstrap then
     require('packer').sync()
