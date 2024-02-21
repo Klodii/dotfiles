@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-WIFI_NAME=$(wifi)
-OFF_ICON="OFF"
-TAIL=" ⦁ "
-
-[ "$WIFI_NAME" = "$OFF_ICON" ] && printf "#[fg=red]Wifi %s#[fg=black]%s" "$WIFI_NAME" "$TAIL" || printf "Wifi %s" "$WIFI_NAME$TAIL"
+STATUS=$(ethernet)
+if [ -z "$STATUS" ]; then
+    printf "#[fg=red]No internet connection#[fg=black]"
+else
+    printf "%s" "$STATUS"
+fi
