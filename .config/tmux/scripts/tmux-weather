@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source "$HOME/.local/bin/utils"
 
 _load_weather() {
 	# check for internet connection
@@ -11,10 +12,10 @@ _load_weather() {
 # Weather data
 weather_segment() {
     # normalize TMPDIR cross Linux, macOS
-    local TMPDIR='/tmp'
-    OPERATNG_SYSTEM=$(uname -s); [ $OPERATNG_SYSTEM = 'Darwin' ] && TMPDIR=$TMPDIR
+    local temp_dir='/tmp'
+    [ $(current_os) == 'macos' ] && temp_dir=$TMPDIR
 
-	local -r TMP_WEATHER_FILE="$TMPDIR/weather.tmp"
+	local -r TMP_WEATHER_FILE="$temp_dir/weather.tmp"
 	local -r REFRESH_RATE=$((60 * 60)) # 60 minutes
 
 	[[ -f "$TMP_WEATHER_FILE" ]] || _load_weather
