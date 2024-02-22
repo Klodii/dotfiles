@@ -103,8 +103,10 @@ setopt histignorespace    # don't save commands that start with space
 unsetopt beep             # no beep
 bindkey -v                # enable vim mode
 autoload -Uz compinit && compinit
+# keybindings
 bindkey -s "^e" "edit .\n" # edit (alias) the current directory
 bindkey -s "^r" "source $HOME/.zshrc\n" # refresh zsh configuration
+bindkey -s "^b" "cd $BIN_HOME\n" # open users bin directory
 
 # plugins
 ## syntax highlighting
