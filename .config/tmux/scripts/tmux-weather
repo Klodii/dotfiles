@@ -2,41 +2,37 @@
 source "$HOME/.local/bin/utils"
 
 _load_weather() {
-	# check for internet connection
-	ping -q -c 1 1.1.1.1 >/dev/null && {
-		weather "" "format=%c+%t+%h+%w+%m" >"$TMP_WEATHER_FILE"
-		printf "\n$(date +'%s')" >>"$TMP_WEATHER_FILE"
-	}
+    # check for internet connection
+    ping -q -c 1 1.1.1.1 >/dev/null && {
+        weather -s >"$TMP_WEATHER_FILE"
+        printf "\n$(date +'%s')" >>"$TMP_WEATHER_FILE"
+    }
 }
 
 # Weather data
 weather_segment() {
-    # normalize TMPDIR cross Linux, macOS
-    local temp_dir='/tmp'
-    [ $(current_os) == 'macos' ] && temp_dir=$TMPDIR
+    local -r TMP_WEATHER_FILE="$(get_tmpdir)/weather.tmp"
+    local -r REFRESH_RATE=$((60 * 60)) # 60 minutes
 
-	local -r TMP_WEATHER_FILE="$temp_dir/weather.tmp"
-	local -r REFRESH_RATE=$((60 * 60)) # 60 minutes
+    [[ -f "$TMP_WEATHER_FILE" ]] || _load_weather
 
-	[[ -f "$TMP_WEATHER_FILE" ]] || _load_weather
+    local now
+    now="$(date +'%s')"
+    local epoch
+    epoch="$(tail -n 1 "$TMP_WEATHER_FILE")"
+    local delta
+    delta="$((now - epoch))"
 
-	local now
-	now="$(date +'%s')"
-	local epoch
-	epoch="$(tail -n 1 "$TMP_WEATHER_FILE")"
-	local delta
-	delta="$((now - epoch))"
+    # check if it's time to update the data
+    [[ $delta -gt $REFRESH_RATE ]] && _load_weather
 
-	# check if it's time to update the data
-	[[ $delta -gt $REFRESH_RATE ]] && _load_weather
+    local weather
+    weather="$(head -n 1 "$TMP_WEATHER_FILE")"
+    weather="$(echo "${weather//+/}")"
 
-	local weather
-	weather="$(head -n 1 "$TMP_WEATHER_FILE")"
-	weather="$(echo "${weather//+/}")"
+    echo
 
-	echo
-
-	printf "%s" "$weather"
+    printf "%s" "$weather"
 }
 
 weather_segment
