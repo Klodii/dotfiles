@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-STATUS=$(ethernet)
+STATUS=$(wifi)
 if [ -z "$STATUS" ]; then
-    printf "#[fg=red]No internet connection#[fg=black]"
+    printf "#[fg=red]❌🌐#[fg=black]"
 else
-    printf "%s" "$STATUS"
+    printf "%s🌐" "$STATUS"
 fi
