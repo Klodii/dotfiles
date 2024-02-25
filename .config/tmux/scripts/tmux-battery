@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+DELIMITER=${1:-'|'}
+status_battery=$(battery -tpi)
+[ "$status_battery" ]  && echo "$status_battery$DELIMITER"
