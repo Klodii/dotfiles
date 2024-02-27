@@ -143,6 +143,7 @@
         func"
 
 [core]
+    editor = $EDITOR
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -155,6 +156,20 @@
    #  Prevent showing files whose names contain non-ASCII symbols as unversioned.
     # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
     precomposeunicode = false
+
+[init]
+    # requires Git 2.28 or later
+    defaultBranch = main
+
+[commit]
+    verbose = true
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
 
 [color "branch"]
     current = yellow reverse
