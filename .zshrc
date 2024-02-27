@@ -73,6 +73,28 @@ function psearch {
     ps aux | fzf
 }
 
+function extract {
+    # Extract most know archives with one command
+    if [ -f "$1" ]; then
+      case $1 in
+      *.tar.bz2) tar xjf "$1" ;;
+      *.tar.gz) tar xzf "$1" ;;
+      *.bz2) bunzip2 "$1" ;;
+      *.rar) unrar e "$1" ;;
+      *.gz) gunzip "$1" ;;
+      *.tar) tar xf "$1" ;;
+      *.tbz2) tar xjf "$1" ;;
+      *.tgz) tar xzf "$1" ;;
+      *.zip) unzip "$1" ;;
+      *.Z) uncompress "$1" ;;
+      *.7z) 7z x "$1" ;;
+      *) echo "'$1' cannot be extracted via extract function" ;;
+      esac
+    else
+      echo "'$1' is not a valid file"
+    fi
+}
+
 # aliases
 alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -82,7 +104,6 @@ alias mv='mv -v'
 alias cp='cp -v -i' # verbose and confirm before overwriting something
 alias rm='rm -v'
 alias diff='diff --color=always'
-alias extract='tar -xf' # extract (-x) the archive file (-f) specified. It must be .tar.gz
 
 alias myip='curl -4 https://get.geojs.io/v1/ip'
 alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
