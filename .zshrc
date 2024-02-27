@@ -61,6 +61,18 @@ function :qa {
     tmux kill-window
 }
 
+function fsearch {
+    # [f]ile [s]earch
+    # search a file in the given path or default to current directory
+    local dir=${1:-'.'}
+    find "$dir" -type f | fzf
+}
+
+function psearch {
+    # running [p]rocess [s]earch
+    ps aux | fzf
+}
+
 # aliases
 alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
