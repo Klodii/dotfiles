@@ -21,6 +21,7 @@ brew install rename
 brew install mpv
 brew install yt-dlp
 brew install syncthing
+brew install git-delta
 
 # Remove outdated versions from the cellar.
 brew cleanup
