@@ -196,7 +196,7 @@
     frag = magenta # line info
     old = red strike # deletions
     new = green italic# additions
-    withespace = red
+    withespace = red reverse
     commit = yellow
 
 [color "status"]
