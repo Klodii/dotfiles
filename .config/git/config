@@ -67,12 +67,12 @@
         func"
 
     # summarise all the commits, subjects and body messages, that are in current
-    # branch but not in the passed one ($1) or dfault if no branch is passed
+    # branch but not in the passed one ($1) or default if no branch is passed
     # the return message is usually copied and pasted in merge request
     # description.
-    summ-cl = "!func() { \
+    pr-summary = "!func() { \
         DEFAULT=$(git default); \
-        git log --no-merges --pretty='%s\n%b' --graph ${1-$DEFAULT}..HEAD; \
+        git log --reverse --no-merges --format=format:'- %s (%h)%n%n%w(74,2,2)%b' ${1-$DEFAULT}..HEAD; \
         }; \
         func"
 
