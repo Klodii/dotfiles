@@ -116,14 +116,15 @@ hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is
 # normalize aliases and cross Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
 if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=MacOS
-    alias fm='open .'
+    alias o='open'
+    alias fm='o .'
     export BROWSER="/Applications/Brave Browser.app/"
 else
     if grep -q Microsoft /proc/version; then
         # Ubuntu on Windows using the Linux subsystem
-        alias open='explorer.exe';
+        alias o='explorer.exe';
     else
-        alias open='xdg-open';
+        alias o='xdg-open';
         hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
         export BROWSER="brave-browser"
     fi
