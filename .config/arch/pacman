@@ -1,0 +1,12 @@
+#!/bin/bash -
+
+# Install command-line tools using pacman.
+
+# Update the library
+sudo pacman -Syy
+
+# Upgrade any already-installed library
+sudo pacman -Syu
+
+# Install other useful binaries.
+sudo pacman -S tmux fzf ripgrep ksnip mpv yt-dlp syncthing git-delta
