@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-STATUS=$(wifi)
+STATUS=$(wifi -i)
 if [ -z "$STATUS" ]; then
-    printf "#[fg=red]❌🌐#[fg=black]"
+    printf "#[fg=red]󰖪 #[fg=black]"
 else
-    printf "%s 🌐" "$STATUS"
+    printf "%s" "$STATUS"
 fi
