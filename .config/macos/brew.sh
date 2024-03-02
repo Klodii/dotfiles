@@ -23,5 +23,9 @@ brew install yt-dlp
 brew install syncthing
 brew install git-delta
 
+# Nerd Fonts
+brew tap homebrew/cask-fonts
+brew install --cask font-jetbrains-mono-nerd-font
+
 # Remove outdated versions from the cellar.
 brew cleanup
