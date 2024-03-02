@@ -164,11 +164,16 @@ function set_virtualenv {
   fi
 }
 function set_prompt {
+    if [ $(hostname -d) = 'local' ]; then
+        POSITION_LINE='%F{blue}%~%f'
+    else
+        POSITION_LINE='%F{magenta}%n@%m%f: %F{blue}%~%f'
+    fi
     NEW_LINE=$'\n'
-    POSITION_LINE='%F{green}%n@%m%f: %F{blue}%~%f'
     COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
-
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
+    # add a character to the right side of the prompt
+    # in this way it becomes more easier to identify the prompt row
     RPROMPT='%F{blue}« %*'
 }
 
