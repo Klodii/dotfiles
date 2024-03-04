@@ -73,6 +73,21 @@ function psearch {
     ps aux | fzf
 }
 
+function in_ssh {
+    # return true if you are in ssh
+    # return false if you are in your local machine
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        true
+    else
+        case $(ps -o comm= -p "$PPID") in
+            sshd|*/sshd) true;;
+            *) false;;
+        esac
+    fi
+
+    false
+}
+
 function extract {
     # Extract most know archives with one command
     if [ -f "$1" ]; then
@@ -164,10 +179,10 @@ function set_virtualenv {
   fi
 }
 function set_prompt {
-    if [ $(hostname -d) = 'local' ]; then
-        POSITION_LINE='%F{blue}%~%f'
-    else
+    if in_ssh; then
         POSITION_LINE='%F{magenta}%n@%m%f: %F{blue}%~%f'
+    else
+        POSITION_LINE='%F{blue}%~%f'
     fi
     NEW_LINE=$'\n'
     COMMAND_LINE='%(?.%F{green}>.%F{red}!)%f  %# '
