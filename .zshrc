@@ -119,11 +119,6 @@ alias mv='mv -v'
 alias cp='cp -v -i' # verbose and confirm before overwriting something
 alias rm='rm -v'
 alias diff='diff --color=always'
-
-alias myip='curl -4 https://get.geojs.io/v1/ip'
-alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
-alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
-alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
 alias :q='exit'
 
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
@@ -133,6 +128,10 @@ OPERATNG_SYSTEM=$(uname -s)
 if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=MacOS
     alias o='open'
     alias fm='o .'
+
+    alias cclip='pbcopy' # copy and paste directly from terminal, pipe the output of a command to the alias
+    alias vclip='pbpaste' # to paste the text you just copied, you shall use:
+
     export BROWSER="/Applications/Brave Browser.app/"
 else
     if grep -q Microsoft /proc/version; then
@@ -141,9 +140,16 @@ else
     else
         alias o='xdg-open';
         hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
+
+        alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
+        alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
+
         export BROWSER="brave-browser"
     fi
 fi
+
+alias myip='curl -4 https://get.geojs.io/v1/ip'
+alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
 
 # zsh configuration START
 setopt appendhistory      # append history instead of overwriting
