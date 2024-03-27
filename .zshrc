@@ -122,6 +122,7 @@ alias diff='diff --color=always'
 alias :q='exit'
 
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
+hash ipython 2> /dev/null && alias python='ipython'
 
 # normalize aliases and cross Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
