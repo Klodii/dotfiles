@@ -1,0 +1,11 @@
+# settings
+set hidden true
+set ignorecase true
+
+
+# remap
+map <esc> quit
+
+# movements
+map gb cd ~/.local/bin
+map gc cd ~/.config
