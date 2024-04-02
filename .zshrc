@@ -120,6 +120,8 @@ alias cp='cp -v -i' # verbose and confirm before overwriting something
 alias rm='rm -v'
 alias diff='diff --color=always'
 alias :q='exit'
+alias myip='curl -4 https://get.geojs.io/v1/ip'
+alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
 
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 hash ipython 2> /dev/null && alias python='ipython'
@@ -149,8 +151,14 @@ else
     fi
 fi
 
-alias myip='curl -4 https://get.geojs.io/v1/ip'
-alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
+# lf, file manager, alias
+# lfcd is a script that when exiting from lf will cd into
+# the last selected directory
+LFCD="$XDG_CONFIG_HOME/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+    alias lf='lfcd'
+fi
 
 # zsh configuration START
 setopt appendhistory      # append history instead of overwriting
