@@ -17,6 +17,8 @@
     upend = !git update && git amend
     conflicts = !git diff --name-only --diff-filter=U # show list of files in a conflict state.
     date-graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+    ignored = ls-files -ci --exclude-standard # list ignored files, ignored by .gitignore
+    apply-gitignore = !git ignored -z | xargs -0 git rm --cached # remove files that are ignored but are already committed
     untracked = ls-files --others --exclude-standard
     rmu = !git clean -d # remove untracked files and directories, if clean.requireForce is not set to false, you have to add the -f flagg
     addu = !git untracked | xargs git add # add untracked files
