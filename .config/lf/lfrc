@@ -22,9 +22,11 @@ cmd extract ${{
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
         *.tar.gz|*.tgz) tar xzvf $f;;
         *.tar.xz|*.txz) tar xJvf $f;;
+        *.gz) gunzip $f ;;
         *.zip) unzip $f;;
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
+        *) echo "'$f' cannot be extracted via extract function" ;;
     esac
 }}
 
@@ -66,3 +68,4 @@ map ax extract
 # movements
 map gb cd ~/.local/bin
 map gc cd ~/.config
+map gt cd /tmp
