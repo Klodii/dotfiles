@@ -66,11 +66,17 @@ Upper/Lower case
         - `gu<movement>` to make lowercase all character found in the movement
         - `gU<movement>` to make uppercase all character found in the movement
 
-Register commands
+Record commands
     - Normal mode:
-        - `q<a-z>` to begin record all keys and commands executed. The registration
-                   goes to the <a-z> character selected.
+        - `q<a-z>` to begin record all keys and commands executed. The recording
+                   goes to the <a-z> character selected (aka the alfanumeric
+                   register selected).
         - `@<a-z><movement>` to execute the recorded commands
+Registers:
+    - To list all registers content: `:registers` or `:reg`
+    - To paste the content of a register X:
+        - Normal mode: `"Xp"`
+        - Insert mode: `<^-r>X"
 
 Close suggestion window:
     - Insert mode:
