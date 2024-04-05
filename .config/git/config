@@ -25,8 +25,13 @@
     wy = whatchanged --since="yesterday"
     whoami = config user.email # show the user email for the current repository.
     ri = "!func() { git rebase -i HEAD~$1; }; func" # interactive rebase with the given number of latest commits
+
     # taken from the ohmyzsh git plugin
-    wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message '--wip-- [skip ci]'"
+    # added the '-e' flag to the commit command, which opens the editor
+    # enabeling the user to add some usefull text
+    # that might help the reader to understand what is missing to transform
+    # the wip commit to a complete commit
+    wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message '--wip-- [skip ci]' -e"
 
 
     zero = reset --hard HEAD # remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
