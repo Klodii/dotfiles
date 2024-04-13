@@ -74,9 +74,9 @@
         }; \
         func"
 
-    # branch rebase
+    # rebase branch
     # open the rebase editor with only the branch commits
-    br = "!func() { git ri $(git cl | wc -l); }; func"
+    rb = "!func() { git ri $(git cl | wc -l); }; func"
 
     # summarise all the commits, subjects and body messages, that are in current
     # branch but not in the passed one ($1) or default if no branch is passed
