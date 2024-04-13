@@ -66,6 +66,13 @@
     # the separator.
     default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 
+    # switch to the default branch
+    # it is a common thing that I do before creating a new branch and pulling
+    # all the changes.
+    # The name of the default branch is not always the same in all the
+    # repository, the this alias solve the problem
+    go-default = !git switch $(git default)
+
     # current logs, show logs that are in the current branch but not in the
     # passed one ($1) or default if no branch is passed
     cl = "!func() { \
