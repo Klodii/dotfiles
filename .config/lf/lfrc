@@ -9,6 +9,11 @@ set dircounts
 set number
 set relativenumber
 
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
 cmd mkfile ${{
   read -p "File Name: " name
   $EDITOR $ans
