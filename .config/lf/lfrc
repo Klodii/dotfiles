@@ -75,3 +75,4 @@ map gb cd ~/.local/bin
 map gc cd ~/.config
 map gw cd ~/work
 map gt cd /tmp
+map gV cd /Volumes
