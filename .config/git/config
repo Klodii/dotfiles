@@ -82,8 +82,23 @@
         func"
 
     # rebase branch
-    # open the rebase editor with only the branch commits
-    rb = "!func() { git ri $(git cl | wc -l); }; func"
+    # open the rebase editor with only the branch commits compared to $1
+    # if not passed use DEFAULT
+    # Ex: if opened a branch from the DEFAULT branch this command will open the
+    # rebase editor with the new commit added, compared with DEFAULT
+    #
+    # This is usefull before creating a pull request you want to squash or reword some
+    # commit.
+    # The $1 is used when you want to rebase to a branch that is older to the
+    # DEFAULT branch, where you opened the current branch.
+    # For example it comes in handy after making a hotfix starting from DEFAULT but you
+    # have to rebase it into master, so you have to remove all the commits that
+    # are in DEFAULT and you don't want to put into master
+    rb = "!func() { \
+        DEFAULT=$(git default); \
+        git ri $(git cl ${1-$DEFAULT}| wc -l); \
+        }; \
+        func"
 
     # summarise all the commits, subjects and body messages, that are in current
     # branch but not in the passed one ($1) or default if no branch is passed
