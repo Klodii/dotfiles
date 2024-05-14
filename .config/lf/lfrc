@@ -73,6 +73,7 @@ map ax extract
 # movements
 map gb cd ~/.local/bin
 map gc cd ~/.config
+map gp cd ~/playground
 map gw cd ~/work
 map gt cd /tmp
 map gV cd /Volumes
