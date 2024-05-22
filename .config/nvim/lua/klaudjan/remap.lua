@@ -57,11 +57,21 @@ vim.keymap.set("n",
                { desc = 'substitute (all over the file) the word that the cursor is on with whatever your write'}
               )
 
--- make the file executable
+-- file maps
 vim.keymap.set("n",
                "<leader>x",
                "<cmd>!chmod +x %<CR>",
                { silent = true, desc = 'Make file e[x]ecutable' }
+              )
+vim.keymap.set("n",
+               "<leader>w",
+               "<cmd>w<CR>",
+               { silent = true, desc = 'Save ([W]rite) File' }
+              )
+vim.keymap.set("n",
+               "<leader>q",
+               "<cmd>q<CR>",
+               { silent = true, desc = 'Quit file/editor' }
               )
 
 
