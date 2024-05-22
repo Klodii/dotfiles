@@ -90,6 +90,13 @@ return require('packer').startup(function(use)
   -- notification plugin, particularly useful with the hardtime pulgin
   use 'rcarriga/nvim-notify'
 
+  -- better todo highlight and related commands, with Telescope and others
+  use {
+      "folke/todo-comments.nvim",
+      requires = { "nvim-lua/plenary.nvim" }
+  }
+
+
   if packer_bootstrap then
     require('packer').sync()
   end
