@@ -95,3 +95,12 @@ The advantage of the command-line window is that you can use all Vim's editing p
 
 Press Enter to execute the current line (and close the command-line window); or
 Press Ctrl-c to edit the command; or Press Ctrl-c twice to close the command-line window (cancel).
+
+
+# Usefull tricks
+
+### Highlight in comments
+To highlight gouprs in comments, like TODOs you have to install for treesitter
+`:TSInstall comments`
+
+To list all highlight groups type: `:hi`, for more infor `:h highlight`
