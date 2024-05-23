@@ -85,6 +85,10 @@ Close suggestion window:
     - Insert mode:
         - `^-e` to open/close the suggestion window that appear while you are typing
 
+Current path:
+    - Insert mode:
+        - `^-g` prints at the bottom the path of the current file
+
 
 Open history list:
 Vim can show and make you select the previous commands/searched executed,
