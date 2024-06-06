@@ -143,6 +143,9 @@ else
     else
         alias o='xdg-open';
         hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
+        # dragon (in $BIN_HOME) opens a small window that enables to drag and
+        # drop a file/folder easily
+        hash dragon 2> /dev/null && alias dnd='dragon -x .';
 
         alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
         alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
