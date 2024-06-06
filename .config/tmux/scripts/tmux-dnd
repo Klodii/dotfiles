@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Drag and Drop window
+
+OBJ_PATH="$1"
+[ -d "$OBJ_PATH" ] && OBJ_PATH="$OBJPATH/"
+
+dragon -x "$OBJ_PATH"*
