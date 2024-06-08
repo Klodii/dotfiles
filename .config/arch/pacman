@@ -9,4 +9,4 @@ sudo pacman -Syy
 sudo pacman -Syu
 
 # Install other useful binaries.
-sudo pacman -S tmux fzf ripgrep ksnip mpv yt-dlp syncthing git-delta lf
+sudo pacman -S tmux fzf ripgrep ksnip mpv yt-dlp syncthing git-delta lf bat

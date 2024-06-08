@@ -22,6 +22,7 @@ brew install mpv
 brew install yt-dlp
 brew install syncthing
 brew install git-delta
+brew install bat
 
 # Nerd Fonts
 brew tap homebrew/cask-fonts
