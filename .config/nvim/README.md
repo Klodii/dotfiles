@@ -118,6 +118,16 @@ The advantage of the command-line window is that you can use all Vim's editing p
 Press Enter to execute the current line (and close the command-line window); or
 Press Ctrl-c to edit the command; or Press Ctrl-c twice to close the command-line window (cancel).
 
+Show the value of a setting:
+
+`:set <option>?`
+
+For example to show the value of the `textwidth` just type
+
+```
+:set textwidth?
+```
+
 
 # Usefull tricks
 

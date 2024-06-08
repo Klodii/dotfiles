@@ -110,3 +110,10 @@ autocmd BufWritePost config.h,config.def.h !sudo make clean install
 "     15      7*      White
 hi Visual cterm=italic ctermbg=Yellow ctermfg=Black
 colorscheme slate
+
+
+" Highlight all the characters that are over 80 characthers long
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"     autocmd BufEnter * match OverLength /\%80v.*/
+" augroup END
