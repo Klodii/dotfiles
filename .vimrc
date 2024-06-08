@@ -10,7 +10,8 @@ set ignorecase " Ignore case when searching.
 set incsearch " Incremental search that shows partial matches.
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set scrolloff=8 " The number of screen lines to keep above and below the cursor.
-set colorcolumn=80  "  Color a column, used to check when reaceah a certain limit
+set colorcolumn=80  " Color a column, used to check when reaceah a certain limit
+set textwidth=80  " Line break when reaced a certain limit, new text will go in new line
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
 set laststatus=2 " Always display the status bar.
 set number " Show line numbers on the sidebar.

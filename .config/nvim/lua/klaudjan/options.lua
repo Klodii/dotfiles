@@ -9,9 +9,6 @@ vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent.
 vim.opt.expandtab = true  -- Convert tabs to spaces.
 vim.opt.tabstop = 4  -- Indent using 4 spaces
 
-
-vim.opt.smartcase = true -- Automatically switch search to case-sensitive when search query ocntains an uppercase letter
-
 vim.opt.scrolloff = 8 -- The number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 5 -- The number  of screen columns to keep to the left and right of the cursor.
 vim.opt.colorcolumn = "80"  -- Color a column, used to check when reaceah a certain limit
