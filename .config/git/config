@@ -151,6 +151,17 @@
         fi \
         }; \
         func"
+    # Choose which commit to revert
+    frevert = "!func() { \
+        commit_hash=$(git log --pretty=format:'%h %s' \
+        | fzf --height '90%' --header 'Which commit to revert?' --reverse --border --ansi --preview-label='[Commit diff]' --preview 'git show --color=always {1}' \
+        | awk '{print $1}'); \
+        if [ -n "$commit" ]; \
+        then \
+            git revert $commit_hash; \
+        fi \
+        }; \
+        func"
 
 
     # select the stash to apply
