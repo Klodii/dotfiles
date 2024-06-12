@@ -158,8 +158,9 @@ else
         alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
         alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
 
-        hash brave 2> /dev/null && BROWSER="brave"
-        hash brave-browser 2> /dev/null && BROWSER="brave-browser"
+        # these aliases are exported because used in tmux-browser script
+        hash brave 2> /dev/null && export BROWSER="brave"
+        hash brave-browser 2> /dev/null && export BROWSER="brave-browser"
     fi
 fi
 

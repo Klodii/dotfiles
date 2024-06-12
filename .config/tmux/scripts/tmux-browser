@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Created this script only because I was unable to use th $BROWSER env variable
+# in the tmux.config file. But I can execute this script.
+
+$BROWSER $@
