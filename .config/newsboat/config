@@ -27,6 +27,6 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article white default bold
 
-browser "open %u"
+browser "$BROWSER %u"
 macro , open-in-browser
-macro m set browser "mpv %u" ; open-in-browser ; set browser "open %u"
+macro m set browser "mpv %u" ; open-in-browser ; set browser "$BROWSER %u"

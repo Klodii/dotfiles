@@ -135,7 +135,8 @@ if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=Mac
     alias cclip='pbcopy' # copy and paste directly from terminal, pipe the output of a command to the alias
     alias vclip='pbpaste' # to paste the text you just copied, you shall use:
 
-    export BROWSER="/Applications/Brave Browser.app/"
+    # open with a URL will open the default browser
+    export BROWSER="open"
 else
     if grep -q Microsoft /proc/version; then
         # Ubuntu on Windows using the Linux subsystem
@@ -157,7 +158,8 @@ else
         alias cclip='xclip -selection clipboard' # copy and paste directly from terminal, pipe the output of a command to the alias
         alias vclip='xclip -o -selection clipboard' # to paste the text you just copied, you shall use:
 
-        export BROWSER="brave-browser"
+        hash brave 2> /dev/null && BROWSER="brave"
+        hash brave-browser 2> /dev/null && BROWSER="brave-browser"
     fi
 fi
 
