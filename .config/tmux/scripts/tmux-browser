@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-# Created this script only because I was unable to use th $BROWSER env variable
-# in the tmux.config file. But I can execute this script.
+# URL Launcher
+# search for URLs in the text passed and list them
+# the user can select one or more (with tab)
+# the selected ones will be opened in the browser
 
-$BROWSER $@
+TEXT=$@
+URLS=$(printf '%s' "$TEXT" | rg -o '(https?):\/\/([^\s]+)' | sort -u)
+CHOOSEN=$(printf '%s' "$URLS" | fzf-tmux -p '70%' --multi --bind alt-a:select-all,alt-d:deselect-all)
+if [ -n "$CHOOSEN" ]; then
+    $BROWSER $CHOOSEN
+fi
