@@ -175,7 +175,7 @@
     #
     # After getting the stash string of our choice (full_stash) we perform
     # a bash string manipulation operation (%%:*) to remove the longest rear-anchored pattern
-    sstash = "!func() { \
+    fstash = "!func() { \
         full_stash=$(git stash list \
         | fzf --height '90%' --header 'Which stash to apply?' --reverse --border --ansi --delimiter : --preview-label='[Stash diff]' --preview 'git stash show -p --color=always {1}' \
         ); \
