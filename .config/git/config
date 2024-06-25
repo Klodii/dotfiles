@@ -4,6 +4,7 @@
     # will be executed from the top-level directory of a repository,
     # which may not necessarily be the current directory.
 
+    me = config user.email # print the email of user
     ll = "!func() { git log --oneline -n${1-15}; }; func" # list last 15 logs if no other value is passed
     last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
@@ -187,6 +188,12 @@
         }; \
         func"
 
+    # grep only in the files in which I have worked on
+    # search_in_worked_files -> swf
+    swf = "!func() { \
+        git grep $1 -- $(git log --name-status --author=$(git me) --pretty=format:'' | awk '{print $2}' | sort -u); \
+        }; \
+        func"
 [core]
     editor = $EDITOR
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
