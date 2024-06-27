@@ -4,7 +4,7 @@
     # will be executed from the top-level directory of a repository,
     # which may not necessarily be the current directory.
 
-    me = config user.email # print the email of user
+    whoami = config user.email # show the user email for the current repository.
     ll = "!func() { git log --oneline -n${1-15}; }; func" # list last 15 logs if no other value is passed
     last = log -1 HEAD  # show information about the lastest commit, similar to 'show' but without the diff
     pdiff = diff HEAD^ HEAD  # diff with previous commit
@@ -24,7 +24,6 @@
     rmu = !git clean -d # remove untracked files and directories, if clean.requireForce is not set to false, you have to add the -f flagg
     addu = !git untracked | xargs git add # add untracked files
     wy = whatchanged --since="yesterday"
-    whoami = config user.email # show the user email for the current repository.
     ri = "!func() { git rebase -i HEAD~$1; }; func" # interactive rebase with the given number of latest commits
 
     # taken from the ohmyzsh git plugin
@@ -191,7 +190,7 @@
     # grep only in the files in which I have worked on
     # search_in_worked_files -> swf
     swf = "!func() { \
-        git grep $1 -- $(git log --name-status --author=$(git me) --pretty=format:'' | awk '{print $2}' | sort -u); \
+        git grep $1 -- $(git log --name-status --author=$(git whoami) --pretty=format:'' | awk '{print $2}' | sort -u); \
         }; \
         func"
 [core]
