@@ -20,9 +20,11 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 if hash nvim 2> /dev/null ; then
     export VISUAL='nvim'
     export MANPAGER='nvim --cmd ":lua vim.g.noplugins=1" +Man!'
+elif hash vim 2> /dev/null ; then
+    export VISUAL='vim'
+    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 else
     export VISUAL='vi'
-    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 fi
 export MANWIDTH=80
 export EDITOR="$VISUAL"
