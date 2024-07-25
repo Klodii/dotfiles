@@ -1,5 +1,9 @@
 #!/bin/bash -
 
+# Set zsh as your default shell
+# if the shell is changed you need to restart the PC
+[ $SHELL == '/bin/bash' ] && chsh -s /bin/zsh
+
 # Install command-line tools using pacman.
 
 # Update the library
@@ -9,4 +13,5 @@ sudo pacman -Syy
 sudo pacman -Syu
 
 # Install other useful binaries.
-sudo pacman -S tmux fzf ripgrep ksnip mpv yt-dlp syncthing git-delta lf bat
+# base-devel is needed for AUR packages
+sudo pacman -S base-devel tmux fzf ripgrep ksnip mpv yt-dlp syncthing git-delta lf bat neovim
