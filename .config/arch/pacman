@@ -25,4 +25,5 @@ sudo pacman -S base-devel \
                git-delta \
                lf \
                bat neovim \
-               keepass
+               keepass \
+               tldr
