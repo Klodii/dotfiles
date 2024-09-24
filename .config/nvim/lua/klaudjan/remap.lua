@@ -71,7 +71,12 @@ vim.keymap.set("n",
 vim.keymap.set("n",
                "<leader>q",
                "<cmd>q<CR>",
-               { silent = true, desc = 'Quit file/editor' }
+               { silent = true, desc = '[Q]uit file/editor' }
+              )
+vim.keymap.set("n",
+               "<leader>e",
+               "<cmd>e<CR>",
+               { silent = true, desc = 'Open the file out are in, it refreshes the file' }
               )
 
 
