@@ -99,9 +99,10 @@ Registers:
       command with the register name X:
         - Normal mode: `"Xyw` (to yank the word to the register X)
 
-Close suggestion window:
+Suggestion window that appear while you are typing
     - Insert mode:
-        - `^-e` to open/close the suggestion window that appear while you are typing
+        - `^-e` to open/close the suggestion window
+        - `^-y` to select the suggested text
 
 Current path:
     - Insert mode:
