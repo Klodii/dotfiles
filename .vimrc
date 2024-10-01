@@ -41,6 +41,9 @@ set list
 " In insert mode you can delete only what you have written in that moment, nothing else
 set backspace=indent,eol "no start
 
+" popup menu for autocompletion settings
+set completeopt=menu,preview,menuone,noselect
+
 "Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 "Also add the following keybind

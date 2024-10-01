@@ -16,7 +16,7 @@ vim.opt.textwidth = 80  -- line break when reaced a certain limit, new text will
 vim.opt.laststatus = 2 -- Always display the status basr
 vim.opt.ruler = true -- Always show cursor position
 vim.opt.confirm = true  -- Display a confirmation dialog when closing an unsaved file
-vim.opt.backspace = indent,eol  -- In insert mode you can delete only what you have written in that moment, nothing else
+vim.opt.backspace = { "indent", "eol" } -- In insert mode you can delete only what you have written in that moment, nothing else
 vim.opt.listchars = {
     eol = '↴',
     trail = '•',
@@ -34,3 +34,5 @@ vim.opt.hlsearch = true  -- Enable search highlighting
 vim.opt.ignorecase = true  -- Ignore case when searching
 vim.opt.incsearch = true  -- Incremental search that shows partial matches
 vim.opt.smartcase = true  -- Automatically switch search to case-sensitive when search query contains an uppercase letter.
+
+vim.opt.completeopt = { "menu","preview","menuone","noselect" }
