@@ -114,6 +114,8 @@ Vim can show and make you select the previous commands/searched executed,
 opening a command-line window
     - Type `q:` for commands, or `q/` for searches; or
     - Type `:` or `/` to start entering a command or search, then press the 'cedit' key (default is `Ctrl-f` :help 'cedit').
+    - Note: in this mode you will be in a vim like editor so all the movements
+      and keymaps will work in it.
 The advantage of the command-line window is that you can use all Vim's editing power, including searching with '/' in normal mode, or using whole-line completion (:help compl-whole-line) in insert mode. After editing a command, you can:
 
 Press Enter to execute the current line (and close the command-line window); or
