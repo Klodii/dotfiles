@@ -71,6 +71,26 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 
+" :Explorer settings
+" :Explore variants.
+"     - Hexplore: Will create a horizontal split and show the directory in the lower window.
+"                 The variant with an ! will show the directory in the opposite side.
+"     - Vexplore: Will create a vertical split and show the directory on the left side.
+"                 The variant with an ! will show the directory in the opposite side.
+"     - Sexplore: Will create a horizontal split and show the directory in the upper window.
+"                 The variant with an ! will create a vertical split and show the directory on the left side.
+"     - Texplore: Will create a new tabpage to show the directory.
+"     - Lexplore: It works almost like Vexplore, but Lexplore will open a file on the window where we called the command.
+"                 It will also work as way to toggle a Netrw window. You can watch it in action in this demo.
+let g:netrw_keepdir = 0 " Keep the current directory and the browsing directory synced. This helps you avoid the move files error.
+let g:netrw_winsize = 30 " Change the size of the Netrw window when it creates a split. I think 30% is fine.
+let g:netrw_banner = 0 " Hide the banner (if you want). To show it temporarily you can use I inside Netrw.
+
+" Will open Netrw in the directory of the current file.
+nnoremap <leader>ft :Lexplore %:p:h<CR>
+" Will open Netrw in the current working directory.
+nnoremap <Leader>wa :Lexplore<CR>
+
 
 "Automatically delete all trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
