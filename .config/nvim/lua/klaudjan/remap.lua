@@ -2,7 +2,7 @@
 -- some other keymaps, plugins specific, may be defined in the "after/plugins" files
 
 vim.g.mapleader = " "  -- leader character
-vim.keymap.set("n", "<leader>ft", vim.cmd.Lex, { desc = 'return to [f]ile [t]ree' }) -- Lex stands for Lexplorer
+vim.keymap.set("n", "<leader>ft", ":Lexplore %:p:h<CR>", { desc = 'return to [f]ile [t]ree' }) -- Lex stands for Lexplorer
 
 -- Try to prevent bad habits like using the arrow keys for movement.
 -- Do this in normal mode...
