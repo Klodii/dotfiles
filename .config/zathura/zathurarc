@@ -1,4 +1,6 @@
 # the command on the righ can be executed manually by typing column `:`
+
+# by default zathura monitor the open file and autorelods it, if it changes
 map r reload
 map R rotate
 map K zoom in
