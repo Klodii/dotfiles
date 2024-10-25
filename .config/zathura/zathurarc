@@ -1,0 +1,8 @@
+# the command on the righ can be executed manually by typing column `:`
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+# recolor is the night mode
+map i recolor
+map p print
