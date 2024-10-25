@@ -9,6 +9,12 @@ export PATH="$PATH:$BIN_HOME"
 
 # shell history
 export HISTFILE="$XDG_CACHE_HOME/zsh/history" # make sure the directory exists, otherwise the file will not be created
+HISTDIR="${HISTFILE%/*}" # applied string manipulatio to remove the filename from the path
+if [ ! -d "$HISTDIR" ]; then
+  echo "zsh history directory does not exist, creating it"
+  mkdir -v "$HISTDIR"
+fi
+
 export HISTSIZE=1000
 export SAVEHIST=1000
 
