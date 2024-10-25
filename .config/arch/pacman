@@ -26,4 +26,16 @@ sudo pacman -S base-devel \
                lf \
                bat neovim \
                keepass \
-               tldr
+               tldr \
+               zathura \
+               zathura-pdf-poppler
+
+
+
+# For latex
+# > sudo pacman -S texlive-core texlive-bin texlive-lang
+# check the installation
+# > pdflatex --version
+#
+# Compile a file with
+# > pdflatex filename.tex
