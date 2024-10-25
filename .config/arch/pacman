@@ -28,8 +28,7 @@ sudo pacman -S base-devel \
                keepass \
                tldr \
                zathura \
-               zathura-pdf-poppler
-
+               zathura-pdf-mupdf
 
 
 # For latex
