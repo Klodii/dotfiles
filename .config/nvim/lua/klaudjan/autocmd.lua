@@ -6,3 +6,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = {"config.h", "config.def.h"},
     command = "!sudo make clean install"
 })
+
+-- Recompile latex programs Automatically
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = {"*.tex"},
+    command = "!pdflatex %"
+})
