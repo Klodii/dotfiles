@@ -27,6 +27,7 @@ sudo pacman -S base-devel \
                bat neovim \
                keepass \
                tldr \
+               newsboat \
                zathura \
                zathura-pdf-mupdf
 
