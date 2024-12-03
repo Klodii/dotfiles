@@ -57,6 +57,9 @@ vim.keymap.set("n",
                { desc = 'substitute (all over the file) the word that the cursor is on with whatever your write'}
               )
 
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = 'Source the file, e[x]ecute it' })
+vim.keymap.set("n", "<leader>l", ":.lua<CR>", { desc = 'Execute in [l]ua the current line (where the cursor is)' })
+vim.keymap.set("v", "<leader>l", ":lua<CR>", { desc = 'Execute in [l]ua the selected lines' })
 -- file maps
 vim.keymap.set("n",
                "<leader>x",
