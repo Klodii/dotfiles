@@ -126,6 +126,16 @@ function json-format {
     fi
 }
 
+function xlstocsv {
+    # given a json string, return it formatted
+    if hash libreoffice 2> /dev/null; then
+        libreoffice --headless --convert-to csv "$1"
+    else
+      echo "libreoffice is not installed"
+    fi
+}
+
+
 # aliases
 alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
