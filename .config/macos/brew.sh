@@ -23,6 +23,7 @@ brew install yt-dlp
 brew install syncthing
 brew install git-delta
 brew install bat
+brew install --cask pinta
 
 # Nerd Fonts
 brew tap homebrew/cask-fonts

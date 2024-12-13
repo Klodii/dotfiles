@@ -29,7 +29,8 @@ sudo pacman -S base-devel \
                tldr \
                newsboat \
                zathura \
-               zathura-pdf-mupdf
+               zathura-pdf-mupdf \
+               pinta
 
 
 # For latex
