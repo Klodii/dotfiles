@@ -1,19 +1,32 @@
 #!/usr/bin/bash
 
-echo "alias .files='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> "$HOME/.zshrc"
-source $HOME/.zshrc
+function exit_w_error {
+	echo "$1"
+	exit 1
+} >&2
 
-BACKUP_FOLDER="$HOME/.dotfiles-backup"
-mkdir -p $BACKUP_FOLDER
+current_shell=$(echo $SHELL)
+if [ current_shell == *'zhs'* ]; then
+	echo "Setting zsh as the default shell"
+	chsh -s $(which zsh)
+	echo "Pleas logout and login again"
+	exit 1
+fi
 
-REPO_URL="git@github.com:Klodii/dotfiles.git"
-git clone --bare $REPO_URL $HOME/.dotfiles
-.files checkout
+DOTFILES="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+echo "alias .f='$DOTFILES'" >> "$HOME/.zshrc"
+ 
+BACKUP_FOLDER="$HOME/.old_dotfiles"
+mkdir -v -p $BACKUP_FOLDER
+
+REPO_URL="git-personale:Klodii/dotfiles.git"
+git clone --bare $REPO_URL $HOME/.dotfiles || exit_w_error "Error cloning the repository"
+$DOTFILES checkout
 if [ $? = 0 ]; then
     echo "Checked out dotfiles.";
 else
     echo "Backing up pre-existing dot files.";
-    .files checkout 2>&1 | egrep "^\ *\." | awk {'print $1'} | xargs -I{} mv {} $BACKUP_FOLDER/{}
-    .files checkout
+    $DOTFILES checkout 2>&1 | grep -E "^\ *\." | awk {'print $1'} | xargs -I{} mv {} $BACKUP_FOLDER/{}
+    $DOTFILES checkout
 fi;
-.files config --local status.showUntrackedFiles no
+$DOTFILES config --local status.showUntrackedFiles no
