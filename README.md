@@ -17,7 +17,7 @@ Doing so enables you to download the file with `curl` and execue it with a singl
 curl -Lks <url to script> | /bin/bash
 ```
 
-### Configuration porting
+## Manual installation
 To install the configuration in your system you have to
  1. In order to distinguish the `.dotfiles` repository from others, we need
  to create an alias that points to our repository.
