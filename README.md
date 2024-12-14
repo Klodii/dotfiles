@@ -1,7 +1,23 @@
 # Dotfiles
 This repository contains all the configuration files that I use.
 
-## Configuration porting
+## Installation through script
+The installation procces has been automated with the `dotfiles-installation`
+script that you can run in the $HOME directory:
+
+```bash
+./dotfiles_installation
+```
+
+### TODO
+Automate even the download of the script, store it somewhere on the web.
+Doing so enables you to download the file with `curl` and execue it with a single command:
+
+```bash
+curl -Lks <url to script> | /bin/bash
+```
+
+### Configuration porting
 To install the configuration in your system you have to
  1. In order to distinguish the `.dotfiles` repository from others, we need
  to create an alias that points to our repository.
@@ -54,23 +70,6 @@ files you are not interested in tracking will not show up as untracked.
 ```
 .f config --local status.showUntrackedFiles no
 ```
-
-# Installation through script
-The installation procces has been automated with the `dotfiles-installation`
-script that you can run in the $HOME directory:
-
-```bash
-./dotfiles_installation
-```
-
-## TODO
-Automate even the download of the script, store it somewhere on the web.
-Doing so enables you to download the file with `curl` and execue it with a single command:
-
-```bash
-curl -Lks <url to script> | /bin/bash
-```
-
 
 ## zsh plugins
 - plugin that adds syntax highlighting: https://github.com/zsh-users/zsh-syntax-highlighting
