@@ -34,6 +34,10 @@ sudo pacman -S base-devel \
                zathura-pdf-mupdf \
                pinta
 
+# For my suckless dwm configuration
+sudo pacman -S dunst \
+               xwallpaper
+
 
 # For latex
 # > sudo pacman -S texlive-core texlive-bin texlive-lang
