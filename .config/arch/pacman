@@ -15,6 +15,7 @@ sudo pacman -Syu
 # Install other useful binaries.
 # base-devel is needed for AUR packages
 sudo pacman -S base-devel \
+			   xclip \
                tmux \
                fzf \
                ripgrep \
@@ -24,7 +25,8 @@ sudo pacman -S base-devel \
                syncthing \
                git-delta \
                lf \
-               bat neovim \
+               bat \
+			   neovim \
                keepass \
                tldr \
                newsboat \

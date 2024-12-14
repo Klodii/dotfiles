@@ -12,6 +12,7 @@ brew upgrade
 
 # Install other useful binaries.
 brew install alacritty
+brew install xclip
 brew install tmux
 brew install fzf
 brew install git
