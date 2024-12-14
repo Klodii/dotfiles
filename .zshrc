@@ -233,8 +233,8 @@ function set_virtualenv {
   fi
 }
 
+# preexec is a hook, like precmd
 function preexec {
-    # preexec is a hook, like precmd
     # This function is executed just before a command is executed in the shell.
     # Store the start time of the last command
     _START_TIME=$(date +%s%3N)
@@ -245,7 +245,9 @@ function calculate_end_time {
     if [[ -n "$_START_TIME" ]]; then
         local _END_TIME=$(date +%s%3N)
         local _DURATION=$(( (_END_TIME - _START_TIME) / 1000 )) # in seconds
-        _LAST_COMMAND_TIME="${_DURATION}s"
+        _LAST_COMMAND_TIME="⏳${_DURATION}s"
+    else
+        unset _LAST_COMMAND_TIME
     fi
 }
 function set_prompt {
@@ -259,7 +261,10 @@ function set_prompt {
     PROMPT='%B${PYTHON_VIRTUALENV} ${POSITION_LINE} %b'\$vcs_info_msg_0_' ${NEW_LINE} ${COMMAND_LINE}'
     # add a character to the right side of the prompt
     # in this way it becomes more easier to identify the prompt row
-    RPROMPT='%F{blue}⏳${_LAST_COMMAND_TIME}'
+    RPROMPT='%F{blue}«${_LAST_COMMAND_TIME}'
+
+    # When pressend enter without any command we don't wont to show the time
+    unset _START_TIME
 }
 
 # 'precmd' is a zsh hook that execute, each functions in precmd_functions, before your prompt is displayed
