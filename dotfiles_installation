@@ -15,7 +15,7 @@ fi
 
 DOTFILES="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 echo "alias .f='$DOTFILES'" >> "$HOME/.zshrc"
- 
+
 BACKUP_FOLDER="$HOME/.old_dotfiles"
 mkdir -v -p $BACKUP_FOLDER
 
@@ -26,7 +26,7 @@ if [ $? = 0 ]; then
     echo "Checked out dotfiles.";
 else
     echo "Backing up pre-existing dot files.";
-    $DOTFILES checkout 2>&1 | grep -E "^\ *\." | awk {'print $1'} | xargs -I{} mv {} $BACKUP_FOLDER/{}
+    $DOTFILES checkout 2>&1 | awk '/^[[:space:]]/ {print $1}' | xargs -I{} mv -v {} $BACKUP_FOLDER/{}
     $DOTFILES checkout
 fi;
 $DOTFILES config --local status.showUntrackedFiles no
