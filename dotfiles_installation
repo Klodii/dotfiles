@@ -1,31 +1,72 @@
 #!/usr/bin/bash
 
+SCRIPT_NAME=${0##*/}
+BACKUP_FOLDER="$HOME/.old_dotfiles"
+REPOSITORY='https://github.com/Klodii/dotfiles.git'
+
+function help {
+   cat <<-HMESSAGE
+Script that will automatically install my dotfiles: $REPOSITORY
+If the script finds some files that overlap, it will move them to $BACKUP_FOLDER
+
+The script will set zsh as the default SHELL
+
+After the script is done, you will be able to interact with the repository with
+the alias '.f'
+
+Syntax: $SCRIPT_NAME [-hv][-k ssh-key]
+Options:
+    -h     Print this help and exit.
+    -v     Make more verbose the messages
+    -k     Use a SSH key alias to clone the repository (ex: 'git-personale')
+
+HMESSAGE
+}
+
 function exit_w_error {
-	echo "$1"
-	exit 1
+    echo "$1"
+    exit 1
 } >&2
+
+DEBUG=':' # no-op, do nothing command
+while getopts "hvn:" option; do
+    case $option in
+        h )
+            help
+            exit 0;;
+        v )
+            DEBUG='echo';;
+        k )
+            REPOSITORY="$OPTARG:Klodii/dotfiles.git";;
+        \?)
+            exit_w_error "Error: Invalid option" 1;;
+    esac
+done
+shift $((OPTIND -1)) # remove all options from $#
 
 current_shell=$(echo $SHELL)
 if [ current_shell == *'zhs'* ]; then
-	echo "Setting zsh as the default shell"
-	chsh -s $(which zsh)
-	echo "Pleas logout and login again"
-	exit 1
+    echo "Setting zsh as the default shell"
+    chsh -s $(which zsh)
+    echo "Please logout and login again"
+    exit 1
 fi
 
 DOTFILES="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 echo "alias .f='$DOTFILES'" >> "$HOME/.zshrc"
+$DEBUG "Add .f alias in .zshrc"
 
-BACKUP_FOLDER="$HOME/.old_dotfiles"
-mkdir -v -p $BACKUP_FOLDER
+REPO_DESTINATION="$HOME/.dotfiles"
+git clone --bare $REPOSITORY $REPO_DESTINATION || exit_w_error "Error cloning the repository"
+$DEBUG "Repository copied in $REPO_DESTINATION"
 
-REPO_URL="git-personale:Klodii/dotfiles.git"
-git clone --bare $REPO_URL $HOME/.dotfiles || exit_w_error "Error cloning the repository"
 $DOTFILES checkout
 if [ $? = 0 ]; then
     echo "Checked out dotfiles.";
 else
-    echo "Backing up pre-existing dot files.";
+    $DEBUG "Found some file that overlap with the repository..."
+    mkdir -v -p $BACKUP_FOLDER
+    echo "Backing up overlapping files";
     $DOTFILES checkout 2>&1 | awk '/^[[:space:]]/ {print $1}' | xargs -I{} mv -v {} $BACKUP_FOLDER/{}
     $DOTFILES checkout
 fi;
