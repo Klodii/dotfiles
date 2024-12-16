@@ -1,7 +1,11 @@
 -- telescope plugins must be loaded
+require("telescope").setup({
+  extensions = { fzf = {} }
+})
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "fzf"
 
+-- When in telescope window if you press CTRL-/ you will open the Keymaps helper
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', function() builtin.find_files({ hidden = true, no_ignore = true }) end,
