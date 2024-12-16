@@ -163,6 +163,9 @@ if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=Mac
 
     # open with a URL will open the default browser
     export BROWSER="open"
+
+    # Use GNU coreutils instead of the default ones
+    alias date='gdate'
 else
     if grep -q Microsoft /proc/version; then
         # Ubuntu on Windows using the Linux subsystem

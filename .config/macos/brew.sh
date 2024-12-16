@@ -10,6 +10,14 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# Install GNU coreutils is a collection of essential command-line tools that
+# provide a more feature-rich and consistent user experience. Adds the GNU
+# version of the basic commands like: ls, cat, cp, mv, rm, echo, sort, head,
+# date ...
+# To use the GNU version, you have to add the 'g' at the beginning of the
+# command, like: gls, gcp, gdate...
+brew install coreutils
+
 # Install other useful binaries.
 brew install alacritty
 brew install xclip
