@@ -14,17 +14,17 @@ vim.keymap.set('n', '<leader>gr', "<cmd>Telescope lsp_references<cr>", { desc = 
 vim.keymap.set('n', '<leader>gd', "<cmd>Telescope lsp_definitions<cr>", { desc = '[g]o to [d]efinitios' })
 
 vim.keymap.set('n',
-               '<leader>sw',
-               function()
-                   builtin.grep_string({ search = vim.fn.input("Grep > ") });
-               end,
-               { desc = '[s]earch in all files the [w]ord specified' }
-              )
+  '<leader>sw',
+  function()
+    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+  end,
+  { desc = '[s]earch in all files the [w]ord specified' }
+)
 
 vim.keymap.set('n',
-               '<leader>en',
-               function()
-                   builtin.find_files({ cwd = '~/.config/nvim' });
-               end,
-               { desc = '[e]dit a [n]eovim configuration file' }
-              )
+  '<leader>en',
+  function()
+    builtin.find_files({ cwd = '~/.config/nvim' });
+  end,
+  { desc = '[e]dit a [n]eovim configuration file' }
+)
