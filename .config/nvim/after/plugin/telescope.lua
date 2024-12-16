@@ -4,7 +4,8 @@ require("telescope").load_extension "fzf"
 
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[s]earch [f]ile}' })
+vim.keymap.set('n', '<leader>sf', function() builtin.find_files({ hidden = true, no_ignore = true }) end,
+  { desc = '[s]earch [f]ile}' })
 vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[s]earch only in [g]it files' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[s]earch in [h]elp tags' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'search [k]eymap' })
