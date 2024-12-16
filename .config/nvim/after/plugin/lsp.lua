@@ -31,6 +31,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = args.buf,
         callback = function()
+          -- format will use the lsp server and also .editorconfig
+          -- to format the file
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
         end,
       })
