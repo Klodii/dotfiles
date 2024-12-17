@@ -28,7 +28,15 @@ vim.keymap.set('n',
 vim.keymap.set('n',
   '<leader>en',
   function()
-    builtin.find_files({ cwd = '~/.config/nvim' });
+    builtin.find_files({ cwd = vim.fn.stdpath("config")});
   end,
   { desc = '[e]dit a [n]eovim configuration file' }
+)
+vim.keymap.set('n',
+  '<leader>ep',
+  function()
+    local packer_installation_directory="site/pack/packer/start"
+    builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), packer_installation_directory)});
+  end,
+  { desc = '[e]dit a [p]package file' }
 )
