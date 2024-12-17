@@ -1,3 +1,4 @@
+local multigrep = require "klaudjan.telescope_multigrep"
 -- telescope plugins must be loaded
 require("telescope").setup({
   extensions = { fzf = {} }
@@ -17,26 +18,20 @@ vim.keymap.set('n', '<leader>fb', "<cmd>Telescope file_browser<cr>", { desc = '[
 vim.keymap.set('n', '<leader>gr', "<cmd>Telescope lsp_references<cr>", { desc = '[g]o to [r]eferences' })
 vim.keymap.set('n', '<leader>gd', "<cmd>Telescope lsp_definitions<cr>", { desc = '[g]o to [d]efinitios' })
 
-vim.keymap.set('n',
-  '<leader>sw',
-  function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
-  end,
-  { desc = '[s]earch in all files the [w]ord specified' }
-)
+vim.keymap.set('n', '<leader>sw', multigrep.live_multigrep, { desc = '[s]earch in all files the [w]ord specified' })
 
 vim.keymap.set('n',
   '<leader>en',
   function()
-    builtin.find_files({ cwd = vim.fn.stdpath("config")});
+    builtin.find_files({ cwd = vim.fn.stdpath("config") });
   end,
   { desc = '[e]dit a [n]eovim configuration file' }
 )
 vim.keymap.set('n',
   '<leader>ep',
   function()
-    local packer_installation_directory="site/pack/packer/start"
-    builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), packer_installation_directory)});
+    local packer_installation_directory = "site/pack/packer/start"
+    builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), packer_installation_directory) });
   end,
   { desc = '[e]dit a [p]package file' }
 )
