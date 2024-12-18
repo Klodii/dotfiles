@@ -1,7 +1,13 @@
 local multigrep = require "klaudjan.telescope_multigrep"
 -- telescope plugins must be loaded
+
 require("telescope").setup({
-  extensions = { fzf = {} }
+  defaults = {
+    preview = {
+      filesize_limit = 0.1, -- MB
+    },
+  },
+  extensions = { fzf = {} },
 })
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "fzf"
