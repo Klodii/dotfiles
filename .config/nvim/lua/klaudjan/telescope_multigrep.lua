@@ -38,7 +38,7 @@ M.live_multigrep = function(opts)
 
   pickers.new(opts, {
     debounce = 100,
-    prompt_title = "RipGrep",
+    prompt_title = "RipGrep (double space if you want to 'glob')",
     finder = finder,
     previewer = conf.grep_previewer(opts),
     sorter = require("telescope.sorters").empty(), -- don't sort because rg will sort it

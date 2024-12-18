@@ -19,7 +19,7 @@ vim.keymap.set("n",
 
     local job_id = vim.bo.channel
     local enter = "\r\n"
-    vim.fn.chansend(job_id, { "source scripts/aliases" .. enter })
+    vim.fn.chansend(job_id, { "source scripts/aliases.sh" .. enter })
     vim.fn.chansend(job_id, { "dtest" .. currentFile .. enter })
   end,
   { desc = 'Run current file [t]ests' })
