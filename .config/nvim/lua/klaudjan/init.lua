@@ -1,3 +1,4 @@
+--require("klaudjan.lazy")
 require("klaudjan.remap")
 require("klaudjan.options")
 require("klaudjan.autocmd")
