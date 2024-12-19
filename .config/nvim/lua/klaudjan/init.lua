@@ -1,5 +1,5 @@
---require("klaudjan.lazy")
 require("klaudjan.remap")
+require("klaudjan.lazy")
 require("klaudjan.options")
 require("klaudjan.autocmd")
 require("klaudjan.utils")

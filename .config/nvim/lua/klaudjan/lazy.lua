@@ -18,5 +18,6 @@ vim.opt.rtp:prepend(lazypath) -- runtimepath
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    { import = "klaudjan.plugins" }
   },
 })
