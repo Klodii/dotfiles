@@ -20,7 +20,11 @@ return {
       -- LSP SERVER INTSALLATIONS
       -- To find the lsp server type:
       -- `:help lspconfig-all`
-      require("lspconfig").lua_ls.setup {} -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
+      require 'lspconfig'.lua_ls.setup {}  -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
+      require 'lspconfig'.pyright.setup {} -- sudo npm install -g pyright
+      require 'lspconfig'.bashls.setup {}  -- sudo pacman -S yay
+
+
 
       -- KEYBINDINGS
       vim.keymap.set('n', '<leader>r', "<cmd>lua vim.lsp.buf.rename()<cr>",
