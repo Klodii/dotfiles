@@ -19,7 +19,7 @@ return {
     config = function()
       -- LSP SERVER INTSALLATIONS
       -- To find the lsp server type:
-      -- `:help lspconfig-all
+      -- `:help lspconfig-all`
       require("lspconfig").lua_ls.setup {} -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
 
       -- KEYBINDINGS
