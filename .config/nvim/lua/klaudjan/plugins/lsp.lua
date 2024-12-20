@@ -23,10 +23,18 @@ return {
       -- LSP SERVER INTSALLATIONS
       -- To find the lsp server type:
       -- `:help lspconfig-all`
-      require 'lspconfig'.lua_ls.setup { capabilities = capabitilies }  -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
-      require 'lspconfig'.pyright.setup { capabilities = capabitilies } -- sudo npm install -g pyright
-      require 'lspconfig'.bashls.setup { capabilities = capabitilies }  -- sudo pacman -S yay bashls
-      require 'lspconfig'.ltex.setup { capabilities = capabitilies }    -- sudo pacman -S yay ltex-ls
+      -- the server must be already installed in the machine
+      --
+      -- Arch: yay -S lua-language-server
+      -- MacOs: brew install lua-language-server
+      require 'lspconfig'.lua_ls.setup { capabilities = capabitilies }
+      -- All systems: sudo npm install -g pyright
+      require 'lspconfig'.pyright.setup { capabilities = capabitilies }
+      -- Arch: sudo pacman -S yay bashls
+      require 'lspconfig'.bashls.setup { capabilities = capabitilies }
+      -- Arch: sudo pacman -S yay ltex-ls
+      -- MacOs: brew install ltex-ls
+      require 'lspconfig'.ltex.setup { capabilities = capabitilies }
 
 
 
