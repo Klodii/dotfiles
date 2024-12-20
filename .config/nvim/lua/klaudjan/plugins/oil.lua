@@ -30,6 +30,14 @@ return {
         view_options = {
           -- Show files and directories that start with "."
           show_hidden = true,
+          -- This function defines what will never be shown, even when `show_hidden` is set
+          is_always_hidden = function(name, bufnr)
+            -- dont' show the parent dir '..'
+            -- % is the escape character in lua
+            local parentDir = "^%.%."
+            local m = name:match(parentDir)
+            return m ~= nil
+          end
         },
       })
 
