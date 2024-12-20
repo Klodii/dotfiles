@@ -44,6 +44,9 @@ You may need to install `npm` to install these servers through Mason
 # VIM usefull keys
 `^` = `Ctrl`
 
+Open URL or files
+    - Normal mode: `gx` opens the file or the URL in your default browser
+
 Movements
     Visual mode: `0` goes to beginning of the line
     Visual mode: `_` or `^` goes to first non-blank character of the line
