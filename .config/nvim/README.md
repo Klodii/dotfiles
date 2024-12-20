@@ -29,16 +29,15 @@ suggestion messages.
 
 ### LSP servers that I use
 You may need to install `npm` to install these servers through Mason
+- lua_ls: lua
+- pyright: Python
 - bash-language-server: Bash
+- ltex-ls: Text, Markdown, LaTeX
 - dockerfile-language-server: Docker
 - html-lsp: HTML
 - json-lsp: JSON
-- ltex-ls: Text, Markdown, LaTeX
-- pyright: Python
 - sqlls: SQL
-- taplo: TOML
 - vim-language-server: VimScript
-- yaml-language-server: YAML
 
 
 

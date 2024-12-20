@@ -20,13 +20,13 @@ return {
     config = function()
       -- tell to the lsp that it can use our autocomplete: blink
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require 'lspconfig'.lua_ls.setup { capabilities = capabitilies } -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
       -- LSP SERVER INTSALLATIONS
       -- To find the lsp server type:
       -- `:help lspconfig-all`
       require 'lspconfig'.lua_ls.setup { capabilities = capabitilies }  -- the server must be already installed in the machine (in arch: yay -S lua-language-server)
       require 'lspconfig'.pyright.setup { capabilities = capabitilies } -- sudo npm install -g pyright
-      require 'lspconfig'.bashls.setup { capabilities = capabitilies }  -- sudo pacman -S yay
+      require 'lspconfig'.bashls.setup { capabilities = capabitilies }  -- sudo pacman -S yay bashls
+      require 'lspconfig'.ltex.setup { capabilities = capabitilies }    -- sudo pacman -S yay ltex-ls
 
 
 
