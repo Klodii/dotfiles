@@ -34,7 +34,7 @@ return {
           is_always_hidden = function(name, bufnr)
             -- dont' show the parent dir '..'
             -- % is the escape character in lua
-            local parentDir = "^%.%."
+            local parentDir = "^%.%.$"
             local m = name:match(parentDir)
             return m ~= nil
           end
