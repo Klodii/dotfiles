@@ -27,11 +27,11 @@ return {
       --
       -- Arch: yay -S lua-language-server
       -- MacOs: brew install lua-language-server
-      require 'lspconfig'.lua_ls.setup { capabilities = capabitilies }
+      require 'lspconfig'.lua_ls.setup { capabilities = capabilities }
       -- All systems: sudo npm install -g pyright
-      require 'lspconfig'.pyright.setup { capabilities = capabitilies }
+      require 'lspconfig'.pyright.setup { capabilities = capabilities }
       -- Arch: sudo pacman -S yay bashls
-      require 'lspconfig'.bashls.setup { capabilities = capabitilies }
+      require 'lspconfig'.bashls.setup { capabilities = capabilities }
       -- Arch: sudo pacman -S yay ltex-ls
       -- MacOs: brew install ltex-ls
       require 'lspconfig'.ltex.setup { capabilities = capabitilies }
