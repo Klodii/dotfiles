@@ -33,6 +33,7 @@ You may need to install `npm` to install these servers through Mason
 - pyright: Python
 - bash-language-server: Bash
 - ltex-ls: Text, Markdown, LaTeX
+- ts_ls: TypeScript, JavaScript
 - dockerfile-language-server: Docker
 - html-lsp: HTML
 - json-lsp: JSON

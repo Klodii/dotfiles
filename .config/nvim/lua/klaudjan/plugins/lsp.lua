@@ -35,6 +35,9 @@ return {
       -- Arch: sudo pacman -S yay ltex-ls
       -- MacOs: brew install ltex-ls
       require 'lspconfig'.ltex.setup { capabilities = capabitilies }
+      -- All systems: npm install -g typescript typescript-language-server
+      require 'lspconfig'.ts_ls.setup { capabilities = capabitilies }
+
 
 
 
