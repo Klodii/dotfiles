@@ -3,6 +3,7 @@ local finders = require "telescope.finders"
 local make_entry = require "telescope.make_entry"
 local conf = require "telescope.config".values
 
+
 local M = {}
 
 M.live_multigrep = function(opts)
@@ -32,7 +33,7 @@ M.live_multigrep = function(opts)
         { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
       }
     end,
-    entry_make = make_entry.gen_from_vimgrep(opts),
+    entry_maker = make_entry.gen_from_vimgrep(opts),
     cwd = opts.cwd,
   }
 
