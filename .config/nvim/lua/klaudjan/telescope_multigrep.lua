@@ -16,7 +16,14 @@ M.live_multigrep = function(opts)
         return nil
       end
 
-      local pieces = vim.split(prompt, "  ")
+      -- % is the escape character in lua
+      local pieces = vim.split(prompt, " %-g ")
+
+      local log = require "plenary.log":new()
+      log.level = 'debug'
+      log.debug(pieces)
+      -- Then execute `:messages` and go at the bottom, you will see the logged text
+
       local args = { "rg" } -- ripgrep
       if pieces[1] then
         table.insert(args, "-e")
@@ -39,7 +46,7 @@ M.live_multigrep = function(opts)
 
   pickers.new(opts, {
     debounce = 100,
-    prompt_title = "RipGrep (double space if you want to 'glob')",
+    prompt_title = "RipGrep (` -g ` if you want to glob file names)",
     finder = finder,
     previewer = conf.grep_previewer(opts),
     sorter = require("telescope.sorters").empty(), -- don't sort because rg will sort it
