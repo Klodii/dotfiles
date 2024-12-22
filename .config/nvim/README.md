@@ -1,11 +1,11 @@
 ## How to install plugins
 The plugin manager is [Lazy](https://github.com/folke/lazy.nvim), it should
-install itself, outherwise go to the github page.
+install itself, otherwise go to the Github page.
 
 ## Project composition
 - **after**, all the files that are here will be executed after the
   configuration is up
-- **init.lua**, first file that is readed by nvim
+- **init.lua**, first file that is read by Nvim
 - **lua**, folder in which are located all the keymaps, options, autocommands and
 plugin definitions
 - **pfplugin**: in this folder are located configurations for specific file
@@ -85,7 +85,7 @@ Upper/Lower case
 Record commands
     - Normal mode:
         - `q<a-z>` to begin record all keys and commands executed. The recording
-                   goes to the <a-z> character selected (aka the alfanumeric
+                   goes to the <a-z> character selected (aka the alphanumeric
                    register selected).
         - `@<a-z><movement>` to execute the recorded commands
 Registers:
@@ -130,10 +130,20 @@ For example to show the value of the `textwidth` just type
 ```
 
 
-# Usefull tricks
+# Useful tricks
 
 ### Highlight in comments
-To highlight gouprs in comments, like TODOs you have to install for treesitter
+To highlight groups in comments, like TODOs you have to install for treesitter
 `:TSInstall comments`
 
-To list all highlight groups type: `:hi`, for more infor `:h highlight`
+To list all highlight groups type: `:hi`, for more info `:h highlight`
+
+### How to print log messages and read them
+
+```lua
+local log = require "plenary.log":new()
+log.level = 'debug'
+local random_table = { message = 'This is a debug log' }
+log.debug(random_table)
+-- Then execute `:messages` and go at the bottom, you will see the logged text
+```

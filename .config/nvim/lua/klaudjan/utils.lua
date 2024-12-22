@@ -1,5 +1,12 @@
 -- global function to use with lua
 
+-- How to print log messages and read them
+local log = require "plenary.log":new()
+log.level = 'debug'
+local random_table = { message = 'This is a debug log' }
+log.debug(random_table)
+-- Then execute `:messages` and go at the bottom, you will see the logged text
+
 P = function(v)
   -- inspect the parameter
   print(vim.inspect(v))
