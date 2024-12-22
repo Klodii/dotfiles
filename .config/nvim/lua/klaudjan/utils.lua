@@ -6,14 +6,6 @@ P = function(v)
   return v
 end
 
--- How to print log messages and read them
-local log = require "plenary.log":new()
-log.level = 'debug'
-local random_table = { message = 'This is a debug log' }
-log.debug(random_table)
--- Then execute `:messages` and go at the bottom, you will see the logged text
-
-
 local M = {}
 M.get_scratch = function()
   -- create a scratch buffer in a new tab
