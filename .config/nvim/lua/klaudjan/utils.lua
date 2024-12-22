@@ -1,4 +1,10 @@
 -- global function to use with lua
+-- can be used without importing this modul
+P = function(v)
+  -- inspect the parameter
+  print(vim.inspect(v))
+  return v
+end
 
 -- How to print log messages and read them
 local log = require "plenary.log":new()
@@ -7,13 +13,9 @@ local random_table = { message = 'This is a debug log' }
 log.debug(random_table)
 -- Then execute `:messages` and go at the bottom, you will see the logged text
 
-P = function(v)
-  -- inspect the parameter
-  print(vim.inspect(v))
-  return v
-end
 
-function get_scratch()
+local M = {}
+M.get_scratch = function()
   -- create a scratch buffer in a new tab
   -- this will be a buffer that cannot be saved
   -- used only fro drafts
@@ -26,7 +28,7 @@ function get_scratch()
   vim.opt_local.swapfile = false
 end
 
-function circle(char)
+M.circle = function(char)
   -- circle the current word with the string passed
 
   local prefix = char or '"'
@@ -41,7 +43,6 @@ function circle(char)
     suffix = '>'
   end
 
-
   -- expand('<cword>') to get the current word under cursor
   local current_word = vim.call('expand', '<cword>')
   -- change case
@@ -51,7 +52,4 @@ end
 
 -- the return table is used to permit the retrive of the functions with
 -- :lua require("klaudjan.utils").function_name()
-return {
-  get_scratch = get_scratch,
-  circle = circle
-}
+return M
