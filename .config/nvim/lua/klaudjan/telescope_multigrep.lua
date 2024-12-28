@@ -40,6 +40,7 @@ M.live_multigrep = function(opts)
         { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
       }
     end,
+    -- entry_maker tels how to display in the list and which data, of the selected item, to use for the preview
     entry_maker = make_entry.gen_from_vimgrep(opts),
     cwd = opts.cwd,
   }
@@ -47,7 +48,7 @@ M.live_multigrep = function(opts)
   pickers.new(opts, {
     debounce = 100,
     prompt_title = "RipGrep (` -g ` if you want to glob file names)",
-    finder = finder,
+    finder = finder,                               -- function that finds the entry to display
     previewer = conf.grep_previewer(opts),
     sorter = require("telescope.sorters").empty(), -- don't sort because rg will sort it
   }):find()
