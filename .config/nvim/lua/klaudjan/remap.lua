@@ -1,7 +1,7 @@
 -- NOTE
 -- some other keymaps, plugins specific, may be defined in the "after/plugins" files
 
-vim.g.mapleader = " "  -- leader character
+vim.g.mapleader = " "                                                                          -- leader character
 vim.keymap.set("n", "<leader>ft", ":Lexplore %:p:h<CR>", { desc = 'return to [f]ile [t]ree' }) -- Lex stands for Lexplorer
 
 -- Try to prevent bad habits like using the arrow keys for movement.
@@ -19,7 +19,7 @@ vim.keymap.set("i", "<Down>", "<ESC>:echoe 'Use j'<CR>", { desc = 'give error wh
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'move selected lines up' })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'move selected lines down' })
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = 'do not move the cursor while appending the lines below'})
+vim.keymap.set("n", "J", "mzJ`z", { desc = 'do not move the cursor while appending the lines below' })
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = 'after moving with C-u center the screen' })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'after moving with C-d center the screen' })
@@ -38,7 +38,7 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = 'center the screen while going upward
 -- When pasting a word over another
 -- you don't loose the firt copied word from the paste registry
 -- so you can continuing paste the same word over other words
-    vim.keymap.set("x", "<leader>p", "\"_dP", { desc = '[p]aste multiple times the yanked string' })
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = '[p]aste multiple times the yanked string' })
 
 -- when deleting dont use the copy registry
 vim.keymap.set("n", "<leader>d", "\"_d", { desc = '[d]elete without coping the string in the copy registry' })
@@ -52,32 +52,32 @@ vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = 'copy to clipboard' })
 
 -- substitute (all over the file) the word that the cursor is on with whatever your write
 vim.keymap.set("n",
-               "<leader>s",
-               ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-               { desc = 'substitute (all over the file) the word that the cursor is on with whatever your write'}
-              )
+  "<leader>s",
+  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+  { desc = 'substitute (all over the file) the word that the cursor is on with whatever your write' }
+)
 
 vim.keymap.set("n", "<leader>x", "<cmd>source %<CR>", { desc = 'Source the file, e[x]ecute it' })
 vim.keymap.set("n", "<leader>l", ":.lua<CR>", { desc = 'Execute in [l]ua the current line (where the cursor is)' })
 vim.keymap.set("v", "<leader>l", ":lua<CR>", { desc = 'Execute in [l]ua the selected lines' })
 -- file maps
 vim.keymap.set("n", "<leader><leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = 'Make file e[x]ecutable' }
-              )
+)
 vim.keymap.set("n",
-               "<leader>w",
-               "<cmd>w<CR>",
-               { silent = true, desc = 'Save ([W]rite) File' }
-              )
+  "<leader>w",
+  "<cmd>w<CR>",
+  { silent = true, desc = 'Save ([W]rite) File' }
+)
 vim.keymap.set("n",
-               "<leader>q",
-               "<cmd>q<CR>",
-               { silent = true, desc = '[Q]uit file/editor' }
-              )
+  "<leader>q",
+  "<cmd>q<CR>",
+  { silent = true, desc = '[Q]uit file/editor' }
+)
 vim.keymap.set("n",
-               "<leader>e",
-               "<cmd>e<CR>",
-               { silent = true, desc = 'Open the file out are in, it refreshes the file' }
-              )
+  "<leader>>e",
+  "<cmd>e<CR>",
+  { silent = true, desc = 'Open the file out are in, it refreshes the file' }
+)
 
 
 -- move in quickfix list
@@ -93,10 +93,12 @@ vim.keymap.set("n", "<F5>", "<cmd>cclose<cr>", { desc = 'close quickfix list' })
 --
 -- / registry contains the last searched word, @/ permits to write in this registry
 -- \\ lua need thow of those to escape
-vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>", { desc = '[h]ighlight current word without going to next match' })
+vim.keymap.set("n", "<leader>h", "<cmd>set hlsearch | let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>",
+  { desc = '[h]ighlight current word without going to next match' })
 
 -- Found later that with ctrl-g we can print the relative file path, :help ctrl-g for more info
-vim.keymap.set("n", "<leader>n", "<cmd>let @+ = expand('%')<cr><cmd>echo @+<cr>", { desc = 'Copy in clipboard and print file path, relative to the workingdir ' })
+vim.keymap.set("n", "<leader>n", "<cmd>let @+ = expand('%')<cr><cmd>echo @+<cr>",
+  { desc = 'Copy in clipboard and print file path, relative to the workingdir ' })
 
 -- windows management
 vim.keymap.set("n", "`h", "<C-W>h", { desc = 'Move to the left window' })
@@ -107,15 +109,23 @@ vim.keymap.set("n", "``", "<C-W>w", { desc = 'Move through all opened windows' }
 vim.keymap.set("n", "`,", "<C-W><", { desc = 'Make the window horizontally larger' })
 vim.keymap.set("n", "`.", "<C-W>>", { desc = 'Make the window horizontally shorter' })
 
-vim.keymap.set("n", "<leader>S", "<cmd>:lua require('klaudjan.utils').get_scratch()<cr>", { desc = 'Open a scratch buffer in a new tab' })
+vim.keymap.set("n", "<leader>S", "<cmd>:lua require('klaudjan.utils').get_scratch()<cr>",
+  { desc = 'Open a scratch buffer in a new tab' })
 
-vim.keymap.set("n", "<leader>\"", "<cmd>:lua require('klaudjan.utils').circle()<cr>", { desc = 'Circle the current word with " character' })
-vim.keymap.set("n", '<leader>\'', '<cmd>:lua require("klaudjan.utils").circle("\'")<cr>', { desc = 'Circle the current word with \' character' })
-vim.keymap.set("n", '<leader>`', '<cmd>:lua require("klaudjan.utils").circle("`")<cr>', { desc = 'Circle the current word with ` character' })
-vim.keymap.set("n", "<leader>(", "<cmd>:lua require('klaudjan.utils').circle('(')<cr>", { desc = 'Circle the current word with () characters' })
-vim.keymap.set("n", "<leader>)", "<cmd>:lua require('klaudjan.utils').circle(')')<cr>", { desc = 'Circle the current word with () characters' })
-vim.keymap.set("n", "<leader><", "<cmd>:lua require('klaudjan.utils').circle('<')<cr>", { desc = 'Circle the current word with <> characters' })
-vim.keymap.set("n", "<leader>>", "<cmd>:lua require('klaudjan.utils').circle('>')<cr>", { desc = 'Circle the current word with <> characters' })
+vim.keymap.set("n", "<leader>\"", "<cmd>:lua require('klaudjan.utils').circle()<cr>",
+  { desc = 'Circle the current word with " character' })
+vim.keymap.set("n", '<leader>\'', '<cmd>:lua require("klaudjan.utils").circle("\'")<cr>',
+  { desc = 'Circle the current word with \' character' })
+vim.keymap.set("n", '<leader>`', '<cmd>:lua require("klaudjan.utils").circle("`")<cr>',
+  { desc = 'Circle the current word with ` character' })
+vim.keymap.set("n", "<leader>(", "<cmd>:lua require('klaudjan.utils').circle('(')<cr>",
+  { desc = 'Circle the current word with () characters' })
+vim.keymap.set("n", "<leader>)", "<cmd>:lua require('klaudjan.utils').circle(')')<cr>",
+  { desc = 'Circle the current word with () characters' })
+vim.keymap.set("n", "<leader><", "<cmd>:lua require('klaudjan.utils').circle('<')<cr>",
+  { desc = 'Circle the current word with <> characters' })
+vim.keymap.set("n", "<leader>>", "<cmd>:lua require('klaudjan.utils').circle('>')<cr>",
+  { desc = 'Circle the current word with <> characters' })
 
 -- open same file in a split buffer
 vim.keymap.set("n", "<leader>os", "<cmd>split<cr>", { desc = 'open file in horizontal split' })
