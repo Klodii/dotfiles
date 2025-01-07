@@ -42,10 +42,15 @@ M.circle = function(char)
   vim.cmd("normal! ciw" .. circled_word)
 end
 
+--- Open a floating window
+--- @param opts table Optional parameters
+---             • width: number (width of the window)
+---             • height: number (height of the window)
+--- @return number buf the buffer number used in the floating window
 M.open_floating_window = function(opts)
   -- Get the current buffer size
-  local width = vim.api.nvim_get_option('columns')
-  local height = vim.api.nvim_get_option('lines')
+  local width = vim.api.nvim_get_option_value('columns', {})
+  local height = vim.api.nvim_get_option_value('lines', {})
 
   local default_row = math.floor(height * 0.4)  -- Window appears near the middle of the screen
   local default_col = math.floor(width * 0.25)  -- Window is centered horizontally
@@ -70,6 +75,7 @@ M.open_floating_window = function(opts)
 
   -- Open the window with the buffer content
   vim.api.nvim_open_win(buf, true, float_opts)
+  return buf
 end
 
 -- the return table is used to permit the retrive of the functions with
