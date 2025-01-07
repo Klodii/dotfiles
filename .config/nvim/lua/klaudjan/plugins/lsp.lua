@@ -43,8 +43,12 @@ return {
 
 
       -- KEYBINDINGS
+      vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<cr>",
+        { desc = 'go to definition' })
+      vim.keymap.set('n', 'gr', "<cmd>lua vim.lsp.buf.references()<cr>",
+        { desc = 'list references' })
       vim.keymap.set('n', '<leader>r', "<cmd>lua vim.lsp.buf.rename()<cr>",
-        { desc = '[r]ename string all over the project' })
+        { desc = 'rename string all over the project' })
 
       -- AUTOCOMMANDS
       vim.api.nvim_create_autocmd('LspAttach', {

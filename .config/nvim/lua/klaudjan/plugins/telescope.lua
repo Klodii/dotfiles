@@ -26,8 +26,8 @@ return {
     vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[s]earch only in [g]it files' })
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[s]earch in [h]elp tags' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'search [k]eymap' })
-    vim.keymap.set('n', '<leader>gr', "<cmd>Telescope lsp_references<cr>", { desc = '[g]o to [r]eferences' })
-    vim.keymap.set('n', '<leader>gd', "<cmd>Telescope lsp_definitions<cr>", { desc = '[g]o to [d]efinitios' })
+    vim.keymap.set('n', '<leader>gd', "<cmd>Telescope lsp_definitions<cr>", { desc = 'Telescope go to definitios' })
+    vim.keymap.set('n', '<leader>gr', "<cmd>Telescope lsp_references<cr>", { desc = 'Telescope go to references' })
 
     vim.keymap.set('n',
       '<leader>sw',
