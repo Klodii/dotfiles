@@ -45,70 +45,71 @@ You may need to install `npm` to install these servers through Mason
 # VIM usefull keys
 `^` = `Ctrl`
 
-Open URL or files
-    - Normal mode: `gx` opens the file or the URL in your default browser
+### Open URL or files
+- Normal mode: `gx` opens the file or the URL in your default browser
 
-Movements
-    Visual mode: `0` goes to beginning of the line
-    Visual mode: `_` or `^` goes to first non-blank character of the line
-    Visual mode: `g_` goes to the last non-blank character of the line
-    Visual mode: `_vg_` will select from first non-blank character to last non-blank character
+### Movements
+Visual mode: `0` goes to beginning of the line
+Visual mode: `_` or `^` goes to first non-blank character of the line
+Visual mode: `g_` goes to the last non-blank character of the line
+Visual mode: `_vg_` will select from first non-blank character to last non-blank character
 
-Indentation
-    - Insert mode: `^-t`, `^-d` to indent current line forward, backwords
-    - Visual mode: `>`, `<` to indent current line forward, backwords
-    - Visual mode: `=` to make vim autoindent correctly the selected rows
+### Indentation
+- Insert mode: `^-t`, `^-d` to indent current line forward, backwords
+- Visual mode: `>`, `<` to indent current line forward, backwords
+- Visual mode: `=` to make vim autoindent correctly the selected rows
 
-Format only long lines
-    In Vim, you may want to format long lines, that is, wrap long lines so the
-    longest is, say, 80 characters.
-    The standard approach is to set the local 'textwidth' option (see the
-    options configuration), then use `gq` to format the wanted lines.
+### Format only long lines
+In Vim, you may want to format long lines, that is, wrap long lines so the
+longest is, say, 80 characters.
+The standard approach is to set the local 'textwidth' option (see the
+options configuration), then use `gq` to format the wanted lines.
 
-    example:
-    ```
-    :setl tw=80
-    gggqG
-    ```
+Example:
+```
+:setl tw=80
+gggqG
+```
 
-    In the above, gggqG is gg (go to the first line) then gq (format) to G (the
-    last line). That works, but it also joins consecutive short lines together
-    although it does not join lines that are separated with an empty line. For
-    example, this text:
-    For more, visit https://vim.fandom.com/wiki/Format_only_long_lines#:~:text=In%20Vim%2C%20you%20may%20want,to%20format%20the%20wanted%20lines.&text=In%20the%20above%2C%20gggqG%20is,G%20(the%20last%20line).
+In the above, gggqG is gg (go to the first line) then gq (format) to G (the
+last line). That works, but it also joins consecutive short lines together
+although it does not join lines that are separated with an empty line. For
+example, this text:
+For more, visit https://vim.fandom.com/wiki/Format_only_long_lines#:~:text=In%20Vim%2C%20you%20may%20want,to%20format%20the%20wanted%20lines.&text=In%20the%20above%2C%20gggqG%20is,G%20(the%20last%20line).
 
-Upper/Lower case
-    - Normal mode:
-        - `~` change to upper/lower case the character under the cursor
-        - `gu<movement>` to make lowercase all character found in the movement
-        - `gU<movement>` to make uppercase all character found in the movement
+### Upper/Lower case
+- Normal mode:
+    - `~` change to upper/lower case the character under the cursor
+    - `gu<movement>` to make lowercase all character found in the movement
+    - `gU<movement>` to make uppercase all character found in the movement
 
-Record commands
-    - Normal mode:
-        - `q<a-z>` to begin record all keys and commands executed. The recording
-                   goes to the <a-z> character selected (aka the alphanumeric
-                   register selected).
-        - `@<a-z><movement>` to execute the recorded commands
-Registers:
-    - To list all registers content: `:registers` or `:reg`
-    - To paste the content of a register X:
-        - Normal mode: `"Xp"`
-        - Insert mode: `<^-r>X"
-    - To yank (copy) to a specific register you have to prepend your yank
-      command with the register name X:
-        - Normal mode: `"Xyw` (to yank the word to the register X)
+### Record commands
+- Normal mode:
+    - `q<a-z>` to begin record all keys and commands executed. The recording
+               goes to the <a-z> character selected (aka the alphanumeric
+               register selected).
+    - `@<a-z><movement>` to execute the recorded commands
 
-Suggestion window that appear while you are typing
-    - Insert mode:
-        - `^-e` to open/close the suggestion window
-        - `^-y` to select the suggested text
+### Registers:
+- To list all registers content: `:registers` or `:reg`
+- To paste the content of a register X:
+    - Normal mode: `"Xp"`
+    - Insert mode: `<^-r>X"
+- To yank (copy) to a specific register you have to prepend your yank
+  command with the register name X:
+    - Normal mode: `"Xyw` (to yank the word to the register X)
+
+### Suggestion window that appear while you are typing
+- Insert mode:
+    - `^-e` to open/close the suggestion window
+    - `^-y` to select the suggested text
 
 Current path:
     - Insert mode:
         - `^-g` prints at the bottom the path of the current file
 
 
-Open history list:
+### Open history list:
 Vim can show and make you select the previous commands/searched executed,
 opening a command-line window
     - Type `q:` for commands, or `q/` for searches; or
@@ -120,7 +121,7 @@ The advantage of the command-line window is that you can use all Vim's editing p
 Press Enter to execute the current line (and close the command-line window); or
 Press Ctrl-c to edit the command; or Press Ctrl-c twice to close the command-line window (cancel).
 
-Show the value of a setting:
+### Show the value of a setting:
 
 `:set <option>?`
 
@@ -130,6 +131,26 @@ For example to show the value of the `textwidth` just type
 :set textwidth?
 ```
 
+### Move screen:
+A page is considered to be the screen size of your terminal. The following
+commands will move the page up and down based on the current screen size.
+
+Normal mode:
+
+These commands will move the screen and **also the cursor**
+- `^-b` to move a page screen back or “up”
+- `^-f` to move a page screen front or “down”
+- `^-u` to move a ½ page screen up
+- `^-d` to move a ½ page screen down
+- `j` to move 1 line down
+- `k` to move 1 line up
+
+These commands will move the screen but **not** the cursor
+- `^-y` to move the screen up one line
+- `^-e` to move the screen down one line
+- `zz` to move the current line I’m on to the center of the screen
+- `zt` to move the current line I’m on to the top of the screen
+- `zb` to move the current line I’m on to the bottom of the screen
 
 # Useful tricks
 
