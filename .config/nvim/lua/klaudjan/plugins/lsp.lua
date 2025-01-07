@@ -30,10 +30,10 @@ return {
       require 'lspconfig'.lua_ls.setup { capabilities = capabilities }
       -- All systems: sudo npm install -g pyright
       require 'lspconfig'.pyright.setup { capabilities = capabilities }
-      -- Arch: sudo pacman -S yay bashls
+      -- Arch: sudo pacman -S bashls
       -- MacOs: npm install -g bash-language-server
       require 'lspconfig'.bashls.setup { capabilities = capabilities }
-      -- Arch: sudo pacman -S yay ltex-ls
+      -- Arch: sudo pacman -S ltex-ls
       -- MacOs: brew install ltex-ls
       require 'lspconfig'.ltex.setup { capabilities = capabilities }
       -- All systems: npm install -g typescript typescript-language-server
