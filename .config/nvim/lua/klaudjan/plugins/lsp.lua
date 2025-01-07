@@ -31,6 +31,7 @@ return {
       -- All systems: sudo npm install -g pyright
       require 'lspconfig'.pyright.setup { capabilities = capabilities }
       -- Arch: sudo pacman -S yay bashls
+      -- MacOs: npm install -g bash-language-server
       require 'lspconfig'.bashls.setup { capabilities = capabilities }
       -- Arch: sudo pacman -S yay ltex-ls
       -- MacOs: brew install ltex-ls
