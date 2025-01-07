@@ -44,8 +44,10 @@ end
 
 --- Open a floating window
 --- @param opts table Optional parameters
----             • width: number (width of the window)
----             • height: number (height of the window)
+--- • col number (optional) x position of the window
+--- • row number (optional) y position of the window
+--- • width number (optional) width of the window
+--- • height number (optional) height of the window
 --- @return number buf the buffer number used in the floating window
 M.open_floating_window = function(opts)
   -- Get the current buffer size
