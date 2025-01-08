@@ -31,7 +31,8 @@ vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
     local message = 'File changed ⚠'
     local current_width = vim.api.nvim_get_option_value('columns', {})
     local col = math.floor((current_width - #message) * 0.5)
-    local floating_buf = utils.open_floating_window({ message = message, col = col, width = #message, height = 1 })
-    vim.api.nvim_buf_set_keymap(floating_buf, 'n', 'q', '<cmd>q<CR>', {})
+    local buf = vim.api.nvim_create_buf(false, true) -- Create a new empty buffer
+    utils.open_floating_window(buf, { message = message, col = col, width = #message, height = 1 })
+    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '<cmd>q<CR>', {})
   end,
 })
