@@ -22,36 +22,20 @@ return {
     local multigrep = require "klaudjan.telescope_multigrep"
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>sf', function() builtin.find_files({ hidden = true, no_ignore = true }) end,
-      { desc = '[s]earch [f]ile}' })
-    vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[s]earch only in [g]it files' })
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[s]earch in [h]elp tags' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'search [k]eymap' })
+      { desc = 'search file}' })
+    vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = 'search only in git files' })
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'search in help tags' })
+    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'search keymap' })
     vim.keymap.set('n', '<leader>gd', "<cmd>Telescope lsp_definitions<cr>", { desc = 'Telescope go to definitios' })
     vim.keymap.set('n', '<leader>gr', "<cmd>Telescope lsp_references<cr>", { desc = 'Telescope go to references' })
-
-    vim.keymap.set('n',
-      '<leader>sw',
-      function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") });
-      end,
-      { desc = '[s]earch in all files the [w]ord specified' }
-    )
-    vim.keymap.set('n', '<leader>rw', multigrep.live_multigrep, { desc = '[R]ipGrep in all files the [w]ord specified' })
-
+    vim.keymap.set('n', '<leader>sw', multigrep.live_multigrep,
+      { desc = 'Search with RipGrep in all files the word specified' })
     vim.keymap.set('n',
       '<leader>en',
       function()
         builtin.find_files({ cwd = vim.fn.stdpath("config") });
       end,
-      { desc = '[e]dit a [n]eovim configuration file' }
-    )
-    vim.keymap.set('n',
-      '<leader>ep',
-      function()
-        local packer_installation_directory = "site/pack/packer/start"
-        builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), packer_installation_directory) });
-      end,
-      { desc = '[e]dit a [p]package file' }
+      { desc = 'edit a neovim configuration file' }
     )
   end
 }
