@@ -10,9 +10,9 @@ M.open_scratch_tab = function()
   -- create scrap buffer
   if not buf then
     buf = vim.api.nvim_create_buf(false, true)
-    vim.opt_local.buftype = 'nofile'
-    vim.opt_local.bufhidden = 'hide'
-    vim.opt_local.swapfile = false -- do not create a swap file
+    vim.bo[buf].buftype = 'nofile'
+    vim.bo[buf].bufhidden = 'hide'
+    vim.bo[buf].swapfile = false -- do not create a swap file
     vim.bo[buf].filetype = 'markdown'
   end
 
