@@ -1,11 +1,7 @@
-## How to install plugins
-The plugin manager is [Lazy](https://github.com/folke/lazy.nvim), it should
-install itself, otherwise go to the Github page.
-
 ## Project composition
 - **after**, all the files that are here will be executed after the
   configuration is up
-- **init.lua**, first file that is read by Nvim
+- **init.lua**, first file that is read by nvim
 - **lua**, folder in which are located all the keymaps, options, autocommands and
 plugin definitions
 - **pfplugin**: in this folder are located configurations for specific file
@@ -17,7 +13,7 @@ plugin definitions
 
 ## Checkhealt
 To optimize or check if there are some warnings or errors run `:checkhealt`.
-If there is any error, try to run `:TSUpdate`, the udpate might fix the error.
+If there is any error, try to run `:TSUpdate`, the update might fix the error.
 To install a new LSP server go to the plugin file configuration
 `lua/klaudjan/plugins/lsp.lua`, and to search which server to install you can
 check the list by typing `:help lspconfig-all`.
@@ -41,8 +37,7 @@ You may need to install `npm` to install these servers through Mason
 - vim-language-server: VimScript
 
 
-
-# VIM usefull keys
+# VIM useful keys
 `^` = `Ctrl`
 
 ### Open URL or files
@@ -55,9 +50,9 @@ Visual mode: `g_` goes to the last non-blank character of the line
 Visual mode: `_vg_` will select from first non-blank character to last non-blank character
 
 ### Indentation
-- Insert mode: `^-t`, `^-d` to indent current line forward, backwords
-- Visual mode: `>`, `<` to indent current line forward, backwords
-- Visual mode: `=` to make vim autoindent correctly the selected rows
+- Insert mode: `^-t`, `^-d` to indent current line forward, backwards
+- Visual mode: `>`, `<` to indent current line forward, backwards
+- Visual mode: `=` to make vim auto-indent correctly the selected rows
 
 ### Format only long lines
 In Vim, you may want to format long lines, that is, wrap long lines so the
@@ -71,8 +66,8 @@ Example:
 gggqG
 ```
 
-In the above, gggqG is gg (go to the first line) then gq (format) to G (the
-last line). That works, but it also joins consecutive short lines together
+In the above, `gggqG` is `gg` (go to the first line) then `gq` (format) to `G`
+(the last line). That works, but it also joins consecutive short lines together,
 although it does not join lines that are separated with an empty line. For
 example, this text:
 For more, visit https://vim.fandom.com/wiki/Format_only_long_lines#:~:text=In%20Vim%2C%20you%20may%20want,to%20format%20the%20wanted%20lines.&text=In%20the%20above%2C%20gggqG%20is,G%20(the%20last%20line).
@@ -113,7 +108,7 @@ Current path:
 Vim can show and make you select the previous commands/searched executed,
 opening a command-line window
     - Type `q:` for commands, or `q/` for searches; or
-    - Type `:` or `/` to start entering a command or search, then press the 'cedit' key (default is `Ctrl-f` :help 'cedit').
+    - Type `:` or `/` to start entering a command or search, then press the `cedit` key (default is `Ctrl-f` :help 'cedit').
     - Note: in this mode you will be in a vim like editor so all the movements
       and keymaps will work in it.
 The advantage of the command-line window is that you can use all Vim's editing power, including searching with '/' in normal mode, or using whole-line completion (:help compl-whole-line) in insert mode. After editing a command, you can:
@@ -151,6 +146,12 @@ These commands will move the screen but **not** the cursor
 - `zz` to move the current line I’m on to the center of the screen
 - `zt` to move the current line I’m on to the top of the screen
 - `zb` to move the current line I’m on to the bottom of the screen
+
+### Spell checker
+Normal mode:
+
+- `zg` Add word under the cursor as a good word
+- `zw` Add word under the cursor as a wrong (bad) word
 
 # Useful tricks
 
