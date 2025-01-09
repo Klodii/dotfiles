@@ -153,6 +153,12 @@ Normal mode:
 - `zg` Add word under the cursor as a good word
 - `zw` Add word under the cursor as a wrong (bad) word
 
+### Comment a line
+
+Normal mode:
+- `gcc` Comment/Uncomment the line of the cursor
+- `gc{motion}` Comment/Uncomment the line covered by the {motion}
+
 # Useful tricks
 
 ### Highlight in comments
