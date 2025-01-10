@@ -1,6 +1,8 @@
 #show-read-feeds no
 auto-reload yes
 
+text-width 80
+
 bind-key j down
 bind-key k up
 bind-key j next articlelist
