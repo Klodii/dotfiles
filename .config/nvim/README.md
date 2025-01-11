@@ -41,7 +41,8 @@ You may need to install `npm` to install these servers through Mason
 `^` = `Ctrl`
 
 ### Open URL or files
-- Normal mode: `gx` opens the file or the URL in your default browser
+- Normal mode: `gx` opens the current filepath or URL in your default application/browser
+- Normal mode: `gf` edit the file whose name is under or after the cursor
 
 ### Movements
 Visual mode: `0` goes to beginning of the line
@@ -158,6 +159,16 @@ Normal mode:
 Normal mode:
 - `gcc` Comment/Uncomment the line of the cursor
 - `gc{motion}` Comment/Uncomment the line covered by the {motion}
+
+### Select last selected text
+
+Normal Mode
+- `gv` Will select the last text that was selected previously
+
+### Join two lines
+
+- `J` join two lines, adds a space between them
+- `gJ` join two lines, does not add a space between them
 
 # Useful tricks
 
