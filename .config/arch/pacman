@@ -36,7 +36,9 @@ sudo pacman -S base-devel \
 
 # For my suckless dwm configuration
 sudo pacman -S dunst \
-               xwallpaper
+               xwallpaper \
+               xorg-xsetroot
+
 
 
 # For latex
