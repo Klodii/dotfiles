@@ -43,32 +43,6 @@ M.open_floating_window = function(buffer, opts)
   return win
 end
 
---- Creates a scratch buffer in a floating window
---- the buffer will not be able to be saved
---- the buffer will have the markdown filetype
-M.get_scratch = function()
-  -- create scrap buffer
-  local bufnr = vim.api.nvim_create_buf(false, true)
-  vim.opt_local.buftype = 'nofile'
-  vim.opt_local.bufhidden = 'hide'
-  vim.opt_local.swapfile = false -- do not create a swap file
-  vim.bo[bufnr].filetype = 'markdown'
-
-  -- create floating window
-  local current_width = vim.api.nvim_get_option_value('columns', {})
-  local current_height = vim.api.nvim_get_option_value('lines', {})
-  local row = math.floor(current_height * 0.1)     -- Window appears near the middle of the screen
-  local col = math.floor(current_width * 0.1)      -- Window is centered horizontally
-  local width = math.floor(current_width * 0.75)   -- Window width is 75% of the editor's width
-  local height = math.floor(current_height * 0.75) -- Window height is 75% of the editor's height
-  M.open_floating_window(bufnr, {
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-  })
-end
-
 M.circle = function(char)
   -- circle the current word with the string passed
 
