@@ -41,7 +41,8 @@ return {
         },
       })
 
-      vim.keymap.set("n", "<leader>ft", ":Oil<CR>", { desc = 'return to [f]ile [t]ree' }) -- Lex stands for Lexplorer
+      vim.keymap.set("n", "<leader>ft", ":Oil<CR>", { desc = 'return to file tree' }) -- Lex stands for Lexplorer
+      vim.keymap.set("n", "H", ":Oil<CR>", { desc = 'return to file tree' })          -- Lex stands for Lexplorer
     end
   }
 }
