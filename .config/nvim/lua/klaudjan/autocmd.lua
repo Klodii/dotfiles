@@ -28,11 +28,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
   desc = "Automatically reload the buffer if the file has changed externally (e.g. due to a `git pull`)",
   callback = function()
-    local message = 'File changed ⚠'
-    local current_width = vim.api.nvim_get_option_value('columns', {})
-    local col = math.floor((current_width - #message) * 0.5)
-    local buf = vim.api.nvim_create_buf(false, true) -- Create a new empty buffer
-    utils.open_floating_window(buf, { message = message, col = col, width = #message, height = 1 })
-    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '<cmd>q<CR>', {})
+    local message = '⚠ The file has changed'
+    vim.notify(message, vim.log.levels.WARN)
   end,
 })
