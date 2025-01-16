@@ -22,4 +22,7 @@ vim.keymap.set("n",
     vim.fn.chansend(job_id, { "source scripts/aliases.sh" .. enter })
     vim.fn.chansend(job_id, { "dtest" .. currentFile .. enter })
   end,
-  { desc = 'Run current file [t]ests' })
+  { desc = 'Run current file tests' })
+
+vim.keymap.set("n", "<leader>tt", '<cmd>:lua require "klaudjan.execute_test".get_class_and_function_name("python")<cr>',
+  { desc = 'Run current function test' })
