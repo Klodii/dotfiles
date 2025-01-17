@@ -1,3 +1,7 @@
+---@class Names
+---@field class_name string?: the class name
+---@field function_name string?: the function name
+
 local M = {}
 
 M.class_types = {
@@ -6,7 +10,7 @@ M.class_types = {
   cpp = 'class_specifier',
 }
 
-
+---Open a new buffer, which starts a terminal, in a floating window
 M.get_floating_terminal = function()
   local current_width = vim.api.nvim_get_option_value('columns', {})
   local current_height = vim.api.nvim_get_option_value('lines', {})
@@ -29,6 +33,9 @@ M.get_floating_terminal = function()
   vim.api.nvim_open_win(buf, true, float_opts)
 end
 
+---Return the name of the class and function in which the cursor is
+---@param language string
+---@return Names
 M.get_class_and_function_name = function(language)
   local class_type = M.class_types[language]
 
@@ -51,18 +58,24 @@ M.get_class_and_function_name = function(language)
     node = node:parent()
   end
 
-  local final_message = ""
+  ---@type Names
+  local names = { class_name = nil, function_name = nil }
   if function_node then
-    local function_node_name = vim.treesitter.get_node_text(function_node:child(1), 0)
-    final_message = final_message .. " function: " .. function_node_name
+    names['function'] = vim.treesitter.get_node_text(function_node:child(1), 0)
   end
   if class_node then
-    local class_node_name = vim.treesitter.get_node_text(class_node:child(1), 0)
-    final_message = final_message .. " class: " .. class_node_name
+    names['class'] = vim.treesitter.get_node_text(class_node:child(1), 0)
   end
-  print(final_message)
+  return names
 end
 
---M.get_floating_terminal()
---M.get_class_and_function_name('python')
+--- Get the relative, to the working directory, path of the current file
+---@return string
+M.get_relative_file_path = function()
+  local filepath = vim.fn.expand('%:p') -- absolute path
+  local cwd = vim.fn.getcwd()
+  local relative_path = filepath:sub(#cwd + 2)
+  return relative_path
+end
+
 return M
