@@ -1,8 +1,11 @@
 -- global function to use with lua
 -- can be used without importing this modul
 P = function(v)
-  -- inspect the parameter
-  print(vim.inspect(v))
+  if type(v) == 'userdata' then
+    print(vim.inspect(getmetatable(v)))
+  else
+    print(vim.inspect(v))
+  end
   return v
 end
 
