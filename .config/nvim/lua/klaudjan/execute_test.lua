@@ -11,6 +11,7 @@ M.class_types = {
 }
 
 ---Open a new buffer, which starts a terminal, in a floating window
+---@return integer buffer number
 M.get_floating_terminal = function()
   local current_width = vim.api.nvim_get_option_value('columns', {})
   local current_height = vim.api.nvim_get_option_value('lines', {})
@@ -31,21 +32,22 @@ M.get_floating_terminal = function()
   end
   )
   vim.api.nvim_open_win(buf, true, float_opts)
+  return buf
 end
 
 ---Return the name of the class and function in which the cursor is
 ---@param language string
----@return Names
+---@return Names?
 M.get_class_and_function_name = function(language)
   local class_type = M.class_types[language]
 
   local current_node = vim.treesitter.get_node()
 
   if not current_node then
-    return ""
+    return nil
   end
 
-  local node = current_node
+  local node = current_node --TSNode
   local function_node = nil
   local class_node = nil
   while node do
@@ -61,10 +63,10 @@ M.get_class_and_function_name = function(language)
   ---@type Names
   local names = { class_name = nil, function_name = nil }
   if function_node then
-    names['function'] = vim.treesitter.get_node_text(function_node:child(1), 0)
+    names['function_name'] = vim.treesitter.get_node_text(function_node:child(1), 0)
   end
   if class_node then
-    names['class'] = vim.treesitter.get_node_text(class_node:child(1), 0)
+    names['class_name'] = vim.treesitter.get_node_text(class_node:child(1), 0)
   end
   return names
 end
