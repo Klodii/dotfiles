@@ -120,7 +120,7 @@ keymap("n", "<leader>os", "<cmd>split<cr>", { desc = 'open file in horizontal sp
 keymap("n", "<leader>vs", "<cmd>vsplit<cr>", { desc = 'open file in vertical split' })
 
 -- Terminal mode ":temr"
-keymap('t', '<esc>', '<C-\\><C-N>', { silent = true })           -- exit
+keymap('t', '<leader><esc>', '<C-\\><C-N>', { silent = true })   -- exit
 keymap('t', '<C-Left>', '<C-\\><C-N><C-w>h', { silent = true })  -- move left
 keymap('t', '<C-Down>', '<C-\\><C-N><C-w>j', { silent = true })  -- move down
 keymap('t', '<C-Up>', '<C-\\><C-N><C-w>k', { silent = true })    -- move up
