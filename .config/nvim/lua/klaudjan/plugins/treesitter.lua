@@ -3,9 +3,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require'nvim-treesitter.configs'.setup{
+      require 'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "python"},
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "python" },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
@@ -32,6 +32,9 @@ return {
           additional_vim_regex_highlighting = false,
         },
       }
+
+      vim.keymap.set("n", "<leader>ti", "<cmd>InspectTree<CR>", { desc = 'Open Treesitter Tree ("TSPlayground")' })
+      vim.keymap.set("n", "<leader>tq", "<cmd>EditQuery<CR>", { desc = 'open the Live Query Editor of Treesitter' })
     end
   }
 }
