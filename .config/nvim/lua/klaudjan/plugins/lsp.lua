@@ -33,7 +33,7 @@ return {
       -- Arch: sudo pacman -S bashls
       -- MacOs: npm install -g bash-language-server
       require 'lspconfig'.bashls.setup { capabilities = capabilities }
-      -- Arch: sudo pacman -S ltex-ls
+      -- Arch: yay -S ltex-ls
       -- MacOs: brew install ltex-ls
       require 'lspconfig'.ltex.setup { capabilities = capabilities }
       -- All systems: npm install -g typescript typescript-language-server
