@@ -83,4 +83,4 @@ vim.keymap.set("n", "<leader>tn", function()
     local full_test_path = build_test_path().full_test_path
     utils.copy_to_clipboard(full_test_path)
   end,
-  { desc = 'Full test name, related to the cursor position, to be run by pytest' })
+  { desc = 'Copy full test name, related to the cursor position' })
