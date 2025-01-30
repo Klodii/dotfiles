@@ -1,3 +1,5 @@
+local utils = require "klaudjan.utils"
+
 -- line break when reaced a certain limit, resetted the value
 -- now the text will not break automatically
 vim.opt_local.textwidth = 0
@@ -9,15 +11,34 @@ vim.keymap.set("n", "<leader>b", "obreakpoint()<Esc>", { desc = 'Insert [b]reakp
 
 -- run tests of the current file
 
+local buf = nil
+local job_id = nil
+
+local open_floating_window = function()
+  local width = vim.api.nvim_get_option_value('columns', {})
+  local height = vim.api.nvim_get_option_value('lines', {})
+  utils.open_floating_window(buf, {
+    row = math.floor(height * 0.1),
+    col = math.floor(width * 0.1),
+    width = math.floor(width * 0.8),
+    height = math.floor(height * 0.8)
+  })
+end
+
 ---Open a terminal and execute the commands passed
 ---@param commands string[] list of commands to execute
 local open_terminal = function(commands)
-  vim.cmd.vnew()      -- open new vertical window
-  vim.cmd.term()      -- open terminal
-  vim.cmd.wincmd("J") -- move the window below
-  vim.api.nvim_win_set_height(0, 15)
+  if not buf then
+    buf = vim.api.nvim_create_buf(false, true)
+    vim.bo[buf].swapfile = false -- do not create a swap file
 
-  local job_id = vim.bo.channel
+    open_floating_window()
+    vim.cmd.term()
+    job_id = vim.bo.channel
+  else
+    open_floating_window()
+  end
+
   for i = 1, #commands do
     vim.fn.chansend(job_id, { commands[i] })
   end
@@ -78,6 +99,7 @@ end
 
 vim.keymap.set("n", "<leader>tf", function() run_tests() end, { desc = 'Run file tests' })
 vim.keymap.set("n", "<leader>tc", function() run_tests(true) end, { desc = 'Run test under the cursor' })
+vim.keymap.set("n", "<leader>to", function() open_floating_window() end, { desc = 'Open the test floating window' })
 vim.keymap.set("n", "<leader>tn", function()
     local utils = require 'klaudjan.utils'
     local full_test_path = build_test_path().full_test_path

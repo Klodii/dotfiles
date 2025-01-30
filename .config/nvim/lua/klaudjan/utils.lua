@@ -41,8 +41,10 @@ M.open_floating_window = function(buffer, opts)
   }
 
   -- Open the floating window
-  vim.api.nvim_buf_set_lines(buffer, 0, -1, false, { opts.message }) -- Set the message in the buffer
-  local win = vim.api.nvim_open_win(buffer, true, float_opts)        -- Open the window with the buffer content
+  if opts.message then
+    vim.api.nvim_buf_set_lines(buffer, 0, -1, false, { opts.message }) -- Set the message in the buffer
+  end
+  local win = vim.api.nvim_open_win(buffer, true, float_opts)          -- Open the window with the buffer content
   return win
 end
 
