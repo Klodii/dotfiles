@@ -66,7 +66,7 @@ local run_tests = function(cursor_specific)
 
   local test_path = build_test_path()
 
-  local path_to_execute = test_path.path
+  local path_to_execute = test_path.file_path
   if cursor_specific == true then
     path_to_execute = test_path.full_test_path
   end
