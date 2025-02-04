@@ -37,5 +37,13 @@ return {
       end,
       { desc = 'edit a neovim configuration file' }
     )
+    vim.keymap.set('n',
+      '<leader>ep',
+      function()
+        local lazy_installation_directory = "lazy/"
+        builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), lazy_installation_directory) });
+      end,
+      { desc = 'edit a installed package file' }
+    )
   end
 }
