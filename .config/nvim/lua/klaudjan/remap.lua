@@ -125,3 +125,8 @@ keymap('t', '<C-Left>', '<C-\\><C-N><C-w>h', { silent = true })  -- move left
 keymap('t', '<C-Down>', '<C-\\><C-N><C-w>j', { silent = true })  -- move down
 keymap('t', '<C-Up>', '<C-\\><C-N><C-w>k', { silent = true })    -- move up
 keymap('t', '<C-Right>', '<C-\\><C-N><C-w>l', { silent = true }) -- move right
+
+-- Diagnostics
+keymap("n", "<leader>dc", "<cmd>:lua vim.diagnostic.open_float()<cr>", { desc = 'Open diagnostic under the cursor' })
+keymap("n", "<leader>dn", "<cmd>:lua vim.diagnostic.goto_next()<cr>", { desc = 'Go to netxt diagnostic' })
+keymap("n", "<leader>dp", "<cmd>:lua vim.diagnostic.goto_prev()<cr>", { desc = 'Go to netxt diagnostic' })
