@@ -4,7 +4,7 @@ return {
     config = function()
       require 'test-it'.setup({
         path_prefix_to_remove = 'application/',
-        test_command = 'source scripts/aliases* && dtest ',
+        test_command = 'source scripts/aliases* && dtest -d ',
       })
 
 
