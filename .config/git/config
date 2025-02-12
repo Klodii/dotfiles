@@ -32,6 +32,7 @@
     # that might help the reader to understand what is missing to transform
     # the wip commit to a complete commit
     wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message '--wip-- [skip ci]' -e"
+    push-no-ci = "!git push -o ci.skip"
 
 
     zero = reset --hard HEAD # remove all staged or unstaged files, redo what you wanted to do, starting from zero (HEAD)
