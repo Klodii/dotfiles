@@ -244,6 +244,8 @@
 
 [fetch]
     prune = true
+    pruneTags = true
+    all = true
 
 [color "branch"]
     current = yellow reverse
@@ -276,6 +278,8 @@
 [diff]
     # Detect copies as well as renames
     renames = copies
+    colorMoved = plain
+    mnemonicPrefix = true
     algorithm = histogram
     tool = nvimdiff
     # Leged for nvimdiff
@@ -303,3 +307,15 @@
 [mergetool]
     prompt = false
     trustExitCode = true
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[rerere]
+    # reuse recorded resolutions, for rebases
+    # when you rebase and you have to apply the same changes over and over
+    # with these options, it will be done automatically
+    enabled = true
+    autoupdate = true
