@@ -89,8 +89,8 @@ For more, visit https://vim.fandom.com/wiki/Format_only_long_lines#:~:text=In%20
 ### Registers:
 - To list all registers content: `:registers` or `:reg`
 - To paste the content of a register X:
-    - Normal mode: `"Xp"`
-    - Insert mode: `<^-r>X"
+    - Normal mode: `"Xp`
+    - Insert mode: `<^-r>X`
 - To yank (copy) to a specific register you have to prepend your yank
   command with the register name X:
     - Normal mode: `"Xyw` (to yank the word to the register X)
