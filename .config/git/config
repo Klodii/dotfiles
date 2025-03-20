@@ -74,9 +74,10 @@
     # repository, the this alias solve the problem
     go-default = !git switch $(git default)
 
-    # current logs, show logs that are in the current branch but not in the
+    # log branch
+    # show logs that are in the current branch but not in the
     # passed one ($1) or default if no branch is passed
-    cl = "!func() { \
+    lb = "!func() { \
         DEFAULT=$(git default); \
         git log --no-merges --pretty='%C(yellow)%h%d %Creset%an %Cgreen%ar:%Creset %s' --graph ${1-$DEFAULT}..HEAD; \
         }; \
