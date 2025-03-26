@@ -172,6 +172,18 @@ Normal Mode
 
 # Useful tricks
 
+### Change buffer filetype
+If you are working on a new file without extension and you want the highlight
+of a given filetype, like python, markdown, sql...
+
+You can just type
+
+`:setfiletype <type>`
+or
+`:setf <type>`
+
+`<type>` can be python, markdown, sql
+
 ### Highlight in comments
 To highlight groups in comments, like TODOs you have to install for treesitter
 `:TSInstall comments`
