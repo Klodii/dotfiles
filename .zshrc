@@ -127,11 +127,15 @@ function json-format {
 }
 
 function xlstocsv {
-    # given a json string, return it formatted
+    # given a xls file convert it to csv
     if hash libreoffice 2> /dev/null; then
         libreoffice --headless --convert-to csv "$1"
+    elif hash gnumeric 2> /dev/null; then
+        # get the file name without the extension
+        file_name="${1%.*}"
+        ssconvert "$1" "${file_name}.csv"
     else
-      echo "libreoffice is not installed"
+      echo "libreoffice and neither gnumeric is installed"
     fi
 }
 
