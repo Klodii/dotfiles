@@ -15,7 +15,8 @@ sudo pacman -Syu
 # Install other useful binaries.
 # base-devel is needed for AUR packages
 sudo pacman -S base-devel \
-			   xclip \
+               cmake \
+               xclip \
                tmux \
                fzf \
                ripgrep \
@@ -26,20 +27,17 @@ sudo pacman -S base-devel \
                git-delta \
                lf \
                bat \
-			   neovim \
+               neovim \
                keepass \
                tldr \
                newsboat \
                zathura \
                zathura-pdf-mupdf \
-               pinta
 
 # For my suckless dwm configuration
 sudo pacman -S dunst \
                xwallpaper \
                xorg-xsetroot
-
-
 
 # For latex
 # > sudo pacman -S texlive-core texlive-bin texlive-lang
