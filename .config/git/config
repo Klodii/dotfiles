@@ -98,7 +98,7 @@
     # are in DEFAULT and you don't want to put into master
     rb = "!func() { \
         DEFAULT=$(git default); \
-        git ri $(git cl ${1-$DEFAULT}| wc -l); \
+        git ri $(git lb ${1-$DEFAULT}| wc -l); \
         }; \
         func"
 
