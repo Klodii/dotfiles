@@ -126,7 +126,7 @@ function json-format {
     fi
 }
 
-function xlstocsv {
+function xls2csv {
     # given a xls file convert it to csv
     if hash libreoffice 2> /dev/null; then
         libreoffice --headless --convert-to csv "$1"
@@ -135,7 +135,15 @@ function xlstocsv {
         file_name="${1%.*}"
         ssconvert "$1" "${file_name}.csv"
     else
-      echo "libreoffice and neither gnumeric is installed"
+      echo "Neither libreoffice and gnumeric are installed"
+    fi
+}
+function csv2xls {
+    # given a csv file convert it to xls
+    if hash libreoffice 2> /dev/null; then
+        libreoffice --headless --convert-to xls "$1"
+    else
+      echo "libreoffice is not installed"
     fi
 }
 
