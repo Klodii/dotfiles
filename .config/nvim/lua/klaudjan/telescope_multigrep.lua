@@ -35,10 +35,15 @@ M.live_multigrep = function(opts)
         table.insert(args, pieces[2])
       end
 
-      return vim.tbl_flatten {
-        args,
-        { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
-      }
+      local additional_flags = { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column",
+        "--smart-case" }
+      for _, flag in ipairs(additional_flags) do
+        table.insert(args, flag)
+      end
+
+      local command = vim.iter(args):flatten():totable()
+      log.debug("command: " .. table.concat(command, ", "))
+      return command
     end,
     -- entry_maker tels how to display in the list and which data, of the selected item, to use for the preview
     entry_maker = make_entry.gen_from_vimgrep(opts),
