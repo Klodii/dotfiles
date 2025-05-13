@@ -17,6 +17,18 @@ M.live_multigrep = function(opts)
       end
 
       -- % is the escape character in lua
+      -- Glob patter syntax:
+      --   / to separate path segments
+      --   * to match zero or more characters in a path segment
+      --   ? to match on one character in a path segment
+      --   ** to match any number of path segments, including none
+      --   {} to group conditions (for example {**/*.html,**/*.txt} matches all HTML and text files)
+      --   [] to declare a range of characters to match (example.[0-9] to match on example.0, example.1, …)
+      --   [!...] to negate a range of characters to match (example.[!0-9] to match on example.a, example.b, but not example.0)
+      -- Examples:
+      -- address -g *.py
+      -- address -g model.*
+      -- address -g **/folder/**
       local pieces = vim.split(prompt, " %-g ")
 
       local log = require "plenary.log":new()
