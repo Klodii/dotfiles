@@ -14,7 +14,9 @@ sudo pacman -Syu
 
 # Install other useful binaries.
 # base-devel is needed for AUR packages
+# pacman-contrib is used to install `checkupdates`
 sudo pacman -S base-devel \
+               pacman-contrib \
                cmake \
                xclip \
                tmux \
