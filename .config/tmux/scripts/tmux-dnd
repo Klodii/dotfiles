@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Drag and Drop window
+# https://github.com/mwh/dragon
 
 OBJ_PATH="$1"
 [ -d "$OBJ_PATH" ] && OBJ_PATH="$OBJPATH/"
