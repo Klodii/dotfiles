@@ -1,18 +1,17 @@
 #!/bin/bash -
+source utils
 
-# Set zsh as your default shell
+
 # if the shell is changed you need to restart the PC
-[ $SHELL == '/bin/bash' ] && chsh -s /bin/zsh
+[ $SHELL == '/bin/bash' ] && chsh -s /bin/zsh && log_info "Set zsh as your default shell"
 
-# Install command-line tools using pacman.
-
-# Update the library
+log_info "Updating the library"
 sudo pacman -Syy
 
-# Upgrade any already-installed library
+log_info "Upgrade any already-installed library"
 sudo pacman -Syu
 
-# Install other useful binaries.
+log_info "Installing my chore libraries"
 # base-devel is needed for AUR packages
 # pacman-contrib is used to install `checkupdates`
 sudo pacman -S base-devel \
@@ -40,6 +39,14 @@ sudo pacman -S base-devel \
 sudo pacman -S dunst \
                xwallpaper \
                xorg-xsetroot
+
+DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
+ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
+if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
+    log_info "Set zathura as the default PDF reader"
+    xdg-mime default org.pwmt.zathura.desktop application/pdf
+fi
+
 
 # For latex
 # > sudo pacman -S texlive-core texlive-bin texlive-lang
