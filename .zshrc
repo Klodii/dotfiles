@@ -164,6 +164,7 @@ alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboa
 # in ubuntu it is called batcat
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 hash bat 2> /dev/null && alias cat='bat'
+hash nsxiv 2> /dev/null && alias sxiv='nsxiv' # image viewer
 hash ipython 2> /dev/null && alias python='ipython'
 
 # normalize aliases and cross Linux, macOS, and Windows.

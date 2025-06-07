@@ -34,6 +34,7 @@ sudo pacman -S base-devel \
                newsboat \
                zathura \
                zathura-pdf-mupdf \
+               nsxiv
 
 # For my suckless dwm configuration
 sudo pacman -S dunst \
