@@ -40,21 +40,6 @@ You may need to install `npm` to install these servers through Mason
 # VIM useful keys
 `^` = `Ctrl`
 
-### Open URL or files
-- Normal mode: `gx` opens the current filepath or URL in your default application/browser
-- Normal mode: `gf` edit the file whose name is under or after the cursor
-
-### Movements
-Visual mode: `0` goes to beginning of the line
-Visual mode: `_` or `^` goes to first non-blank character of the line
-Visual mode: `g_` goes to the last non-blank character of the line
-Visual mode: `_vg_` will select from first non-blank character to last non-blank character
-
-### Indentation
-- Insert mode: `^-t`, `^-d` to indent current line forward, backwards
-- Visual mode: `>`, `<` to indent current line forward, backwards
-- Visual mode: `=` to make vim auto-indent correctly the selected rows
-
 ### Format only long lines
 In Vim, you may want to format long lines, that is, wrap long lines so the
 longest is, say, 80 characters.
@@ -171,31 +156,12 @@ Normal Mode
 - `gJ` join two lines, does not add a space between them
 
 # Useful tricks
+My tips and tricks are written in `mytips.txt`.
 
-### Change buffer filetype
-If you are working on a new file without extension and you want the highlight
-of a given filetype, like python, markdown, sql...
+It is possible to open the file via help message by following these steps:
+1. create `~/.local/share/nvim/site/doc/` directory, if it does not exist yet.
+2. copy the help file `mytips.txt` into `~/.local/share/nvim/site/doc/`
+3. from nvim execute `:helptags ~/.local/share/nvim/site/doc/`
+4. now it is possible to open the new help file via `:help mytips`
 
-You can just type
-
-`:setfiletype <type>`
-or
-`:setf <type>`
-
-`<type>` can be python, markdown, sql
-
-### Highlight in comments
-To highlight groups in comments, like TODOs you have to install for treesitter
-`:TSInstall comments`
-
-To list all highlight groups type: `:hi`, for more info `:h highlight`
-
-### How to print log messages and read them
-
-```lua
-local log = require "plenary.log":new()
-log.level = 'debug'
-local random_table = { message = 'This is a debug log' }
-log.debug(random_table)
--- Then execute `:messages` and go at the bottom, you will see the logged text
-```
+These steps are better explained in `:help write-local-help`
