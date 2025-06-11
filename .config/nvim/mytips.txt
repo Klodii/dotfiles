@@ -3,52 +3,68 @@
 In the documentation we will write `Ctrl` in this way `^`.
 
 OPEN URL OR FILES                                             *mytips-open-url*
-- Normal mode: `gx` opens the current filepath or URL in your default application/browser
-- Normal mode: `gf` edit the file whose name is under or after the cursor
+- Normal mode: |gx| opens the current filepath or URL in your default application/browser
+- Normal mode: |gf| edit the file whose name is under or after the cursor
 
 MOVEMENTS                                                    *mytips-movements*
-Visual mode: `0` goes to beginning of the line
-Visual mode: `_` or `^` goes to first non-blank character of the line
-Visual mode: `g_` goes to the last non-blank character of the line
+Visual mode: |0| goes to beginning of the line
+Visual mode: |_| or |^| goes to first non-blank character of the line
+Visual mode: |g_| goes to the last non-blank character of the line
 Visual mode: `_vg_` will select from first non-blank character to last non-blank character
 
+P
 INDENTATION                                                *mytips-indentation*
-Insert mode: `^-t`, `^-d` to indent current line forward, backwards
+Insert mode: `^t`, `^d` to indent current line forward, backwards
 Visual mode: `>`, `<` to indent current line forward, backwards
 Visual mode: `=` to make vim auto-indent correctly the selected rows
 
 CHANGE BUFFER FILETYPE                                        *mytips-filetype*
 A filetype will help nvim to highlight keywords of the given filetype.
-
-`:setfiletype <type>`
+>
+    :setfiletype <type>
+>
 or
-`:setf <type>`
+>
+    :setf <type>
+<
 
-`<type>` can be python, markdown, sql
+`<type>` can be python, markdown, sql, etc
 
 You can also set the filetype directly in the file, by putting this line at
 the top or bottom of the file
-`vim:ft=<type>`
+>
+    vim:ft=<type>
+
+
+FORMAT ONLY LONG LINES                                          *mytips-format*
+In Vim, you may want to format long lines, that is, wrap long lines so the
+longest is, say, 80 characters.
+
+If the |textwidth| is not globally set, you can set it locally by typing `:setl tw=80`
+
+Use |gq| to format the wanted lines.
 
 HIGHLIGHT IN COMMENTS                               *mytips-highlight-comments*
 To highlight groups in comments, like TODOs you have to install for treesitter
-`:TSInstall comments`
+>
+    :TSInstall comments
+<
 
 To list all highlight groups type: `:hi`, for more info `:h highlight`
 
 
-DEV DEBUGGING
+DEV DEBUGGING                                               *mytips-debugging*
 During development you might find useful to print log messages.
 In this example you can see how to write them.
 
-```lua
-local log = require "plenary.log":new()
-log.level = 'debug'
-local random_table = { message = 'This is a debug log' }
-log.debug(random_table)
-```
+>lua
+    local log = require "plenary.log":new()
+    log.level = 'debug'
+    local random_table = { message = 'This is a debug log' }
+    log.debug(random_table)
+<
 
-To read them you just have to execute `:messages`.
+To read them you just have to execute |:messages|.
 It will display all the log messages, to check the latest messages you have to
 go ad the end of them.
 

@@ -40,24 +40,6 @@ You may need to install `npm` to install these servers through Mason
 # VIM useful keys
 `^` = `Ctrl`
 
-### Format only long lines
-In Vim, you may want to format long lines, that is, wrap long lines so the
-longest is, say, 80 characters.
-The standard approach is to set the local 'textwidth' option (see the
-options configuration), then use `gq` to format the wanted lines.
-
-Example:
-```
-:setl tw=80
-gggqG
-```
-
-In the above, `gggqG` is `gg` (go to the first line) then `gq` (format) to `G`
-(the last line). That works, but it also joins consecutive short lines together,
-although it does not join lines that are separated with an empty line. For
-example, this text:
-For more, visit https://vim.fandom.com/wiki/Format_only_long_lines#:~:text=In%20Vim%2C%20you%20may%20want,to%20format%20the%20wanted%20lines.&text=In%20the%20above%2C%20gggqG%20is,G%20(the%20last%20line).
-
 ### Upper/Lower case
 - Normal mode:
     - `~` change to upper/lower case the character under the cursor
