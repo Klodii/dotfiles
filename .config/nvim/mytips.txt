@@ -28,7 +28,7 @@ or
 
 You can also set the filetype directly in the file, by putting this line at
 the top or bottom of the file
-`" vim:ft=<type>`
+`vim:ft=<type>`
 
 HIGHLIGHT IN COMMENTS                               *mytips-highlight-comments*
 To highlight groups in comments, like TODOs you have to install for treesitter
@@ -52,4 +52,4 @@ To read them you just have to execute `:messages`.
 It will display all the log messages, to check the latest messages you have to
 go ad the end of them.
 
-" vim:ft=help
+vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
