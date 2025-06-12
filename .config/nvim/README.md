@@ -142,7 +142,8 @@ My tips and tricks are written in `mytips.txt`.
 
 It is possible to open the file via help message by following these steps:
 1. create `~/.local/share/nvim/site/doc/` directory, if it does not exist yet.
-2. copy the help file `mytips.txt` into `~/.local/share/nvim/site/doc/`
+2. create a symlink to the help file `doc/mytips.txt` into `~/.local/share/nvim/site/doc/`
+    `ln -s ~/.config/nvim/doc/mytips.txt ~/.local/share/nvim/site/doc/`
 3. from nvim execute `:helptags ~/.local/share/nvim/site/doc/`
 4. run `:help local-additions` to check if the document has been added
 5. now it is possible to open the new help file via `:help mytips`
