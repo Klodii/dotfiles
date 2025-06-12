@@ -1,6 +1,12 @@
-*mytips.txt*	Help in which I write my tips and triks.
+*mytips.txt*    Help in which I write my tips and triks.
 
 In the documentation we will write `Ctrl` in this way `^`.
+
+UPPER-LOWER CASE                                      *mytips-upper-lower-case*
+- Normal mode:
+    - `~` change to upper/lower case the character under the cursor
+    - |gu{movement}| to make lowercase all character found in the movement
+    - |gU{movement}| to make uppercase all character found in the movement
 
 OPEN URL OR FILES                                             *mytips-open-url*
 - Normal mode: |gx| opens the current filepath or URL in your default application/browser
@@ -17,6 +23,47 @@ INDENTATION                                                *mytips-indentation*
 Insert mode: `^t`, `^d` to indent current line forward, backwards
 Visual mode: `>`, `<` to indent current line forward, backwards
 Visual mode: `=` to make vim auto-indent correctly the selected rows
+
+RECORD COMMANDS                                        *mytips-record-commands*
+- Normal mode:
+    - `q<a-z>` to begin recording all keys and commands executed.
+          The recording goes to the <a-z> character selected (aka the
+          alphanumeric register selected).
+    - `@<a-z><movement>` to execute the recorded commands
+
+REGISTERS                                                    *mytips-registers*
+- To list all registers content: `:registers` or `:reg`
+- The |"{register}| is used to interact with registers.
+- To paste the content of a register X:
+    - Normal mode: `"Xp`
+    - Insert mode: `<^r>X`
+- To yank to a specific register
+  Prepend your yank command with the double quote |"| and the register name X:
+    - Normal mode: `"Xyw` (to yank the word to the register X)
+
+SELECT LAST SELECTED TEXT                    *mytips-select-last-selected-text*
+
+Normal Mode
+- |gv| Will select the last text that was selected
+
+SPELL CHECKER                                            *mytips-spell-checker*
+Normal mode:
+    - |zg| Add word under the cursor as a good word
+    - |zw| Add word under the cursor as a wrong (bad) word
+
+COMMENT LINE                                              *mytips-comment-line*
+
+Normal mode:
+- |gcc| Comment/Uncomment the line of the cursor
+- |gc{motion}| Comment/Uncomment the line covered by the |{motion}|
+
+GET SETTING VALUE                                    *mytips-get-setting-value*
+>
+    :set <option>?
+<
+For example to show the value of the `textwidth` just type
+>
+    :set textwidth?
 
 CHANGE BUFFER FILETYPE                                        *mytips-filetype*
 A filetype will help nvim to highlight keywords of the given filetype.
@@ -68,4 +115,4 @@ To read them you just have to execute |:messages|.
 It will display all the log messages, to check the latest messages you have to
 go ad the end of them.
 
-vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
+vim:tw=78:ts=8:ft=help:norl:

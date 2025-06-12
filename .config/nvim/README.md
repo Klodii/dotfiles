@@ -40,28 +40,6 @@ You may need to install `npm` to install these servers through Mason
 # VIM useful keys
 `^` = `Ctrl`
 
-### Upper/Lower case
-- Normal mode:
-    - `~` change to upper/lower case the character under the cursor
-    - `gu<movement>` to make lowercase all character found in the movement
-    - `gU<movement>` to make uppercase all character found in the movement
-
-### Record commands
-- Normal mode:
-    - `q<a-z>` to begin record all keys and commands executed. The recording
-               goes to the <a-z> character selected (aka the alphanumeric
-               register selected).
-    - `@<a-z><movement>` to execute the recorded commands
-
-### Registers:
-- To list all registers content: `:registers` or `:reg`
-- To paste the content of a register X:
-    - Normal mode: `"Xp`
-    - Insert mode: `<^-r>X`
-- To yank (copy) to a specific register you have to prepend your yank
-  command with the register name X:
-    - Normal mode: `"Xyw` (to yank the word to the register X)
-
 ### Suggestion window that appear while you are typing
 - Insert mode:
     - `^-e` to open/close the suggestion window
@@ -84,16 +62,6 @@ The advantage of the command-line window is that you can use all Vim's editing p
 Press Enter to execute the current line (and close the command-line window); or
 Press Ctrl-c to edit the command; or Press Ctrl-c twice to close the command-line window (cancel).
 
-### Show the value of a setting:
-
-`:set <option>?`
-
-For example to show the value of the `textwidth` just type
-
-```
-:set textwidth?
-```
-
 ### Move screen:
 A page is considered to be the screen size of your terminal. The following
 commands will move the page up and down based on the current screen size.
@@ -114,23 +82,6 @@ These commands will move the screen but **not** the cursor
 - `zz` to move the current line I’m on to the center of the screen
 - `zt` to move the current line I’m on to the top of the screen
 - `zb` to move the current line I’m on to the bottom of the screen
-
-### Spell checker
-Normal mode:
-
-- `zg` Add word under the cursor as a good word
-- `zw` Add word under the cursor as a wrong (bad) word
-
-### Comment a line
-
-Normal mode:
-- `gcc` Comment/Uncomment the line of the cursor
-- `gc{motion}` Comment/Uncomment the line covered by the {motion}
-
-### Select last selected text
-
-Normal Mode
-- `gv` Will select the last text that was selected previously
 
 ### Join two lines
 
