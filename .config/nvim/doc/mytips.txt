@@ -2,6 +2,12 @@
 
 In the documentation we will write `Ctrl` in this way `^`.
 
+
+JOIN LINES                                                  *mytips-join_lines*
+- Normal mode
+    - |J| join two lines, adds a space between them
+    - |gJ| join two lines, does not add a space between them
+
 UPPER-LOWER CASE                                      *mytips-upper-lower-case*
 - Normal mode:
     - `~` change to upper/lower case the character under the cursor
@@ -30,6 +36,18 @@ RECORD COMMANDS                                        *mytips-record-commands*
           The recording goes to the <a-z> character selected (aka the
           alphanumeric register selected).
     - `@<a-z><movement>` to execute the recorded commands
+
+SUGGESTIONS                                                *mytips-suggestions*
+window that appear while you are typing
+- Insert mode:
+    - `^e` to open/close the suggestion window
+    - `^y` to select the suggested text
+    - `^n` select next suggestion
+    - `^p` select previous suggestion
+
+FILEPATH                                                      *mytips-filepath*
+- Normal mode:
+    - `^g` prints at the bottom the path of the current file
 
 REGISTERS                                                    *mytips-registers*
 - To list all registers content: `:registers` or `:reg`

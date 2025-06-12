@@ -40,16 +40,6 @@ You may need to install `npm` to install these servers through Mason
 # VIM useful keys
 `^` = `Ctrl`
 
-### Suggestion window that appear while you are typing
-- Insert mode:
-    - `^-e` to open/close the suggestion window
-    - `^-y` to select the suggested text
-
-Current path:
-    - Insert mode:
-        - `^-g` prints at the bottom the path of the current file
-
-
 ### Open history list:
 Vim can show and make you select the previous commands/searched executed,
 opening a command-line window
@@ -82,11 +72,6 @@ These commands will move the screen but **not** the cursor
 - `zz` to move the current line I’m on to the center of the screen
 - `zt` to move the current line I’m on to the top of the screen
 - `zb` to move the current line I’m on to the bottom of the screen
-
-### Join two lines
-
-- `J` join two lines, adds a space between them
-- `gJ` join two lines, does not add a space between them
 
 # Useful tricks
 My tips and tricks are written in `mytips.txt`.
