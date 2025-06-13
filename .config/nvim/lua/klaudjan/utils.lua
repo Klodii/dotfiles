@@ -87,6 +87,12 @@ M.circle = function(char)
   vim.cmd("normal! ciw" .. circled_word)
 end
 
+--- Returns the filetype of the current buffer.
+-- @return string: filetype (e.g. "lua", "python", "sh")
+M.get_file_type = function()
+  return vim.bo.filetype
+end
+
 
 -- the return table is used to permit the retrive of the functions with
 -- :lua require("klaudjan.utils").function_name()

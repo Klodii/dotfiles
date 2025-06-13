@@ -59,7 +59,9 @@ keymap("n",
   { desc = 'substitute (all over the file) the word that the cursor is on with whatever your write' }
 )
 
-keymap("n", "<leader>x", "<cmd>source %<CR>", { desc = 'Source the file, e[x]ecute it' })
+keymap("n", "<leader>so", "<cmd>source %<CR>", { desc = 'Source the file, e[x]ecute it' })
+keymap("n", "<leader>x", "<cmd>:lua require('klaudjan.execute').execute_file()<cr>",
+  { desc = 'Execute the file' })
 keymap("n", "<leader>l", ":.lua<CR>", { desc = 'Execute in [l]ua the current line (where the cursor is)' })
 keymap("v", "<leader>l", ":lua<CR>", { desc = 'Execute in [l]ua the selected lines' })
 -- file maps
