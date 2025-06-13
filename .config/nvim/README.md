@@ -36,30 +36,7 @@ You may need to install `npm` to install these servers through Mason
 - sqlls: SQL
 - vim-language-server: VimScript
 
-
-# VIM useful keys
-### Move screen:
-A page is considered to be the screen size of your terminal. The following
-commands will move the page up and down based on the current screen size.
-
-Normal mode:
-
-These commands will move the screen and **also the cursor**
-- `^-b` to move a page screen back or “up”
-- `^-f` to move a page screen front or “down”
-- `^-u` to move a ½ page screen up
-- `^-d` to move a ½ page screen down
-- `j` to move 1 line down
-- `k` to move 1 line up
-
-These commands will move the screen but **not** the cursor
-- `^-y` to move the screen up one line
-- `^-e` to move the screen down one line
-- `zz` to move the current line I’m on to the center of the screen
-- `zt` to move the current line I’m on to the top of the screen
-- `zb` to move the current line I’m on to the bottom of the screen
-
-# Useful tricks
+## Useful tricks
 My tips and tricks are written in `mytips.txt`.
 
 It is possible to open the file via help message by following these steps:
