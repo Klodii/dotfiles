@@ -34,6 +34,10 @@ brew install git-delta
 brew install bat
 brew install --cask pinta
 
+# hotkey daemon
+brew install koekeishiya/formulae/skhd
+skhd --start-service
+
 # Nerd Fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
@@ -41,7 +45,6 @@ brew install --cask font-hack-nerd-font
 # Terminal file manager
 brew install jstkdng/programs/ueberzugpp # show images in a terminal
 brew install lf # file manager
-
 
 # Remove outdated versions from the cellar.
 brew cleanup
