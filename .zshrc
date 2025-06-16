@@ -142,6 +142,9 @@ function csv2xls {
     # given a csv file convert it to xls
     if hash libreoffice 2> /dev/null; then
         libreoffice --headless --convert-to xls "$1"
+    elif hash soffice 2> /dev/null; then
+        # libreoffice on MacOs is called `soffice`
+        soffice --headless --convert-to xls "$1"
     else
       echo "libreoffice is not installed"
     fi
