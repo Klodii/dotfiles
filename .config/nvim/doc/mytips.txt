@@ -99,10 +99,14 @@ After editing a command, you can:
 - Press Ctrl-c to edit the command
 - Press Ctrl-c twice to close the command-line window (cancel).
 
-SELECT LAST SELECTED TEXT                    *mytips-select-last-selected-text*
+SELECT TEXT                                                *mytips-select-text*
 
 Normal Mode
 - |gv| Will select the last text that was selected
+- |gn| search and select the last used search pattern (line |n|, but it also
+  selects it)
+- |gN| liken |gn| but searches backward, like with |N|
+  selects it)
 
 SPELL CHECKER                                            *mytips-spell-checker*
 Normal mode:
