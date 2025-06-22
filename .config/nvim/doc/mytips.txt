@@ -157,6 +157,17 @@ To highlight groups in comments, like TODOs you have to install for treesitter
 
 To list all highlight groups type: `:hi`, for more info `:h highlight`
 
+COMMAND MODE                                               *mytips-command-mode*
+
+- `^w` To delete the previous word
+- `^u` To delete all the the previous words
+- `.!` to print the output of the bash command inside the file, overwriting
+  the line
+- `{range}!` to print the output of the bash command in the file, overwriting
+  all the lines inside the selection range. The range is usually done via
+  Visual mode
+
+
 
 DEV DEBUGGING                                               *mytips-debugging*
 During development you might find useful to print log messages.
