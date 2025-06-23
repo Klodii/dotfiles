@@ -5,7 +5,7 @@
 
 
 alt - return : open -na alacritty # Open terminal
-alt - w : open -na /Applications/Brave\ Browser.app # Open browser
+alt - w : open -na /Applications/Firefox.app # Open browser
 
 # Shutdown using AppleScript (osasript)
 alt + shift - s : osascript -e 'tell app "System Events" to shut down'
