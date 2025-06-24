@@ -132,7 +132,7 @@ function xls2csv {
         libreoffice --headless --convert-to csv "$1"
     elif hash soffice 2> /dev/null; then
         # libreoffice on MacOs is called `soffice`
-        soffice --headless --convert-to xls "$1"
+        soffice --headless --convert-to csv "$1"
     elif hash gnumeric 2> /dev/null; then
         # get the file name without the extension
         file_name="${1%.*}"
