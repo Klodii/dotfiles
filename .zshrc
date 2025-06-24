@@ -130,6 +130,9 @@ function xls2csv {
     # given a xls file convert it to csv
     if hash libreoffice 2> /dev/null; then
         libreoffice --headless --convert-to csv "$1"
+    elif hash soffice 2> /dev/null; then
+        # libreoffice on MacOs is called `soffice`
+        soffice --headless --convert-to xls "$1"
     elif hash gnumeric 2> /dev/null; then
         # get the file name without the extension
         file_name="${1%.*}"
@@ -178,6 +181,9 @@ if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=Mac
 
     alias cclip='pbcopy' # copy and paste directly from terminal, pipe the output of a command to the alias
     alias vclip='pbpaste' # to paste the text you just copied, you shall use:
+
+    # libreoffice on MacOs is called `soffice`
+    alias libreoffice='soffice'
 
     # open with a URL will open the default browser
     export BROWSER="open"
