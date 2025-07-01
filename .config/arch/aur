@@ -15,6 +15,7 @@ yay -Syu
 
 log_info "Installing packages..."
 yay -S pinta-git \
+    burpsuite
 
 log_info "Remove orphaned dependencies"
 yay -Yc
