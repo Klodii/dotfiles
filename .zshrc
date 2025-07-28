@@ -152,6 +152,16 @@ function csv2xls {
       echo "libreoffice is not installed"
     fi
 }
+function md2pdf {
+    # given a markdown file convert it to pdf
+    if hash pandoc 2> /dev/null; then
+        # get the file name without the extension
+        file_name="${1%.*}"
+        pandoc "$1" -o "${file_name}.pdf"
+    else
+      echo "pandoc is not installed"
+    fi
+}
 
 
 # aliases
