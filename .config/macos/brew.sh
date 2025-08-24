@@ -18,6 +18,7 @@ brew upgrade
 # command, like: gls, gcp, gdate...
 brew install coreutils
 
+brew install zsh-syntax-highlighting
 # Install other useful binaries.
 brew install alacritty
 brew install xclip
