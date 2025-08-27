@@ -177,13 +177,13 @@ alias :q='exit'
 alias myip='curl -4 https://get.geojs.io/v1/ip'
 alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboard
 
-# in ubuntu it is called batcat
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 hash bat 2> /dev/null && alias cat='bat'
-hash nsxiv 2> /dev/null && alias sxiv='nsxiv' # image viewer
 hash ipython 2> /dev/null && alias python='ipython'
+hash nsxiv 2> /dev/null && alias sxiv='nsxiv' # image viewer
+hash zathura 2> /dev/null && alias pdf='zathura' # pdf viewer
 
-# normalize aliases and cross Linux, macOS, and Windows.
+# normalize aliases across Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
 if [ $OPERATNG_SYSTEM = 'Darwin' ]; then # it is equal to Darwin it means OS=MacOS
     alias o='open'
