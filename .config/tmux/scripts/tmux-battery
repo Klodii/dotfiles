@@ -2,4 +2,6 @@
 
 DELIMITER=${1:-'|'}
 status_battery=$(battery -tpi)
+status_keyboard_battery=$(battery_bluetooth -ti)
 [ "$status_battery" ]  && echo "$status_battery$DELIMITER"
+[ "$status_keyboard_battery" ]  && echo "$status_keyboard_battery$DELIMITER"
