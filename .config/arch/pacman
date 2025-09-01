@@ -1,5 +1,5 @@
 #!/bin/bash -
-source utils
+source ./utils
 
 
 # if the shell is changed you need to restart the PC
@@ -47,12 +47,3 @@ if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
     log_info "Set zathura as the default PDF reader"
     xdg-mime default org.pwmt.zathura.desktop application/pdf
 fi
-
-
-# For latex
-# > sudo pacman -S texlive-core texlive-bin texlive-lang
-# check the installation
-# > pdflatex --version
-#
-# Compile a file with
-# > pdflatex filename.tex

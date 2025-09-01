@@ -1,6 +1,6 @@
 #!/bin/bash -
 
-source utils
+source ./utils
 
 if ! $(is_installed yay); then
     log_info "Installing yay"
