@@ -26,6 +26,7 @@ brew install tmux
 brew install fzf
 brew install git
 brew install ripgrep
+brew install neovim
 brew install ksnip
 brew install rename
 brew install mpv
