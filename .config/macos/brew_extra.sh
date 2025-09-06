@@ -5,3 +5,5 @@ brew services start syncthing
 
 # Software that opens kdbx files, aka KeePass Password Safe files
 brew install --cask macpass
+# GitHub Readme Instant Preview - Markdown local preview
+brew install grip
