@@ -1,3 +1,21 @@
+## Installation
+
+### MacOs
+```bash
+brew install neovim
+```
+
+### Issues
+The first time you open nvim, after the installation, yout might encounter this
+error: `nvim fzf extensions dons't exist`, or something similar.
+
+It means that the `fzf` estensions, used by treesitter, is not installed. To fix
+it you need to install `fzf` by executing this command
+
+```bash
+cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make
+```
+
 ## Project composition
 - **after**, all the files that are here will be executed after the
   configuration is up
