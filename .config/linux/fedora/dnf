@@ -17,7 +17,6 @@ sudo dnf install ripgrep
 sudo dnf install ksnip
 sudo dnf install mpv
 sudo dnf install yt-dlp
-sudo dnf install syncthing
 sudo dnf install git-delta
 sudo dnf install bat
 sudo dnf install neovim
@@ -26,6 +25,9 @@ sudo dnf install tldr
 sudo dnf install newsboat
 sudo dnf install zathura
 sudo dnf install zathura-pdf-mupdf
+
+sudo dnf install syncthing
+systemctl --user enable syncthing.service
 
 sudo dnf copr enable pennbauman/ports # to enable the lf installation
 sudo dnf install lf
