@@ -36,6 +36,8 @@ sudo pacman -S base-devel \
                zathura-pdf-mupdf \
                nsxiv
 
+systemctl --user enable syncthing.service
+
 # For my suckless dwm configuration
 sudo pacman -S dunst \
                xwallpaper \
