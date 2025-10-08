@@ -1,0 +1,43 @@
+#!/bin/bash -
+source ./utils
+
+
+# if the shell is changed you need to restart the PC
+[ $SHELL == '/bin/bash' ] && chsh -s /bin/zsh && log_info "Set zsh as your default shell"
+
+log_info "Updating and upgrading any already-installade library"
+sudo dnf upgrade --refresh
+
+log_info "Installing my chore libraries"
+sudo dnf install cmake
+sudo dnf install xclip
+sudo dnf install tmux
+sudo dnf install fzf
+sudo dnf install ripgrep
+sudo dnf install ksnip
+sudo dnf install mpv
+sudo dnf install yt-dlp
+sudo dnf install syncthing
+sudo dnf install git-delta
+sudo dnf install bat
+sudo dnf install neovim
+sudo dnf install keepass
+sudo dnf install tldr
+sudo dnf install newsboat
+sudo dnf install zathura
+sudo dnf install zathura-pdf-mupdf
+
+sudo dnf copr enable pennbauman/ports # to enable the lf installation
+sudo dnf install lf
+
+# For my suckless dwm configuration
+sudo dnf install dunst
+sudo dnf install xwallpaper
+sudo dnf install xorg-xsetroot
+
+DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
+ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
+if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
+    log_info "Set zathura as the default PDF reader"
+    xdg-mime default org.pwmt.zathura.desktop application/pdf
+fi

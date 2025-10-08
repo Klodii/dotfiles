@@ -1,0 +1,20 @@
+#!/bin/bash -
+source ./utils
+
+if $(is_installed pdflatex); then
+    log_title "Latex is already installed, the command is called pdflatex"
+    exit 0
+else
+    log_title "Installing Latex"
+fi
+
+
+sudo dnf install texlive-scheme-basic
+
+if [ $? -eq 0 ]; then
+    log_info "Latex is installed"
+    echo "To check if it run: pdflatex --version"
+    echo "To compile a file run pdflatex filename.tex"
+else
+    exit 1
+fi
