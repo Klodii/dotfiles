@@ -1,10 +1,6 @@
 #!/bin/bash -
 source ./utils
 
-
-# if the shell is changed you need to restart the PC
-[ $SHELL == '/bin/bash' ] && chsh -s /bin/zsh && log_info "Set zsh as your default shell"
-
 log_info "Updating and upgrading any already-installade library"
 sudo dnf upgrade --refresh
 
