@@ -25,33 +25,35 @@ sudo dnf install -y \
   wget
 
 log_info "Installing my chore libraries"
-sudo dnf install cmake
-sudo dnf install xclip
-sudo dnf install tmux
-sudo dnf install fzf
-sudo dnf install ripgrep
-sudo dnf install ksnip
-sudo dnf install mpv
-sudo dnf install yt-dlp
-sudo dnf install git-delta
-sudo dnf install bat
-sudo dnf install neovim
-sudo dnf install keepass
-sudo dnf install tldr
-sudo dnf install newsboat
-sudo dnf install zathura
-sudo dnf install zathura-pdf-mupdf
+sudo dnf install -y \
+    cmake \
+    xclip \
+    tmux \
+    fzf \
+    ripgrep \
+    ksnip \
+    mpv \
+    yt-dlp \
+    git-delta \
+    bat \
+    neovim \
+    keepass \
+    tldr \
+    newsboat \
+    zathura \
+    zathura-pdf-mupdf \
 
-sudo dnf install syncthing
+sudo dnf install -y syncthing
 systemctl --user enable syncthing.service
 
 sudo dnf copr enable pennbauman/ports # to enable the lf installation
-sudo dnf install lf
+sudo dnf install -y lf
 
 # For my suckless dwm configuration
-sudo dnf install dunst
-sudo dnf install xwallpaper
-sudo dnf install xorg-xsetroot
+sudo dnf install -y dunst
+sudo dnf install -y xsetroot
+sudo dnf copr enable linuxredneck/xwallpaper
+sudo dnf install -y xwallpaper
 
 DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
 ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
