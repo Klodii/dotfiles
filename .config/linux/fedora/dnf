@@ -4,6 +4,26 @@ source ./utils
 log_info "Updating and upgrading any already-installade library"
 sudo dnf upgrade --refresh
 
+log_title "Installing base development packages..."
+# need to install them to avoid probmles with other installations
+sudo dnf install -y \
+  gcc \
+  make \
+  zlib-devel \
+  bzip2 \
+  bzip2-devel \
+  readline-devel \
+  sqlite-devel \
+  openssl-devel \
+  libffi-devel \
+  xz-devel \
+  tk-devel \
+  gdbm-devel \
+  ncurses-devel \
+  libuuid-devel \
+  libtirpc-devel \
+  wget
+
 log_info "Installing my chore libraries"
 sudo dnf install cmake
 sudo dnf install xclip
