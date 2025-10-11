@@ -45,14 +45,14 @@ done
 shift $((OPTIND -1)) # remove all options from $#
 
 current_shell=$(echo $SHELL)
-if [ "$current_shell" != *'zhs'* ]; then
+if [[ "$current_shell" != */zsh ]]; then
     zsh_path=$(which zsh)
-    if [ -z "$zsh_path"]; then
-	exit_w_error "zsh is not installed in the system"
+    if [ -z "$zsh_path" ]; then
+	    exit_w_error "zsh is not installed in the system"
     fi
 
     echo "Setting zsh as the default shell"
-    chsh -s $(which zsh)
+    chsh -s $zsh_path
     echo "Please logout and login again"
     exit 1
 fi
