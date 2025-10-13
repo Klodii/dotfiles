@@ -54,6 +54,7 @@ sudo dnf install -y dunst
 sudo dnf install -y xsetroot
 sudo dnf copr enable linuxredneck/xwallpaper
 sudo dnf install -y xwallpaper
+sudo dnf install -y libX11-devel libXft-devel libXinerama-devel libXrandr-devel fontconfig-devel freetype-devel libXext-devel pam-devel
 
 DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
 ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
