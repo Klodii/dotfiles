@@ -50,11 +50,16 @@ sudo dnf copr enable pennbauman/ports # to enable the lf installation
 sudo dnf install -y lf
 
 # For my suckless dwm configuration
-sudo dnf install -y dunst
+## install X: in some cases it is not installed and will prevent to diplay dwm on
+## the window manager list at login
+sudo dnf install -y xorg-x11-server-Xorg
+# X libraries
+sudo dnf install -y libX11-devel libXft-devel libXinerama-devel libXrandr-devel fontconfig-devel freetype-devel libXext-devel pam-devel xorg-x11-server-Xorg
 sudo dnf install -y xsetroot
 sudo dnf copr enable linuxredneck/xwallpaper
 sudo dnf install -y xwallpaper
-sudo dnf install -y libX11-devel libXft-devel libXinerama-devel libXrandr-devel fontconfig-devel freetype-devel libXext-devel pam-devel
+sudo dnf install -y dunst
+
 
 DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
 ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
