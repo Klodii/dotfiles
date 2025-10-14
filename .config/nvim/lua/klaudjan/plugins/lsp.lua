@@ -40,26 +40,26 @@ return {
       require 'lspconfig'.ts_ls.setup { capabilities = capabilities }
 
 
-
-
-      -- KEYBINDINGS
-      vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<cr>",
-        { desc = 'go to definition' })
-      vim.keymap.set('n', 'gr', "<cmd>lua vim.lsp.buf.references()<cr>",
-        { desc = 'list references' })
-      vim.keymap.set('n', '<leader>r', "<cmd>lua vim.lsp.buf.rename()<cr>",
-        { desc = 'rename string all over the project' })
-
       -- AUTOCOMMANDS
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
+          local bufnr = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
 
-          if client.supports_method('textDocument/fomratting') then
+          -- KEYBINDINGS
+          -- Keymaps scoped to LSP-attached buffers
+          local function nmap(keys, func, desc)
+            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+          end
+          nmap("gd", vim.lsp.buf.definition, "Go to Definition")
+          nmap("gr", vim.lsp.buf.references, "Find References")
+          nmap("<leader>r", vim.lsp.buf.rename, "Rename Symbol")
+
+          if client.supports_method('textDocument/formatting') then
             -- format the current buffer on save
             vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = args.buf,
+              buffer = bufnr,
               callback = function()
                 -- format will use the lsp server and also .editorconfig
                 -- to format the file
@@ -70,8 +70,22 @@ return {
         end
       })
 
-      -- show diagnostic messages when cursor in the line
-      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      vim.diagnostic.config({
+        virtual_lines = { current_line = true }, -- show diagnostic messages when cursor in the line
+        virtual_text = false,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+      })
+
+      -- Show diagnostics on CursorHold: if the cursor stays on the line for
+      -- sometime without doing anything
+      -- vim.api.nvim_create_autocmd("CursorHold", {
+      --   callback = function()
+      --     vim.diagnostic.open_float(nil, { focusable = false })
+      --   end,
+      -- })
     end
   }
 }
