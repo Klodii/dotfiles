@@ -43,6 +43,8 @@ sudo dnf install -y \
     zathura \
     zathura-pdf-mupdf \
 
+sudo dnf install -y lm_sensors # used by my script hd-usage to get the CPU temperature
+
 sudo dnf install -y syncthing
 systemctl --user enable syncthing.service
 
