@@ -18,26 +18,12 @@ return {
       },
     },
     config = function()
-      -- tell to the lsp that it can use our autocomplete: blink
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- LSP SERVER INTSALLATIONS
-      -- To find the lsp server type:
-      -- `:help lspconfig-all`
-      -- the server must be already installed in the machine
-      --
-      -- Arch: yay -S lua-language-server
-      -- MacOs: brew install lua-language-server
-      require 'lspconfig'.lua_ls.setup { capabilities = capabilities }
-      -- All systems: sudo npm install -g pyright
-      require 'lspconfig'.pyright.setup { capabilities = capabilities }
-      -- Arch: sudo pacman -S bashls
-      -- MacOs: npm install -g bash-language-server
-      require 'lspconfig'.bashls.setup { capabilities = capabilities }
-      -- Arch: yay -S ltex-ls
-      -- MacOs: brew install ltex-ls
-      require 'lspconfig'.ltex.setup { capabilities = capabilities }
-      -- All systems: npm install -g typescript typescript-language-server
-      require 'lspconfig'.ts_ls.setup { capabilities = capabilities }
+      -- Starting the lsp that we defined in the /lsp directory
+      vim.lsp.enable("lualsp")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("bashls")
+      vim.lsp.enable("ltex")
+      vim.lsp.enable("ts")
 
 
       -- AUTOCOMMANDS
