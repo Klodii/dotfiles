@@ -69,6 +69,9 @@ return {
           end
         end
       })
+
+      -- show diagnostic messages when cursor in the line
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
     end
   }
 }
