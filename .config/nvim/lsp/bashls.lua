@@ -1,6 +1,6 @@
 -- Server Installation:
 -- Arch: sudo pacman -S bashls
--- MacOs: npm install -g bash-language-server
+-- All systems: sudo npm install -g bash-language-server
 
 vim.lsp.config.bashls = {
   -- Command to start bash-language-server

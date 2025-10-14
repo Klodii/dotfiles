@@ -1,5 +1,5 @@
 -- Server Installation:
--- All systems: npm install -g typescript typescript-language-server
+-- All systems: sudo npm install -g typescript typescript-language-server
 
 vim.lsp.config.ts = {
   cmd = { "typescript-language-server", "--stdio" },

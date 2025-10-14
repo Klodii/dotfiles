@@ -1,6 +1,5 @@
 -- Server Installation:
 -- All systems: sudo npm install -g pyright
--- require 'lspconfig'.pyright.setup { capabilities = capabilities }
 
 vim.lsp.config.pyright = {
   -- Command to start the server
