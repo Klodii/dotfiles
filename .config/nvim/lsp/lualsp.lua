@@ -1,6 +1,20 @@
 -- Server Installation:
 -- Arch: yay -S lua-language-server
 -- MacOs: brew install lua-language-server
+-- Fedora:
+--        - install dependencies:
+--                  - sudo dnf install gcc gcc-c++ ninja-build cmake git libstdc++-static
+--        - clone repository:
+--                  - git clone https://github.com/LuaLS/lua-language-server.git
+--                  - cd lua-language-server
+--        - build it:
+--                  - ./make.sh
+--        - install/deploy:
+--                  - sudo mv <cloned-dir> /opt/lua-language-server
+--                  - sudo ln -s /opt/lua-language-server/bin/lua-language-server /usr/local/bin/lua-language-server
+--        - test:
+--                  - lua-language-server --version
+
 
 vim.lsp.config.lualsp = {
   -- Command to start the server
@@ -26,7 +40,7 @@ vim.lsp.config.lualsp = {
     Lua = {
       runtime = {
         -- Tell the language server what Lua version you're using
-        version = "LuaJIT",  -- Neovim uses LuaJIT
+        version = "LuaJIT", -- Neovim uses LuaJIT
 
         -- Setup your lua path -- include your paths for modules
         path = vim.split(package.path, ";"),
@@ -57,7 +71,7 @@ vim.lsp.config.lualsp = {
       },
 
       telemetry = {
-        enable = false,  -- do not send telemetry data
+        enable = false, -- do not send telemetry data
       },
     },
   },
