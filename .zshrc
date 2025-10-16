@@ -163,6 +163,14 @@ function md2pdf {
     fi
 }
 
+if hash gtree 2> /dev/null ; then
+    function cwt {
+        # change git worktree
+        tree=$(gtree choose) # command found in https://github.com/Klodii/bin
+        [ -n "$tree" ] && cd "$tree"
+    }
+fi
+
 
 # aliases
 alias .f='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
