@@ -37,8 +37,6 @@ vim.opt.smartcase = true  -- Automatically switch search to case-sensitive when 
 
 vim.opt.completeopt = { "menu", "preview", "menuone", "noselect" }
 
-vim.opt.winborder = 'rounded'
-
 -- :Explorer settings
 -- :Explore variants.
 --     - Hexplore: Will create a horizontal split and show the directory in the lower window.
