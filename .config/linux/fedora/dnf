@@ -58,6 +58,7 @@ sudo dnf install -y xorg-x11-server-Xorg
 # X libraries
 sudo dnf install xset
 sudo dnf install -y libX11-devel libXft-devel libXinerama-devel libXrandr-devel fontconfig-devel freetype-devel libXext-devel pam-devel xorg-x11-server-Xorg
+sudo dnf install -y xdg-utils
 sudo dnf install -y xsetroot
 sudo dnf copr enable linuxredneck/xwallpaper
 sudo dnf install -y xwallpaper
