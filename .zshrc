@@ -215,6 +215,7 @@ else
     else
         alias o='xdg-open';
         hash thunar 2> /dev/null && alias fm='thunar'; # arch file manager
+        hash nautilus 2> /dev/null && alias fm='nautilus'; # gnome file manager
         # dragon (in $BIN_HOME) opens a small window that enables to drag and
         # drop a file/folder easily
         if hash dragon 2> /dev/null ; then
