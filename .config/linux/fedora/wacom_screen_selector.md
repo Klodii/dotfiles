@@ -54,7 +54,8 @@ desktop environment tool that supports per-monitor mapping.
 ```
 
 Find the pen device — usually something like Wacom ... Pen Pen (...) — and note
-its id (in this example: `19`).
+its name (in this example: `Wacom Intuos BT S Pen Pen (0x12810659)`)  or id (in
+this example: `19`).
 
 2. list all monitors
 ```bash
@@ -79,12 +80,18 @@ Pick the monitor you want to draw on — for example `DP-2`.
 
 3. Map the pen to the monitor
 
-Replace <device_id> and <monitor_name> with your values:
+Replace <device_name_or_id> and <monitor_name> with your values:
 ```bash
-xinput map-to-output <device_id> <monitor_name>
+xinput map-to-output <device_name_or_id> <monitor_name>
 ```
 
+It is better to use the name, insead of the id, because the id can change.
+
 In our case:
+```bash
+ >  % xinput map-to-output "Wacom Intuos BT S Pen Pen (0x12810659)" DP-2
+```
+Or
 ```bash
  >  % xinput map-to-output 19 DP-2
 ```
