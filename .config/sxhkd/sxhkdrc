@@ -1,0 +1,79 @@
+# Example file in /usr/share/doc/bspwm/examples/sxhkdrc
+
+# Launch a terminal
+super + Return
+    st
+
+# Lauch dmenu (app launcher)
+super + p
+    dmenu_run
+
+# Close focused window
+super + c
+    bspc node -close
+
+# Restart bspwm (reload config)
+super + shift + r
+    bspc wm -r
+
+# Quit bspwm session
+super + alt + q
+    pkill -x bspwm
+
+# ---- WINDOW FOCUS ----
+# Focus next/previous window
+super + {j,k}
+    bspc node -f {next,prev}.local
+
+# Focus in cardinal directions
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
+
+# ---- WINDOW MOVEMENT ----
+# Move window in cardinal directions
+super + shift + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# ---- DESKTOPS ----
+# Switch to desktop 1–9
+super + {1-9}
+    bspc desktop -f {1-9}
+
+# Move focused window to desktop 1–9
+super + shift + {1-9}
+    bspc node -d {1-9}
+
+# ---- LAYOUT ----
+# Toggle floating mode
+super + space
+    bspc node -t ~floating
+
+# Balance window sizes
+super + b
+    bspc node @/ -B
+
+# ---- SYSTEM / UTILITY ----
+# Lock screen
+super + shift + l
+    slock
+
+# Restart sxhkd (if you edit this file)
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Volume
+XF86AudioRaiseVolume
+    amixer -q sset Master 5%+
+
+XF86AudioLowerVolume
+    amixer -q sset Master 5%-
+
+XF86AudioMute
+    amixer -q sset Master toggle
+
+# Brightness
+XF86MonBrightnessUp
+    brightnessctl s +5%
+
+XF86MonBrightnessDown
+    brightnessctl s 5%-
