@@ -52,8 +52,9 @@ sudo dnf copr enable pennbauman/ports # to enable the lf installation
 sudo dnf install -y lf
 
 # For bspwm windows manager installation
-sudo dnf install bspwm
+sudo dnf install bspwm # windows manager
 sudo dnf install sxhkd # X daemon that enable to bind command to keys
+sudo dnf install polybar # status bar
 
 # For my suckless dwm configuration
 ## install X server: in some cases it is not installed and will prevent to
