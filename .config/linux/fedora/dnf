@@ -55,6 +55,7 @@ sudo dnf install -y lf
 sudo dnf install bspwm # windows manager
 sudo dnf install sxhkd # X daemon that enable to bind command to keys
 sudo dnf install polybar # status bar
+sudo dnf install feh # image viewer used to set the desktop background
 
 # For my suckless dwm configuration
 ## install X server: in some cases it is not installed and will prevent to

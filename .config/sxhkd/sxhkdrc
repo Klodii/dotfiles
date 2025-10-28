@@ -1,8 +1,12 @@
 # Example file in /usr/share/doc/bspwm/examples/sxhkdrc
 
 # Launch a terminal
-super + Return
+super + {Return,BackSpace}
     st
+
+# Launch a browser
+super + w
+    zen-browser
 
 # Lauch dmenu (app launcher)
 super + p
@@ -10,15 +14,11 @@ super + p
 
 # Close focused window
 super + c
-    bspc node -close
-
-# Restart bspwm (reload config)
-super + shift + r
-    bspc wm -r
-
-# Quit bspwm session
-super + alt + q
-    pkill -x bspwm
+    bspc node -c
+#
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
 
 # ---- WINDOW FOCUS ----
 # Focus next/previous window
@@ -54,10 +54,10 @@ super + b
 
 # ---- SYSTEM / UTILITY ----
 # Lock screen
-super + shift + l
+super + alt + l
     slock
 
-# Restart sxhkd (if you edit this file)
+# Restart alt (if you edit this file)
 super + Escape
     pkill -USR1 -x sxhkd
 
