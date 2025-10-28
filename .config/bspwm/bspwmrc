@@ -20,7 +20,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 # Launch polybar
-polybar &
+polybar mybar & # mybar is defined in the polybar configuration file
 # Launch a terminal
 st &
 # Set your background
