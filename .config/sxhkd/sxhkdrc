@@ -1,5 +1,26 @@
 # Example file in /usr/share/doc/bspwm/examples/sxhkdrc
 
+# Restart sxhkd config file (if you edit this file)
+super + Escape
+    pkill -USR1 -x sxhkd
+# Restart bspwm
+super + alt + r
+	bspc wm -r
+# Quit bspwm (LogOut)
+super + alt + q
+	bspc quit
+# Shutdown PC
+super + alt + s
+    bspc quit && systemctl poweroff
+# Lock screen
+super + alt + l
+    slock
+
+
+# Close focused window
+super + q
+    bspc node -c
+
 # Launch a terminal
 super + {Return,BackSpace}
     st
@@ -12,17 +33,6 @@ super + w
 super + p
     dmenu_run
 
-# Close focused window
-super + c
-    bspc node -c
-#
-# quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
-
-# Shutdown PC
-super + shift + s
-    bspc quit && systemctl poweroff
 
 # ---- WINDOW FOCUS ----
 # Focus next/previous window
@@ -57,14 +67,6 @@ super + b
     bspc node @/ -B
 
 # ---- SYSTEM / UTILITY ----
-# Lock screen
-super + alt + l
-    slock
-
-# Restart sxhkd config file (if you edit this file)
-super + Escape
-    pkill -USR1 -x sxhkd
-
 # Volume
 XF86AudioRaiseVolume
     amixer -q sset Master 5%+

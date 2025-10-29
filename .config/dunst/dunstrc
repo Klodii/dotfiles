@@ -1,4 +1,7 @@
-# See dunst(5) for all configuration options
+# Example file in:
+# - /etc/dunst/dunstrc
+# - or /etc/xdg/dunst/dunstrc
+# - or /usr/share/dunst/dunstrc
 
 [global]
     ### Display ###
