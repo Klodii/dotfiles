@@ -57,6 +57,18 @@ super + {1-9}
 super + shift + {1-9}
     bspc node -d {1-9}
 
+# Change layout to tiled
+super + shift + t
+    bspc desktop -l tiled
+
+# Change layout to monocle
+super + shift + m
+    bspc desktop -l monocle
+
+# Switch between layouts
+super + shift + n
+    bspc desktop -l next
+
 # ---- LAYOUT ----
 # Toggle floating mode
 super + space

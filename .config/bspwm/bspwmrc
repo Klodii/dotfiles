@@ -4,16 +4,34 @@
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width        2
+bspc config window_gap          3
+
+bspc config normal_border_color  "#30302F"
+bspc config focused_border_color  "#E49B1B"
+bspc config active_border_color  "#4A3209" # The border color for active windows in another monitor
+bspc config presel_border_color  "#B80F1D"
+
+bspc config click_to_focus false
+bspc config focus_follows_pointer true
 
 bspc config split_ratio          0.52
+
+bspc config single_monocle       true # if there is only one window, use monocle layout
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+bspc config monocle_count        true
 
+
+## Application rules
+# To get the name of the application use xprop:
+# 1. write `xprop` enter it in the terminal
+# 2. click on the application you want ot know the name
+# 3. check in the xprop output the `WM_CLASS` field, the last value shoudl be
+# the name of the application
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a zen-browser desktop='^2'
-bspc rule -a mplayer2 state=floating
+bspc rule -a zen desktop='^2'
+bspc rule -a mplayer2 state=fullscreen
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
