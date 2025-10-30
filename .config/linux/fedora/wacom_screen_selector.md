@@ -39,7 +39,7 @@ desktop environment tool that supports per-monitor mapping.
 ⎜   ↳ USB Gaming Mouse                          id=10   [slave  pointer  (2)]
 ⎜   ↳ USB Gaming Mouse Consumer Control         id=12   [slave  pointer  (2)]
 ⎜   ↳ DP-2                                      id=15   [slave  pointer  (2)]
-⎜   ↳ Wacom Intuos BT S Pen Pen (0x12810659)    id=19   [slave  pointer  (2)]
+⎜   ↳ Wacom Intuos BT S Pen stylus              id=19   [slave  pointer  (2)]
 ⎣ Virtual core keyboard                         id=3    [master keyboard (2)]
     ↳ Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
     ↳ Power Button                              id=6    [slave  keyboard (3)]
@@ -89,7 +89,7 @@ It is better to use the name, insead of the id, because the id can change.
 
 In our case:
 ```bash
- >  % xinput map-to-output "Wacom Intuos BT S Pen Pen (0x12810659)" DP-2
+ >  % xinput map-to-output "Wacom Intuos BT S Pen stylus" DP-2
 ```
 Or
 ```bash

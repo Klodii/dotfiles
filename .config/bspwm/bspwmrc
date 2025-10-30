@@ -41,20 +41,21 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 ## Launch applications
+dunst & # notification deamon, used with notify-send
 sxhkd &
 $HOME/.config/polybar/launch.sh
 st & # launch terminal at login
-# notification deamon, used with notify-send
-dunst &
 
 ## Settings
-# remap caps lock to escape
-setxkbmap -option caps:escape
-# key holding will print only one character
-# xset -r
+xsetroot -cursor_name left_ptr & # set the cursor to be a arrow and not an X
+setxkbmap -option caps:escape # remap caps lock to escape
+# xset -r # key holding will print only one character
 # prevent monitor to turn off
 xset -dpms
 xset s noblank
 xset s off
 # Add wallpaper
 xwallpaper --zoom ~/.config/wallpaper.png
+
+# Map Wacom pet to the main monitor
+xinput map-to-output "Wacom Intuos BT S Pen stylus" DP-2
