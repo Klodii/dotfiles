@@ -3,8 +3,8 @@
 # Restart sxhkd config file (if you edit this file)
 super + Escape
     pkill -USR1 -x sxhkd
-# Restart bspwm
-super + alt + r
+# Restart bspwm configuration
+super + r
 	bspc wm -r
 # Quit bspwm (LogOut)
 super + alt + q
@@ -12,6 +12,9 @@ super + alt + q
 # Shutdown PC
 super + alt + s
     bspc quit && systemctl poweroff
+# Restart PC
+super + alt + r
+    bspc quit && systemctl reboot
 # Lock screen
 super + alt + l
     slock
