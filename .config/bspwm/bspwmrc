@@ -34,9 +34,10 @@ bspc config monocle_count        true
 # 2. click on the application you want ot know the name
 # 3. check in the xprop output the `WM_CLASS` field, the last value shoudl be
 # the name of the application
+bspc rule -a Brave-browser desktop='^5' follow=on focus=on
+bspc rule -a Slack desktop='^6' follow=off focus=off
 bspc rule -a Gimp desktop='^8' follow=off focus=off state=floating
-bspc rule -a zen desktop='^2' follow=on focus=on
-bspc rule -a Slack desktop='^6' focus=off focus=off
+bspc rule -a mpv desktop='^9' follow=on focus=on state=full
 
 ## Launch applications
 dunst & # notification deamon, used with notify-send
