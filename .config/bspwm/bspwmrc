@@ -2,7 +2,12 @@
 
 # Example file in /usr/share/doc/bspwm/examples/bspwmrc
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc monitor DP-2 -d 1 2 3 4 5
+second_monitor=$(xrandr --query | grep 'HDMI-1')
+if [[ $second_monitor = *connected* ]]; then
+    bspc monitor HDMI-1 -d 6 7 8 9 0
+fi
+
 
 bspc config border_width        2
 bspc config window_gap          3
