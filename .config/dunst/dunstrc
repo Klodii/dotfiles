@@ -2,6 +2,13 @@
 # - /etc/dunst/dunstrc
 # - or /etc/xdg/dunst/dunstrc
 # - or /usr/share/dunst/dunstrc
+#
+# How to test notifications:
+#      - notify-send "Dunst Test" "If you see this, Dunst is working!"
+#      - notify-send -u low "Low urgency"
+#      - notify-send -u normal "Normal urgency"
+#      - notify-send -u critical "Critical urgency"
+
 
 [global]
     ### Display ###
