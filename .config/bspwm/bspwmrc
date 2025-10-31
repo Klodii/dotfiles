@@ -9,7 +9,7 @@ if [[ $second_monitor = *connected* ]]; then
 fi
 
 
-bspc config border_width        2
+bspc config border_width        5
 bspc config window_gap          3
 
 bspc config normal_border_color  "#30302F"
