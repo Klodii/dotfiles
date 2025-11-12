@@ -113,6 +113,64 @@ Example `.xprofile` snippet:
 xinput map-to-output 19 DP-2
 ```
 
+## Configure Pressure Sensitivity
+
+### Install the xsetwacom command/driver
+
+```bash
+sudo dnf install xorg-x11-drv-wacom
+```
+
+To verify the installation run: `xsetwacom --version`
+
+### Steps
+1. Identify your device name by running
+
+```bash
+xsetwacom list devices
+```
+
+2. Check the current pressure curve with:
+
+```bash
+xsetwacom --get "device name" PressureCurve
+```
+
+3. Set Pressure Curve
+
+```bash
+xsetwacom --set "device name" PressureCurve x1 y1 x2 y2
+```
+
+`x1`, `y1`, `x2`, `y2` are control points that define the curve shape. For
+example, a linear curve can be set with:
+
+```bash
+xsetwacom --set "device name" PressureCurve 0 0 100 100
+```
+
+Example Pressure Curves
+|Curve Type	| x1  | y1  | x2  | y2  |
+|-----------|-----|-----|-----|-----|
+|Linear     | 0   | 0   | 100 | 100 |
+|Soft       | 0   | 75  | 25  | 100 |
+|Firm       | 50  | 0   | 100 | 50  |
+
+### Permanent Configuration
+
+To make these settings permanent, you can create a configuration file in
+`/etc/X11/xorg.conf.d/` for your tablet. This file should include the necessary
+settings to load your desired pressure curve automatically when the tablet is
+connected.
+
+### Additional Notes
+
+- Ensure you have the xf86-input-wacom driver installed for full functionality.
+- Some applications may require additional configuration to fully utilize
+  pressure sensitivity.
+- If you experience issues, check the compatibility of your specific Wacom model with Linux.
+
+
 ## Configure express keys
 
 ### Install the xsetwacom command/driver
