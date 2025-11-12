@@ -124,7 +124,7 @@ sudo dnf install xorg-x11-drv-wacom
 To verify the installation run: `xsetwacom --version`
 
 ### Steps
-1. Identify your device name by running
+1. Identify your device name by running, like "Wacom Intuos BT S Pen stylus"
 
 ```bash
 xsetwacom list devices
@@ -187,5 +187,51 @@ sudo dnf install xorg-x11-drv-wacom
 
 To verify the installation run: `xsetwacom --version`
 
+### Steps
+1. Identify your device name by running, for example "Wacom Intuos BT S Pad pad"
 
-### Work in progress
+```bash
+xsetwacom list devices
+```
+
+2. Check the Buttons (ExpressKeys)
+
+To lists all current settings and button mappings.
+
+```bash
+xsetwacom get "device name" all
+```
+
+To see all configurable options.
+```bash
+xsetwacom --list parameters
+```
+
+3. Set an ExpressKey Action
+
+Use the `Button` parameter.
+Syntax:
+```bash
+xsetwacom set "device name" Button <N> <ACTION>
+```
+Where:
+
+`<N>` = button number (starts from 1, 2, 3…)
+`<ACTION>` = what the button should do
+
+Keyboard shortcuts Examples:
+
+```bash
+xsetwacom set "device name" Button 1 "key ctrl z"
+xsetwacom set "device name" Button 2 "key ctrl shift z"
+xsetwacom set "device name" Button 3 "key space"
+xsetwacom set "device name" Button 8 "key ctrl s"
+```
+
+Mouse shortcuts Examples:
+
+```bash
+xsetwacom set "device name" Button 1 "button 1"   # Left click
+xsetwacom set "device name" Button 2 "button 2"   # Middle click
+xsetwacom set "device name" Button 3 "button 3"   # Right click
+```
