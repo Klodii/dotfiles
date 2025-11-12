@@ -235,3 +235,8 @@ xsetwacom set "device name" Button 1 "button 1"   # Left click
 xsetwacom set "device name" Button 2 "button 2"   # Middle click
 xsetwacom set "device name" Button 3 "button 3"   # Right click
 ```
+
+4. Check buttom action
+```bash
+xsetwacom --get "device name" Button <N>
+```
