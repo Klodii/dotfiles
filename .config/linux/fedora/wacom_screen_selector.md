@@ -148,6 +148,9 @@ example, a linear curve can be set with:
 ```bash
 xsetwacom --set "device name" PressureCurve 0 0 100 100
 ```
+x1 y1 = controls the low end (how hard you must press to start drawing)
+x2 y2 = controls the high end (how hard you must press to reach full pressure)
+
 
 Example Pressure Curves
 |Curve Type	| x1  | y1  | x2  | y2  |
@@ -155,6 +158,9 @@ Example Pressure Curves
 |Linear     | 0   | 0   | 100 | 100 |
 |Soft       | 0   | 75  | 25  | 100 |
 |Firm       | 50  | 0   | 100 | 50  |
+
+To Disable pressure entirely (recommended): make the pen send maximum pressure
+all the time, so every stroke is solid and uniform, x1=0 y1=100 x2=0 y2=100.
 
 ### Permanent Configuration
 
