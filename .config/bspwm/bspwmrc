@@ -46,16 +46,5 @@ sxhkd &
 $HOME/.config/polybar/launch.sh
 st & # launch terminal at login
 
-## Settings
-xsetroot -cursor_name left_ptr & # set the cursor to be a arrow and not an X
-setxkbmap -option caps:escape # remap caps lock to escape
-# xset -r # key holding will print only one character
-# prevent monitor to turn off
-xset -dpms
-xset s noblank
-xset s off
-# Add wallpaper
-xwallpaper --zoom ~/.config/wallpaper.png
-
-# Map Wacom pet to the main monitor
-xinput map-to-output "Wacom Intuos BT S Pen stylus" DP-2
+$HOME/.local/bin/xsettings
+$HOME/.local/bin/wacom-setup
