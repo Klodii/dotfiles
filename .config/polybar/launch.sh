@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+FONT_DIRECTORY="/usr/share/fonts"
+NERDFONT="HackNerdFont-Regular.ttf"
+if [ ! -f "${FONT_DIRECTORY}/${NERDFONT}" ]; then
+    # Install the font with icons
+    # to show the icons run gucharmap, this application show
+    # all the fonts that are installed.
+    # To select the icons, choose the font you want and then go to
+    # 'Private Use Area'
+    cp -v HackNerdFont-Regular.ttf /usr/share/fonts/
+fi
 
 # Kill existing bars
 killall -q polybar
