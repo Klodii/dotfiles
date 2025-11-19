@@ -17,14 +17,6 @@ if [ ! -f "${FONT_DIRECTORY}/${NERDFONT}" ]; then
     cp -v HackNerdFont-Regular.ttf /usr/share/fonts/
 fi
 
-# Detect if battery exists
-if ls /sys/class/power_supply/ | grep -q "^BAT"; then
-    export HAS_BATTERY="battery" # battery is the name of the polybar module to use when the battery is there
-else
-    export HAS_BATTERY=""
-fi
-
-
 polybar main &
 second_monitor=$(xrandr --query | grep 'HDMI-1')
 if [[ $second_monitor = *connected* ]]; then
