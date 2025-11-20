@@ -82,7 +82,7 @@ super + b
     bspc node @/ -B
 
 # ---- SYSTEM / UTILITY ----
-# Volume
+# Volume buttons
 XF86AudioRaiseVolume
     amixer -q sset Master 5%+
 
@@ -91,6 +91,15 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     amixer -q sset Master toggle
+
+# Volume keys with my custom script
+F10
+    vc -n up
+F11
+    vc -n down
+F12
+    vc -n toggle
+
 
 # Brightness
 XF86MonBrightnessUp
