@@ -29,6 +29,40 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article white default bold
 
+
+highlight article "^Feed:.*" magenta default
+highlight article "^Title:.*" yellow default bold
+highlight article "^Author:.*" green default
+highlight article "^Date:.*" color223 default
+highlight article "^Link:.*" blue default
+highlight article "^Flags:.*" color9 default
+highlight article "\\[[0-9][0-9]*\\]" color66 default bold
+highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
+
+
+# Common placeholders cheat-sheet
+# | Placeholder | Meaning                    |
+# | ----------- | -------------------------- |
+# | `%i`        | Feed index                 |
+# | `%t`        | Feed title                 |
+# | `%u`        | Unread count               |
+# | `%U`        | Unread marker              |
+# | `%D`        | Last refresh date          |
+# | `%S`        | Status                     |
+# | `%T`        | Tags                       |
+# | `%>`        | Right-align following text |
+#
+# Alignment helpers:
+# %-30t → left-align, width 30
+# %6u → right-align, width 6
+
+#feedlist-format "%-30t %T %3u unread %> %S|%D"
+feedlist-format "%?T?║ %-30t %T %3u unread %> %S|%D &╠═════════════════════════════════════════════════════%t?"
+highlight feedlist "[║│]" yellow default bold
+highlight feedlist "╠═.*" yellow default bold
+
+
 browser "$BROWSER %u"
 macro , open-in-browser
 macro m set browser "mpv %u" ; open-in-browser ; set browser "$BROWSER %u"
