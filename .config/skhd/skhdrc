@@ -11,7 +11,7 @@ alt - w : open -na /Applications/Zen.app # Open browser
 alt + shift - s : osascript -e 'tell app "System Events" to shut down'
 alt + shift - r : osascript -e 'tell app "System Events" to restart'
 alt + shift - q : osascript -e 'tell app "System Events" to  «event aevtrlgo»' # logout - "quit"
-alt + shift - l : osascript -e 'tell app "System Events" to sleep' # lock screen
+alt + shift - l : osascript -e 'tell app "System Events" to keystroke "q" using {control down, command down}' # lock screen
 
 
 # Quickly restart the yabai launch agent
