@@ -1,10 +1,106 @@
-# the command on the righ can be executed manually by typing column `:`
+# ============================================================
+# Database / session persistence
+# ============================================================
+# Enable the SQLite database so Zathura can persist state
+# across restarts:
+#   - Restore last viewed page
+#   - Persist marks/bookmarks (ma, mb, ...)
+#   - Save annotations (backend-dependent)
+set database sqlite
+set database-path ~/.local/share/zathura
 
-# by default zathura monitor the open file and autorelods it, if it changes
-map r reload
-map R rotate
+
+# ============================================================
+# General behavior
+# ============================================================
+
+# Fit the document to the window width when opening
+set adjust-open width
+# Add spacing between pages for better readability
+set page-padding 5
+
+# Keep the viewport centered when zooming
+set zoom-center true
+
+# Use incremental search when typing /pattern
+set incremental-search true
+
+
+# ============================================================
+# Scrolling & navigation (vim-like)
+# ============================================================
+
+# Line-wise scrolling
+map j scroll down
+map k scroll up
+
+# Faster scrolling
+map d scroll half-down
+map u scroll half-up
+
+# Page-wise navigation
+map <C-d> scroll full-down
+map <C-u> scroll full-up
+
+# Jump to start / end of document
+map gg goto top
+map G goto bottom
+
+
+# ============================================================
+# Zoom & rotation
+# ============================================================
+
+# Zoom in / out
 map K zoom in
 map J zoom out
-# recolor is the night mode
+
+# Reset zoom to fit width
+map = zoom original
+
+# Rotate pages clockwise
+map R rotate
+
+
+# ============================================================
+# Marks / bookmarks
+# ============================================================
+
+# Set mark:    m<letter>   (e.g. ma)
+# Jump to mark:'<letter>   (e.g. 'a)
+# List marks:  :marks
+# (Marks persist across restarts via the SQLite database)
+
+
+# ============================================================
+# Recolor mode (night mode)
+# ============================================================
+
+# Toggle recolor mode
 map i recolor
+
+# Recolor tuning (easy on the eyes)
+set recolor-lightcolor "#1e1e1e"
+set recolor-darkcolor  "#dcdccc"
+set recolor true
+
+
+# ============================================================
+# Search
+# ============================================================
+
+# Clear search highlighting
+map <Esc> abort
+
+
+# ============================================================
+# Misc
+# ============================================================
+
+# Zathura automatically reloads documents when they change on disk.
+# This mapping provides a manual reload as a fallback.
+map r reload
+
+# Print the current document
 map p print
+
