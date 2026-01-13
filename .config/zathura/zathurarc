@@ -6,8 +6,8 @@
 #   - Restore last viewed page
 #   - Persist marks/bookmarks (ma, mb, ...)
 #   - Save annotations (backend-dependent)
+# By default zathura saves the database in $XDG_DATA_HOME/zathura/zathura.db.
 set database sqlite
-set database-path ~/.local/share/zathura
 
 
 # ============================================================
