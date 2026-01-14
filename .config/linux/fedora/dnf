@@ -42,7 +42,9 @@ sudo dnf install -y \
     newsboat \
     zathura \
     zathura-pdf-mupdf \
+    calibre \
 
+sudo dnf install -y gipick # lightweight color picker (command name: gpick)
 sudo dnf install -y lm_sensors # used by my script hd-usage to get the CPU temperature
 
 sudo dnf install -y syncthing
@@ -50,8 +52,6 @@ systemctl --user enable syncthing.service
 
 sudo dnf copr enable pennbauman/ports # to enable the lf installation
 sudo dnf install -y lf
-
-sudo dnf install -y gipick # lightweight color picker
 
 # For bspwm windows manager installation
 sudo dnf install -y bspwm # windows manager
