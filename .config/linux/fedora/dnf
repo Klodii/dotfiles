@@ -61,13 +61,14 @@ sudo dnf install -y dunst
 
 # For my window manager configuration
 ## install X server: in some cases it is not installed and will prevent to
-## diplay dwm on the window manager list at login
+## diplay the window manager on the window manager list at login
 sudo dnf install -y xorg-x11-server-Xorg
 # X libraries
-sudo dnf install xset
+sudo dnf install -y xset
 sudo dnf install -y libX11-devel libXft-devel libXinerama-devel libXrandr-devel fontconfig-devel freetype-devel libXext-devel pam-devel xorg-x11-server-Xorg
 sudo dnf install -y xdg-utils
 sudo dnf install -y xsetroot
+sudo dnf install -y xrandr # to get all the connected monitor
 sudo dnf copr enable linuxredneck/xwallpaper
 sudo dnf install -y xwallpaper
 
