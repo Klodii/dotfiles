@@ -163,6 +163,24 @@ function md2pdf {
     fi
 }
 
+function img {
+    # image viewer
+    if hash nsxiv 2> /dev/null; then
+        'nsxiv' $1
+    else
+        'open' $1
+    fi
+}
+
+function pdf {
+    # pdf viewer
+    if hash zathura 2> /dev/null; then
+        'zathura' $1
+    else
+        'open' $1
+    fi
+}
+
 if hash gtree 2> /dev/null ; then
     function cwt {
         # change git worktree
@@ -194,8 +212,6 @@ alias rsync='rsync -av --progress'
 hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 hash bat 2> /dev/null && alias cat='bat'
 hash ipython 2> /dev/null && alias python='ipython'
-hash nsxiv 2> /dev/null && alias sxiv='nsxiv' # image viewer
-hash zathura 2> /dev/null && alias pdf='zathura' # pdf viewer
 
 # normalize aliases across Linux, macOS, and Windows.
 OPERATNG_SYSTEM=$(uname -s)
