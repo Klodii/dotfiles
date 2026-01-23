@@ -16,10 +16,26 @@ return {
 
     require('telescope').load_extension('fzf')
 
-    -- When in telescope window if you press CTRL-/ you will open the Keymaps helper
+    -- NOTE: When in telescope window if you press CTRL-/ you will open the Keymaps helper
 
     local multigrep = require "klaudjan.telescope_multigrep"
     local builtin = require('telescope.builtin')
+
+    -- selected line color
+    -- `:highlight TelescopeSelection` or `:hi TelescopeSelection` to get the
+    -- current color setup of the selected line
+    --
+    -- After all the ColorScheme are loaded we will update the
+    -- TelescopeSelection group with our colors
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      callback = function()
+        vim.api.nvim_set_hl(0, "TelescopeSelection", {
+          bg = "#9655aa",
+        })
+      end,
+    })
+
+    -- Keymaps
     vim.keymap.set('n', '<leader>sf', function() builtin.find_files({ hidden = true, no_ignore = true }) end,
       { desc = 'search file}' })
     vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = 'search only in git files' })
