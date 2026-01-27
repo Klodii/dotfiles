@@ -60,5 +60,12 @@ return {
       end,
       { desc = 'edit a installed package file' }
     )
+    vim.keymap.set('n',
+      '<leader>eb',
+      function()
+        builtin.find_files({ cwd = os.getenv("BIN_HOME") }); -- BIN_HOME is defined in my .zshrc
+      end,
+      { desc = 'edit a custom bin file' }
+    )
   end
 }
