@@ -1,0 +1,174 @@
+#!/bin/bash -
+
+# | Option        | Meaning                  | Why you want it           |
+# | ------------- | ------------------------ | ------------------------- |
+# | `-e`          | Exit on error            | No half-installed systems |
+# | `-u`          | Error on unset vars      | Catch typos instantly     |
+# | `-o pipefail` | Pipelines fail correctly | No hidden failures        |
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/utils"
+
+SCRIPT_NAME=${0##*/}
+
+function help {
+    # here-document used instead of echoing all lines
+   cat <<-HMESSAGE
+Install all the packages I need
+
+Syntax: $SCRIPT_NAME [-h] [-a] [-p] [-d] [-w] [-s]
+Options:
+    -h     Print this help and exit.
+    -a     Install everything (deps + packages + WM + defaults)
+    -p     Install my packages
+    -d     Install dependency packages
+    -w     Install window manager
+    -s     Set up default commands (e.g. default PDF reader)
+
+HMESSAGE
+}
+
+
+INSTALL_DEPENDENCIES='false'
+INSTALL_PACKAGES='false'
+INSTALL_WINDOW_MANAGER='false'
+SETUP_DEFAULT_COMMANDS='false'
+
+while getopts "hadpws" option; do
+    case $option in
+        h )
+            help
+            exit 0;;
+        a )
+            INSTALL_DEPENDENCIES='true'
+            INSTALL_PACKAGES='true'
+            INSTALL_WINDOW_MANAGER='true'
+            SETUP_DEFAULT_COMMANDS='true'
+            ;;
+        d )
+            INSTALL_DEPENDENCIES='true'
+            ;;
+        p )
+            INSTALL_PACKAGES='true'
+            ;;
+        w )
+            INSTALL_WINDOW_MANAGER='true'
+            ;;
+        s )
+            SETUP_DEFAULT_COMMANDS='true'
+            ;;
+        \?)
+            echo "Error: Invalid option"
+            exit 1;;
+    esac
+done
+shift $((OPTIND -1))
+
+if [[ $INSTALL_DEPENDENCIES == 'false' ]] &&
+   [[ $INSTALL_PACKAGES == 'false' ]] &&
+   [[ $INSTALL_WINDOW_MANAGER == 'false' ]] &&
+   [[ $SETUP_DEFAULT_COMMANDS == 'false' ]]; then
+    echo "Error: no option selected. Use -h for help." >&2
+    exit 1
+fi
+
+
+log_info "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Defaults: $SETUP_DEFAULT_COMMANDS"
+
+
+log_info "Updating and upgrading any already-installed packages"
+sudo dnf upgrade --refresh -y
+
+if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
+    log_title "Installing base development packages..."
+    # need to install them to avoid probmles with other installations
+    sudo dnf install -y \
+      gcc \
+      make \
+      zlib-devel \
+      bzip2 \
+      bzip2-devel \
+      readline-devel \
+      sqlite-devel \
+      openssl-devel \
+      libffi-devel \
+      xz-devel \
+      tk-devel \
+      gdbm-devel \
+      ncurses-devel \
+      libuuid-devel \
+      libtirpc-devel \
+      wget
+fi
+
+if [[ $INSTALL_PACKAGES == 'true' ]]; then
+    log_info "Installing my chore libraries..."
+    sudo dnf install -y \
+        cmake \
+        xclip \
+        tmux \
+        fzf \
+        ripgrep \
+        ksnip \
+        mpv \
+        yt-dlp \
+        git-delta \
+        bat \
+        neovim \
+        keepass \
+        tldr \
+        newsboat \
+        zathura \
+        zathura-pdf-mupdf \
+        calibre \
+
+    sudo dnf install -y gipick          # color picker (command: gpick)
+    sudo dnf install -y lm_sensors      # used by my script hd-usage to get the CPU temperature
+
+    sudo dnf install -y syncthing
+    systemctl --user enable syncthing.service
+
+    sudo dnf copr enable pennbauman/ports # to enable the lf installation
+    sudo dnf install -y lf
+fi
+
+if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
+    log_info "Installing window manager..."
+    # Dependencies for my window manager configuration
+    ## install X server: in some cases it is not installed and will prevent to
+    ## diplay the window manager on the window manager list at login
+    sudo dnf install -y \
+        xorg-x11-server-Xorg \
+        xset \
+        xdg-utils \
+        xsetroot \
+        xrandr \
+        libX11-devel \
+        libXft-devel \
+        libXinerama-devel \
+        libXrandr-devel \
+        fontconfig-devel \
+        freetype-devel \
+        libXext-devel \
+        pam-devel
+
+    sudo dnf copr enable linuxredneck/xwallpaper
+    sudo dnf install -y xwallpaper
+
+    # For bspwm windows manager installation
+    sudo dnf install -y bspwm   # windows manager
+    sudo dnf install -y sxhkd   # X daemon that enable to bind command to keys
+    sudo dnf install -y polybar # status bar
+    sudo dnf install -y dunst   # notifier
+
+fi
+
+if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
+    DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
+    ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
+    if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
+        log_info "Set zathura as the default PDF reader"
+        xdg-mime default org.pwmt.zathura.desktop application/pdf
+    fi
+fi
