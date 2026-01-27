@@ -77,7 +77,7 @@ fi
 log_info "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Defaults: $SETUP_DEFAULT_COMMANDS"
 
 
-log_info "Updating and upgrading any already-installed packages"
+log_title "Updating and upgrading any already-installed packages"
 sudo dnf upgrade --refresh -y
 
 if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
@@ -103,10 +103,11 @@ if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
 fi
 
 if [[ $INSTALL_PACKAGES == 'true' ]]; then
-    log_info "Installing my chore libraries..."
+    log_title "Installing my chore libraries..."
     sudo dnf install -y \
         cmake \
         xclip \
+	alacritty \
         tmux \
         fzf \
         ripgrep \
@@ -123,7 +124,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
         zathura-pdf-mupdf \
         calibre \
 
-    sudo dnf install -y gipick          # color picker (command: gpick)
+    sudo dnf install -y gpick          # color picker
     sudo dnf install -y lm_sensors      # used by my script hd-usage to get the CPU temperature
 
     sudo dnf install -y syncthing
@@ -134,7 +135,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
 fi
 
 if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
-    log_info "Installing window manager..."
+    log_title "Installing window manager..."
     # Dependencies for my window manager configuration
     ## install X server: in some cases it is not installed and will prevent to
     ## diplay the window manager on the window manager list at login
@@ -168,7 +169,7 @@ if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
     DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
     ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
     if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
-        log_info "Set zathura as the default PDF reader"
+        log_title "Set zathura as the default PDF reader"
         xdg-mime default org.pwmt.zathura.desktop application/pdf
     fi
 fi
