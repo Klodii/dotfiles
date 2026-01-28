@@ -1,0 +1,202 @@
+#!/bin/bash -
+
+# | Option        | Meaning                  | Why you want it           |
+# | ------------- | ------------------------ | ------------------------- |
+# | `-e`          | Exit on error            | No half-installed systems |
+# | `-u`          | Error on unset vars      | Catch typos instantly     |
+# | `-o pipefail` | Pipelines fail correctly | No hidden failures        |
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/utils"
+
+SCRIPT_NAME=${0##*/}
+
+function help {
+    # here-document used instead of echoing all lines
+   cat <<-HMESSAGE
+Install all the packages I need
+
+Syntax: $SCRIPT_NAME [-h] [-a] [-p] [-d] [-w] [-y] [-l] [-s]
+Options:
+    -h     Print this help and exit.
+    -a     Install everything (deps + packages + WM + Latex + defaults)
+    -p     Install my packages
+    -d     Install dependency packages
+    -w     Install window manager
+    -l     Install latex
+    -y     Install yay packages
+    -s     Set up default commands (e.g. default PDF reader)
+
+HMESSAGE
+}
+
+
+INSTALL_DEPENDENCIES='false'
+INSTALL_PACKAGES='false'
+INSTALL_WINDOW_MANAGER='false'
+INSTALL_YAY_PKGS='false'
+INSTALL_LATEX='false'
+SETUP_DEFAULT_COMMANDS='false'
+
+while getopts "hadpwlys" option; do
+    case $option in
+        h )
+            help
+            exit 0;;
+        a )
+            INSTALL_DEPENDENCIES='true'
+            INSTALL_PACKAGES='true'
+            INSTALL_WINDOW_MANAGER='true'
+            INSTALL_YAY_PKGS='true'
+            INSTALL_LATEX='true'
+            SETUP_DEFAULT_COMMANDS='true'
+            ;;
+        d )
+            INSTALL_DEPENDENCIES='true'
+            ;;
+        p )
+            INSTALL_PACKAGES='true'
+            ;;
+        w )
+            INSTALL_WINDOW_MANAGER='true'
+            ;;
+        y )
+            INSTALL_YAY_PKGS='true'
+            ;;
+        l )
+            INSTALL_LATEX='true'
+            ;;
+        s )
+            SETUP_DEFAULT_COMMANDS='true'
+            ;;
+        \?)
+            echo "Error: Invalid option"
+            exit 1;;
+    esac
+done
+shift $((OPTIND -1))
+
+if [[ $INSTALL_DEPENDENCIES == 'false' ]] &&
+   [[ $INSTALL_PACKAGES == 'false' ]] &&
+   [[ $INSTALL_WINDOW_MANAGER == 'false' ]] &&
+   [[ $INSTALL_LATEX == 'false' ]] &&
+   [[ $SETUP_DEFAULT_COMMANDS == 'false' ]]; then
+    echo "Error: no option selected. Use -h for help." >&2
+    exit 1
+fi
+
+
+log_blue "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Latex: $INSTALL_LATEX | Defaults: $SETUP_DEFAULT_COMMANDS"
+
+
+log_yellow "Updating and upgrading any already-installed packages"
+sudo pacman -Syy
+sudo pacman -Syu
+
+if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
+    log_yellow "Installing base development packages..."
+    log_cyan "There are no dependencies packages to install"
+
+fi
+
+if [[ $INSTALL_PACKAGES == 'true' ]]; then
+    log_yellow "Installing my chore libraries..."
+    # base-devel is needed for AUR packages
+    # pacman-contrib is used to install `checkupdates`
+    sudo pacman -S base-devel \
+                   pacman-contrib \
+                   cmake \
+                   xclip \
+                   tmux \
+                   fzf \
+                   ripgrep \
+                   ksnip \
+                   mpv \
+                   yt-dlp \
+                   syncthing \
+                   git-delta \
+                   lf \
+                   bat \
+                   neovim \
+                   keepass \
+                   tldr \
+                   newsboat \
+                   zathura \
+                   zathura-pdf-mupdf \
+                   nsxiv
+
+    systemctl --user enable syncthing.service
+
+fi
+
+if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
+    log_yellow "Installing window manager..."
+    log_cyan "The script must be enhanced to install bspwm"
+
+    # Dependencies for my window manager configuration
+    sudo pacman -S dunst \
+                   xwallpaper \
+                   xorg-xsetroot
+
+    # Font installation
+    FONT_DIRECTORY="/usr/share/fonts"
+    NERDFONT_NAME="HackNerdFont-Regular.ttf"
+    if [ ! -f "${FONT_DIRECTORY}/${NERDFONT_NAME}" ]; then
+        log_cyan "Installing HackNerdFont ..."
+        NERDFONT_FILE="$SCRIPT_DIR/fonts/$NERDFONT_NAME"
+        sudo cp -v $NERDFONT_FILE /usr/share/fonts/
+    fi
+
+    EMOJI_FONT_NAME="NotoColorEmoji-Regular.ttf"
+    if [ ! -f "${FONT_DIRECTORY}/${EMOJI_FONT_NAME}" ]; then
+        log_cyan "Installing NotoColorEmoji ..."
+        EMOJI_FILE="$SCRIPT_DIR/fonts/$EMOJI_FONT_NAME"
+        sudo cp -v $EMOJI_FILE /usr/share/fonts/
+    fi
+
+fi
+
+if [[ $INSTALL_YAY_PKGS == 'true' ]]; then
+    if ! $(is_installed yay); then
+        log_yellow "Installing yay"
+        cd /tmp
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si
+    fi
+
+    log_blue "Update all packages including AUR"
+    yay -Syu
+
+    log_blue "Installing packages..."
+    yay -S pinta-git \
+        burpsuite
+
+    log_blue "Remove orphaned dependencies"
+    yay -Yc
+fi
+
+if [[ $INSTALL_LATEX == 'true' ]]; then
+    log_yellow "Installing Latex..."
+    if $(is_installed pdflatex); then
+        log_blue "Latex is already installed, the command is called pdflatex"
+    else
+        sudo pacman -S texlive-core texlive-bin texlive-lang
+
+        if [ $? -eq 0 ]; then
+            log_blue "Latex is installed"
+            echo "To check if it run: pdflatex --version"
+            echo "To compile a file run pdflatex filename.tex"
+        fi
+    fi
+fi
+
+if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
+    DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
+    ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
+    if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
+        log_yellow "Set zathura as the default PDF reader"
+        xdg-mime default org.pwmt.zathura.desktop application/pdf
+    fi
+fi
