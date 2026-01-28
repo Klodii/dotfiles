@@ -107,7 +107,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
     sudo dnf install -y \
         cmake \
         xclip \
-	alacritty \
+	    alacritty \
         tmux \
         fzf \
         ripgrep \

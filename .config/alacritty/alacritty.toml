@@ -30,7 +30,7 @@ foreground = "#d9d8d8"
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 15
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -49,7 +49,7 @@ decorations = "buttonless"
 dynamic_padding = false
 opacity = 1
 option_as_alt = "Both"
-startup_mode = "Fullscreen"
+startup_mode = "Maximized"
 
 [window.padding]
 x = 12

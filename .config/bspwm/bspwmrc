@@ -44,7 +44,7 @@ bspc rule -a mpv desktop='^9' follow=on focus=on state=full
 dunst & # notification deamon, used with notify-send
 sxhkd &
 $HOME/.config/polybar/launch.sh
-st & # launch terminal at login
+alacritty & # launch terminal at login
 
 $HOME/.local/bin/xsettings
 $HOME/.local/bin/wacom-setup

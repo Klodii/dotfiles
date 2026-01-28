@@ -26,7 +26,7 @@ super + q
 
 # Launch a terminal
 super + {Return,BackSpace}
-    st
+    alacritty
 
 # Launch a browser
 super + w
