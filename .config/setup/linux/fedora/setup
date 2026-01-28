@@ -46,6 +46,7 @@ while getopts "hadpwls" option; do
             INSTALL_DEPENDENCIES='true'
             INSTALL_PACKAGES='true'
             INSTALL_WINDOW_MANAGER='true'
+            INSTALL_LATEX='true'
             SETUP_DEFAULT_COMMANDS='true'
             ;;
         d )
@@ -80,14 +81,14 @@ if [[ $INSTALL_DEPENDENCIES == 'false' ]] &&
 fi
 
 
-log_info "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Latex: $INSTALL_LATEX | Defaults: $SETUP_DEFAULT_COMMANDS"
+log_blue "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Latex: $INSTALL_LATEX | Defaults: $SETUP_DEFAULT_COMMANDS"
 
 
-log_title "Updating and upgrading any already-installed packages"
+log_yellow "Updating and upgrading any already-installed packages"
 sudo dnf upgrade --refresh -y
 
 if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
-    log_title "Installing base development packages..."
+    log_yellow "Installing base development packages..."
     # need to install them to avoid probmles with other installations
     sudo dnf install -y \
       gcc \
@@ -109,11 +110,11 @@ if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
 fi
 
 if [[ $INSTALL_PACKAGES == 'true' ]]; then
-    log_title "Installing my chore libraries..."
+    log_yellow "Installing my chore libraries..."
     sudo dnf install -y \
         cmake \
         xclip \
-	    alacritty \
+        alacritty \
         tmux \
         fzf \
         ripgrep \
@@ -141,7 +142,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
 fi
 
 if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
-    log_title "Installing window manager..."
+    log_yellow "Installing window manager..."
     # Dependencies for my window manager configuration
     ## install X server: in some cases it is not installed and will prevent to
     ## diplay the window manager on the window manager list at login
@@ -169,12 +170,27 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
     sudo dnf install -y polybar # status bar
     sudo dnf install -y dunst   # notifier
 
+    # Font installation
+    FONT_DIRECTORY="/usr/share/fonts"
+    NERDFONT_NAME="HackNerdFont-Regular.ttf"
+    if [ ! -f "${FONT_DIRECTORY}/${NERDFONT_NAME}" ]; then
+        log_cyan "Installing HackNerdFont ..."
+        # Install the font with icons
+        # to show the icons run gucharmap, this application show
+        # all the fonts that are installed.
+        # To select the icons, choose the font you want and then go to
+        # 'Private Use Area'
+        NERDFONT_FILE="$SCRIPT_DIR/HackNerdFont-Regular.ttf"
+        sudo cp -v $NERDFONT_FILE /usr/share/fonts/
+    fi
+
+
 fi
 
 if [[ $INSTALL_LATEX == 'true' ]]; then
-    log_title "Installing Latex..."
+    log_yellow "Installing Latex..."
     if $(is_installed pdflatex); then
-        log_info "Latex is already installed, the command is called pdflatex"
+        log_blue "Latex is already installed, the command is called pdflatex"
     else
         sudo dnf install -y texlive-scheme-basic
 
