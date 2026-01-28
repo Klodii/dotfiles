@@ -183,8 +183,6 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
         NERDFONT_FILE="$SCRIPT_DIR/HackNerdFont-Regular.ttf"
         sudo cp -v $NERDFONT_FILE /usr/share/fonts/
     fi
-
-
 fi
 
 if [[ $INSTALL_LATEX == 'true' ]]; then
