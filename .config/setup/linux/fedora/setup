@@ -169,6 +169,7 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
     sudo dnf install -y sxhkd   # X daemon that enable to bind command to keys
     sudo dnf install -y polybar # status bar
     sudo dnf install -y dunst   # notifier
+    sudo dnf install -y rofi    # application luncher
 
     # Font installation
     FONT_DIRECTORY="/usr/share/fonts"

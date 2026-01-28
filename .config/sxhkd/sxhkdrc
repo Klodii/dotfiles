@@ -32,9 +32,9 @@ super + {Return,BackSpace}
 super + w
     zen-browser
 
-# Lauch dmenu (app launcher)
+# Application luncher
 super + p
-    dmenu_run
+    rofi -show drun
 
 
 # ---- WINDOW FOCUS ----
