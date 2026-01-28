@@ -1,0 +1,44 @@
+#!/bin/bash
+source utils
+
+SCRIPT_NAME=${0##*/}  # performed a string manipulation operation to get the script name
+
+subcommands=$(cat <<-SUB
+Subcommands:
+  arch     setup arch system
+  fedora   setup fedora system
+SUB
+)
+
+function help {
+cat <<-HMESSAGE
+A wrapper script that abstracts setup operations across different operating systems.
+
+Syntax: $SCRIPT_NAME [-h] <arch|fedora> [<args>]
+
+Options:
+  -h               Show this help message and exit.
+
+$subcommands
+
+Description:
+  This script simplifies the setup by providing a unified interface
+  for various operating systems, hiding the underlying command differences.
+HMESSAGE
+}
+
+SUBCOMMAND="$1"
+[ -z "$SUBCOMMAND" ] && { help; exit 1; }
+[ "$SUBCOMMAND" = "-h" ] && { help;  exit 0; }
+
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+BASE_COMMAND_NAME='setup'
+COMMAND_FILE="${SCRIPT_DIR}/${BASE_COMMAND_NAME}_${SUBCOMMAND}"
+if [ ! -f "$COMMAND_FILE" ]; then
+    log_error "Unknown subcommand '$SUBCOMMAND'. File '$COMMAND_FILE' not found."
+    exit_w_error "$subcommands"
+fi
+
+shift # Move past the subcommand argument so getopts can process the flags
+
+"$COMMAND_FILE" "$@"
