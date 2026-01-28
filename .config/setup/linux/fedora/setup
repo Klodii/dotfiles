@@ -182,9 +182,22 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
         # all the fonts that are installed.
         # To select the icons, choose the font you want and then go to
         # 'Private Use Area'
-        NERDFONT_FILE="$SCRIPT_DIR/HackNerdFont-Regular.ttf"
+        NERDFONT_FILE="$SCRIPT_DIR/$NERDFONT_NAME"
         sudo cp -v $NERDFONT_FILE /usr/share/fonts/
     fi
+
+    EMOJI_FONT_NAME="NotoColorEmoji-Regular.ttf"
+    if [ ! -f "${FONT_DIRECTORY}/${EMOJI_FONT_NAME}" ]; then
+        log_cyan "Installing NotoColorEmoji ..."
+        # Install the font with icons
+        # to show the icons run gucharmap, this application show
+        # all the fonts that are installed.
+        # To select the icons, choose the font you want and then go to
+        # 'Private Use Area'
+        EMOJI_FILE="$SCRIPT_DIR/$EMOJI_FONT_NAME"
+        sudo cp -v $EMOJI_FILE /usr/share/fonts/
+    fi
+
 fi
 
 if [[ $INSTALL_LATEX == 'true' ]]; then
