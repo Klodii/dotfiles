@@ -3,7 +3,7 @@
 # Example file in /usr/share/doc/bspwm/examples/bspwmrc
 
 desktop_monitor=$(xrandr --query | grep 'DP-2')
-if [[ $second_monitor = *connected* ]]; then
+if [[ $desktop_monitor = *connected* ]]; then
     bspc monitor DP-2 -d 1 2 3 4 5
 fi
 second_monitor=$(xrandr --query | grep 'HDMI-1')
