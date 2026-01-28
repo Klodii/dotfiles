@@ -17,7 +17,7 @@ super + alt + r
     bspc quit && systemctl reboot
 # Lock screen
 super + alt + l
-    slock
+    i3lock
 
 
 # Close focused window

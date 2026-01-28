@@ -170,6 +170,7 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
     sudo dnf install -y polybar # status bar
     sudo dnf install -y dunst   # notifier
     sudo dnf install -y rofi    # application luncher
+    sudo dnf install -y i3lock  # lock screen
 
     # Font installation
     FONT_DIRECTORY="/usr/share/fonts"
