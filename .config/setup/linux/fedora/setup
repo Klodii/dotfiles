@@ -17,13 +17,14 @@ function help {
    cat <<-HMESSAGE
 Install all the packages I need
 
-Syntax: $SCRIPT_NAME [-h] [-a] [-p] [-d] [-w] [-s]
+Syntax: $SCRIPT_NAME [-h] [-a] [-p] [-d] [-w] [-l] [-s]
 Options:
     -h     Print this help and exit.
-    -a     Install everything (deps + packages + WM + defaults)
+    -a     Install everything (deps + packages + WM + Latex + defaults)
     -p     Install my packages
     -d     Install dependency packages
     -w     Install window manager
+    -l     Install latex
     -s     Set up default commands (e.g. default PDF reader)
 
 HMESSAGE
@@ -33,9 +34,10 @@ HMESSAGE
 INSTALL_DEPENDENCIES='false'
 INSTALL_PACKAGES='false'
 INSTALL_WINDOW_MANAGER='false'
+INSTALL_LATEX='false'
 SETUP_DEFAULT_COMMANDS='false'
 
-while getopts "hadpws" option; do
+while getopts "hadpwls" option; do
     case $option in
         h )
             help
@@ -55,6 +57,9 @@ while getopts "hadpws" option; do
         w )
             INSTALL_WINDOW_MANAGER='true'
             ;;
+        l )
+            INSTALL_LATEX='true'
+            ;;
         s )
             SETUP_DEFAULT_COMMANDS='true'
             ;;
@@ -68,13 +73,14 @@ shift $((OPTIND -1))
 if [[ $INSTALL_DEPENDENCIES == 'false' ]] &&
    [[ $INSTALL_PACKAGES == 'false' ]] &&
    [[ $INSTALL_WINDOW_MANAGER == 'false' ]] &&
+   [[ $INSTALL_LATEX == 'false' ]] &&
    [[ $SETUP_DEFAULT_COMMANDS == 'false' ]]; then
     echo "Error: no option selected. Use -h for help." >&2
     exit 1
 fi
 
 
-log_info "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Defaults: $SETUP_DEFAULT_COMMANDS"
+log_info "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Latex: $INSTALL_LATEX | Defaults: $SETUP_DEFAULT_COMMANDS"
 
 
 log_title "Updating and upgrading any already-installed packages"
@@ -163,6 +169,21 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
     sudo dnf install -y polybar # status bar
     sudo dnf install -y dunst   # notifier
 
+fi
+
+if [[ $INSTALL_LATEX == 'true' ]]; then
+    log_title "Installing Latex..."
+    if $(is_installed pdflatex); then
+        log_info "Latex is already installed, the command is called pdflatex"
+    else
+        sudo dnf install -y texlive-scheme-basic
+
+        if [ $? -eq 0 ]; then
+            log_info "Latex is installed"
+            echo "To check if it run: pdflatex --version"
+            echo "To compile a file run pdflatex filename.tex"
+        fi
+    fi
 fi
 
 if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
