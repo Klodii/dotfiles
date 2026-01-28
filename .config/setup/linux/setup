@@ -1,44 +1,59 @@
 #!/bin/bash
-source utils
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+source "$SCRIPT_DIR/utils"
 
 SCRIPT_NAME=${0##*/}  # performed a string manipulation operation to get the script name
 
-subcommands=$(cat <<-SUB
-Subcommands:
-  arch     setup arch system
-  fedora   setup fedora system
-SUB
-)
 
 function help {
 cat <<-HMESSAGE
 A wrapper script that abstracts setup operations across different operating systems.
 
-Syntax: $SCRIPT_NAME [-h] <arch|fedora> [<args>]
+Syntax: $SCRIPT_NAME [-h] [<args>]
 
 Options:
   -h               Show this help message and exit.
 
-$subcommands
-
 Description:
   This script simplifies the setup by providing a unified interface
   for various operating systems, hiding the underlying command differences.
+  It will run the correct setup script base on the operating system.
 HMESSAGE
 }
 
 SUBCOMMAND="$1"
-[ -z "$SUBCOMMAND" ] && { help; exit 1; }
 [ "$SUBCOMMAND" = "-h" ] && { help;  exit 0; }
 
-SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-BASE_COMMAND_NAME='setup'
-COMMAND_FILE="${SCRIPT_DIR}/${BASE_COMMAND_NAME}_${SUBCOMMAND}"
-if [ ! -f "$COMMAND_FILE" ]; then
-    log_error "Unknown subcommand '$SUBCOMMAND'. File '$COMMAND_FILE' not found."
-    exit_w_error "$subcommands"
-fi
 
-shift # Move past the subcommand argument so getopts can process the flags
+case $(current_os) in
+    "macos")
+        OS_LABLE="MacOS"
+        OS='macos'
+        exit_w_error "This OS is not handled yet."
+        ;;
+    "arch")
+        OS_LABEL="Arch Linux"
+        OS='arch'
+        ;;
+    "ubuntu")
+        OS_LABEL="Ubuntu Linux"
+        OS="ubuntu"
+        exit_w_error "This OS is not handled yet."
+        ;;
+    "fedora")
+        OS_LABEL="Fedora Linux"
+        OS="fedora"
+        ;;
+    *)
+        exit_w_error "This OS is not handled yet."
+        ;;
+esac
+
+COMMAND_FILE="${SCRIPT_DIR}/setup_${OS}"
+if [ ! -f "$COMMAND_FILE" ]; then
+    exit_w_error "File '$COMMAND_FILE' not found."
+fi
+log_yellow "Identified OS: $OS_LABEL"
+log_yellow "Executing: $COMMAND_FILE"
 
 "$COMMAND_FILE" "$@"

@@ -42,8 +42,41 @@ function log_blue {
 function log_cyan {
     printf "${CYAN}$1${NC}\n"
 }
+function log_red {
+    printf "${RED}$1${NC}\n"
+}
 function is_installed {
     command_name=$1
     hash $command_name 2> /dev/null
 }
+function exit_w_error {
+    log_error "$1" && exit 1
+} >&2 # redirect to STDERR
+function current_os {
+    case "$(uname -s)" in
+        Darwin)
+            echo 'macos'
+            return
+            ;;
+        Linux)
+            # Check for WSL
+            if grep -qi microsoft /proc/version 2>/dev/null; then
+                echo "wsl"
+                return
+            fi
+            if [[ -f /etc/os-release ]]; then
+                source /etc/os-release
+                echo "$ID"
+                return
+            fi
 
+            # Fallback
+            echo "linux"
+            return
+            ;;
+        *)
+            echo "unknown"
+            return
+            ;;
+    esac
+}
