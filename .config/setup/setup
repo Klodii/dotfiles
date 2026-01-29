@@ -9,10 +9,10 @@ function help {
 cat <<-HMESSAGE
 A wrapper script that abstracts setup operations across different operating systems.
 
-Syntax: $SCRIPT_NAME [-h] [<args>]
+Syntax: $SCRIPT_NAME [-H] [<args>]
 
 Options:
-  -h               Show this help message and exit.
+  -H               Show this help message and exit.
 
 Description:
   This script simplifies the setup by providing a unified interface
@@ -22,7 +22,7 @@ HMESSAGE
 }
 
 SUBCOMMAND="$1"
-[ "$SUBCOMMAND" = "-h" ] && { help;  exit 0; }
+[ "$SUBCOMMAND" = "-H" ] && { help;  exit 0; }
 
 
 case $(current_os) in

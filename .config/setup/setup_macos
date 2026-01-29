@@ -1,0 +1,96 @@
+#!/bin/bash -
+
+# | Option        | Meaning                  | Why you want it           |
+# | ------------- | ------------------------ | ------------------------- |
+# | `-e`          | Exit on error            | No half-installed systems |
+# | `-u`          | Error on unset vars      | Catch typos instantly     |
+# | `-o pipefail` | Pipelines fail correctly | No hidden failures        |
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/utils"
+
+SCRIPT_NAME=${0##*/}
+
+function help {
+    # here-document used instead of echoing all lines
+   cat <<-HMESSAGE
+Install all the packages I need
+
+Syntax: $SCRIPT_NAME [-h]
+Options:
+    -h     Print this help and exit.
+
+HMESSAGE
+}
+
+
+while getopts "h" option; do
+    case $option in
+        h )
+            help
+            exit 0;;
+        \?)
+            echo "Error: Invalid option"
+            exit 1;;
+    esac
+done
+shift $((OPTIND -1))
+
+# Install command-line tools using Homebrew.
+hash brew ||
+if ! $(is_installed brew); then
+    log_yellow  "Installing brew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+log_yellow "Updating and upgrading any already-installed packages"
+brew update
+brew upgrade
+
+log_yellow "Installing my chore libraries..."
+# Install GNU coreutils is a collection of essential command-line tools that
+# provide a more feature-rich and consistent user experience. Adds the GNU
+# version of the basic commands like: ls, cat, cp, mv, rm, echo, sort, head,
+# date ...
+# To use the GNU version, you have to add the 'g' at the beginning of the
+# command, like: gls, gcp, gdate...
+brew install coreutils
+
+brew install zsh-syntax-highlighting
+brew install alacritty \
+             xclip \
+             tmux \
+             fzf \
+             git \
+             ripgrep \
+             neovim \
+             ksnip \
+             rename \
+             mpv \
+             yt-dlp \
+             syncthing \
+             git-delta \
+             bat
+
+brew install --cask pinta
+
+# hotkey daemon
+brew install koekeishiya/formulae/skhd
+skhd --start-service
+
+# Terminal file manager
+brew install jstkdng/programs/ueberzugpp # show images in a terminal
+brew install lf # file manager
+
+brew install --cask syncthing
+# Set Syncthing up as a service to run automatically at startup
+brew services start syncthing
+
+# Software that opens kdbx files, aka KeePass Password Safe files
+brew install --cask macpass
+# GitHub Readme Instant Preview - Markdown local preview
+brew install grip
+
+log_yellow "Remove outdated versions from the cellar."
+brew cleanup
