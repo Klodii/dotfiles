@@ -45,7 +45,7 @@ family = "Hack Nerd Font"
 style = "Regular"
 
 [window]
-decorations = "buttonless"
+decorations = "Full"
 dynamic_padding = false
 opacity = 1
 option_as_alt = "Both"
