@@ -34,7 +34,7 @@ super + w
 
 # Application luncher
 super + p
-    rofi -show drun
+    rofi -show combi -modes combi -combi-modes "window,drun,run"
 
 
 # ---- WINDOW FOCUS ----
