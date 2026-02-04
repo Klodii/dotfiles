@@ -165,11 +165,12 @@ COMMAND MODE                                               *mytips-command-mode*
 
 - `^w` To delete the previous word
 - `^u` To delete all the the previous words
-- `.!` to print the output of the bash command inside the file, overwriting
-  the line
-- `{range}!` to print the output of the bash command in the file, overwriting
-  all the lines inside the selection range. The range is usually done via
-  Visual mode
+- `read !<bash-command>` to print the output of the bash command under the line
+- `.!<bash-command>` to print the output of the bash command inside the file,
+  overwriting the line
+- `{range}!<bash-command>` to print the output of the bash command in the
+  file, overwriting all the lines inside the selection range. The range is
+  usually done via Visual mode
 
 
 
