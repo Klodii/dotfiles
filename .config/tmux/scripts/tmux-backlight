@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+DELIMITER=${1:-'|'}
+status_backlight=$(battery)
+[ "$status_backlight" ]  && echo "$status_backlight$DELIMITER"
