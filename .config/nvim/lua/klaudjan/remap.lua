@@ -132,3 +132,14 @@ keymap('t', '<C-Right>', '<C-\\><C-N><C-w>l', { silent = true }) -- move right
 keymap("n", "<leader>dc", "<cmd>:lua vim.diagnostic.open_float()<cr>", { desc = 'Open diagnostic under the cursor' })
 keymap("n", "<leader>dn", "<cmd>:lua vim.diagnostic.goto_next()<cr>", { desc = 'Go to netxt diagnostic' })
 keymap("n", "<leader>dp", "<cmd>:lua vim.diagnostic.goto_prev()<cr>", { desc = 'Go to netxt diagnostic' })
+
+vim.keymap.set('n', '<leader>er', function()
+  local release_notes_path = os.getenv("RELEASE_NOTES")
+  if release_notes_path then
+    vim.cmd('edit ' .. release_notes_path)
+  else
+    vim.notify("RELEASE_NOTES env variable not set", vim.log.levels.ERROR, {
+      title = "System Env Error"
+    })
+  end
+end, { desc = 'edit release notes file' })
