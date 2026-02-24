@@ -142,12 +142,27 @@
         }; \
         func"
 
-    # Choose which commit to cherry pick, from all branches
-    fcherry = "!func() { \
+    #
+    fcommit = "!func() { \
         commit_hash=$(git log --pretty=format:'%h %s' --branches='*' \
         | fzf --height '90%' --header 'Which commit to cherry pick?' --reverse --border --ansi --preview-label='[Commit diff]' --preview 'git show --color=always {1}' \
         | awk '{print $1}'); \
-        if [ -n "$commit" ]; \
+        echo "$commit_hash"; \
+        }; \
+        func"
+    # Choose which commit to show
+    fshow = "!func() { \
+        commit_hash=$(git fcommit); \
+        if [ -n "$commit_hash" ]; \
+        then \
+            git show $commit_hash; \
+        fi \
+        }; \
+        func"
+    # Choose which commit to cherry pick, from all branches
+    fcherry = "!func() { \
+        commit_hash=$(git fcommit); \
+        if [ -n "$commit_hash" ]; \
         then \
             git cherry-pick $commit_hash; \
         fi \
@@ -155,10 +170,8 @@
         func"
     # Choose which commit to revert
     frevert = "!func() { \
-        commit_hash=$(git log --pretty=format:'%h %s' \
-        | fzf --height '90%' --header 'Which commit to revert?' --reverse --border --ansi --preview-label='[Commit diff]' --preview 'git show --color=always {1}' \
-        | awk '{print $1}'); \
-        if [ -n "$commit" ]; \
+        commit_hash=$(git fcommit); \
+        if [ -n "$commit_hash" ]; \
         then \
             git revert $commit_hash; \
         fi \
