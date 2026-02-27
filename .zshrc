@@ -182,6 +182,11 @@ function pdf {
     fi
 }
 
+function fmpv {
+    # fzf and mpv
+    mpv "$(fzf)"
+}
+
 if hash gtree 2> /dev/null ; then
     function cwt {
         # change git worktree
