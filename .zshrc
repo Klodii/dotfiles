@@ -118,14 +118,6 @@ function extract {
       echo "'$1' is not a valid file"
     fi
 }
-function json-format {
-    # given a json string, return it formatted
-    if hash jq 2> /dev/null; then
-        echo "$1" | jq
-    else
-      echo "jq is not installed"
-    fi
-}
 
 function xls2csv {
     # given a xls file convert it to csv
