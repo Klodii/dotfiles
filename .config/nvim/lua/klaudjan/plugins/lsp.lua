@@ -65,6 +65,32 @@ return {
         severity_sort = true,
       })
 
+      -- Highlights the part of the code that are raising the diagnostics
+      -- This will make easier to see them in the code
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
+        undercurl = false,
+        underline = true,
+        bg = "#3c1e1e",
+      })
+
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", {
+        undercurl = false,
+        underline = true,
+        bg = "#3c3c1e",
+      })
+
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", {
+        undercurl = false,
+        underline = true,
+        bg = "#1e2e3c",
+      })
+
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", {
+        undercurl = false,
+        underline = true,
+        bg = "#1e3c2e",
+      })
+
       -- Show diagnostics on CursorHold: if the cursor stays on the line for
       -- sometime without doing anything
       -- vim.api.nvim_create_autocmd("CursorHold", {
