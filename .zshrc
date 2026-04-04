@@ -160,6 +160,8 @@ function img {
     # image viewer
     if hash nsxiv 2> /dev/null; then
         'nsxiv' $1
+    elif hash feh 2> /dev/null; then
+        'feh' $1
     else
         'open' $1
     fi
