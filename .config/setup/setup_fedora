@@ -130,6 +130,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
         zathura \
         zathura-pdf-mupdf \
         calibre \
+        feh \
 
     sudo dnf install -y gpick          # color picker
     sudo dnf install -y lm_sensors      # used by my script hd-usage to get the CPU temperature
