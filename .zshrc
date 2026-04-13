@@ -159,20 +159,20 @@ function md2pdf {
 function img {
     # image viewer
     if hash nsxiv 2> /dev/null; then
-        'nsxiv' $1
+        'nsxiv' $1 &
     elif hash feh 2> /dev/null; then
-        'feh' $1
+        'feh' $1 &
     else
-        'open' $1
+        'open' $1 &
     fi
 }
 
 function pdf {
     # pdf viewer
     if hash zathura 2> /dev/null; then
-        'zathura' $1
+        'zathura' $1 &
     else
-        'open' $1
+        'open' $1 &
     fi
 }
 
