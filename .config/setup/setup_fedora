@@ -196,7 +196,7 @@ if [[ $INSTALL_LATEX == 'true' ]]; then
     if $(is_installed pdflatex); then
         log_blue "Latex is already installed, the command is called pdflatex"
     else
-        sudo dnf install -y texlive-scheme-basic
+        sudo dnf install -y texlive-scheme-full
 
         if [ $? -eq 0 ]; then
             log_info "Latex is installed"
