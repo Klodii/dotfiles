@@ -1,4 +1,4 @@
--- Server Installation:
+-- LSP Server Installation:
 -- Arch: yay -S lua-language-server
 -- MacOs: brew install lua-language-server
 -- Fedora:
@@ -16,7 +16,9 @@
 --                  - lua-language-server --version
 
 
-vim.lsp.config.lualsp = {
+-- START LSP
+vim.lsp.start = {
+
   -- Command to start the server
   cmd = { "lua-language-server" },
 

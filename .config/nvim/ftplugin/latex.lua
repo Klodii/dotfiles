@@ -1,8 +1,9 @@
--- Server Installation:
+-- LSP Server Installation:
 -- Arch: yay -S ltex-ls
 -- MacOs: brew install ltex-ls
 
-vim.lsp.config.ltex = {
+-- LSP START
+vim.lsp.start = {
   cmd = { "ltex-ls" },  -- command to start the LTeX language server
 
   -- Filetypes to which this LSP should attach

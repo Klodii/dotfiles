@@ -1,8 +1,9 @@
--- Server Installation:
+-- LSP Server Installation:
 -- Arch: sudo pacman -S bashls
 -- All systems: sudo npm install -g bash-language-server
 
-vim.lsp.config.bashls = {
+-- START LSP
+vim.lsp.start = {
   -- Command to start bash-language-server
   cmd = { "bash-language-server", "start" },
 

@@ -1,7 +1,8 @@
--- Server Installation:
+-- LSP Server Installation:
 -- All systems: sudo npm install -g typescript typescript-language-server
 
-vim.lsp.config.ts = {
+-- LSP START
+vim.lsp.start = {
   cmd = { "typescript-language-server", "--stdio" },
 
   -- Filetypes for which this LSP should attach

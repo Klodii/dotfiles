@@ -18,13 +18,7 @@ return {
       },
     },
     config = function()
-      -- Starting the lsp that we defined in the /lsp directory
-      vim.lsp.enable("lualsp")
-      vim.lsp.enable("pyright")
-      vim.lsp.enable("bashls")
-      vim.lsp.enable("ltex")
-      vim.lsp.enable("ts")
-
+      -- LSP are started in ftplugin/<language>
 
       -- AUTOCOMMANDS
       vim.api.nvim_create_autocmd('LspAttach', {
