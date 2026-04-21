@@ -1,2 +1,2 @@
 -- Use the same LSP of tex
-require('after.ftplugin.tex')
+vim.cmd.source(vim.fn.stdpath("config") .. "/after/ftplugin/tex.lua")

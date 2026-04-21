@@ -11,16 +11,6 @@ local root_dir = root_file and vim.fs.dirname(root_file) or vim.fn.getcwd()
 -- LSP START
 vim.lsp.start({
       cmd = { "ltex-ls" },
-      filetypes = {
-        "markdown",
-        "text",
-        "bib",
-        "tex",
-        "latex",
-        "rst",
-        "org",
-        "plaintex",
-      },
       root_dir = root_dir,
 
       settings = {
