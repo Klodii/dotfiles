@@ -32,10 +32,17 @@ super + {Return,BackSpace}
 super + w
     zen-browser
 
+# Launch Screenshot application
+super + s
+    ksnip
+
+# Launch image editor
+super + g
+    gimp
+
 # Application luncher
 super + p
     rofi -show combi -modes combi -combi-modes "window,drun,run"
-
 
 # ---- WINDOW FOCUS ----
 # Focus next/previous window
