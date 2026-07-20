@@ -37,8 +37,10 @@ super + s
     ksnip
 
 # Launch image editor
+# wacom-setup is a custom script that configures the wacom tablet buttons and
+# pen pressure
 super + g
-    gimp
+    ~/.local/bin/wacom-setup > /tmp/wacom.log 2>&1 && gimp
 
 # Application luncher
 super + p
