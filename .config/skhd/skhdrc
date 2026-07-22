@@ -4,14 +4,18 @@
 # in a terminal and type a key
 
 
-alt - return : open -na alacritty # Open terminal
-alt - w : open -na /Applications/Zen.app # Open browser
 
 # Shutdown using AppleScript (osasript)
 alt + shift - s : osascript -e 'tell app "System Events" to shut down'
 alt + shift - r : osascript -e 'tell app "System Events" to restart'
 alt + shift - q : osascript -e 'tell app "System Events" to  «event aevtrlgo»' # logout - "quit"
 alt + shift - l : osascript -e 'tell app "System Events" to keystroke "q" using {control down, command down}' # lock screen
+
+# Applications
+alt - return : open -na alacritty # Open terminal
+alt - w : open -na /Applications/Zen.app # Open browser
+alt - g : open -na /Applications/GIMP.app # Open GIMP
+alt - s : open -na /Applications/ksnip.app # Open Screenshot app
 
 
 # Quickly restart the yabai launch agent
