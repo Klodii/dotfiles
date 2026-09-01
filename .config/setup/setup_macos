@@ -17,16 +17,21 @@ function help {
    cat <<-HMESSAGE
 Install all the packages I need
 
-Syntax: $SCRIPT_NAME [-h]
+Syntax: $SCRIPT_NAME [-hl]
 Options:
+    -l     Install latex
     -h     Print this help and exit.
 
 HMESSAGE
 }
 
+INSTALL_LATEX='false'
 
-while getopts "h" option; do
+while getopts "lh" option; do
     case $option in
+        l )
+            INSTALL_LATEX='true'
+            ;;
         h )
             help
             exit 0;;
@@ -91,6 +96,22 @@ brew services start syncthing
 brew install --cask macpass
 # GitHub Readme Instant Preview - Markdown local preview
 brew install grip
+
+
+if [[ $INSTALL_LATEX == 'true' ]]; then
+    log_yellow "Installing Latex..."
+    if $(is_installed pdflatex); then
+        log_blue "Latex is already installed, the command is called pdflatex"
+    else
+        brew install pdflatex
+        if [ $? -eq 0 ]; then
+            log_info "Latex is installed"
+            echo "To check if it run: pdflatex --version"
+            echo "To compile a file run pdflatex filename.tex"
+        fi
+    fi
+fi
+
 
 log_yellow "Remove outdated versions from the cellar."
 brew cleanup
