@@ -281,6 +281,7 @@ bindkey -s "^b" "cd $BIN_HOME\n" # open users bin directory
 
 # plugins
 ## syntax highlighting
+## Fedora installation: dnf install zsh-syntax-highlighting
 SYNTAX_PLUGIN_LINUX_PATH='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 SYNTAX_PLUGIN_FEDORA_PATH='/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 SYNTAX_PLUGIN_MAC_PATH='/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
