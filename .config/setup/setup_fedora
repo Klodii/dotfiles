@@ -211,7 +211,7 @@ if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
     DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
     ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
     if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
-        log_title "Set zathura as the default PDF reader"
+        log_yellow "Set zathura as the default PDF reader"
         xdg-mime default org.pwmt.zathura.desktop application/pdf
     fi
 fi
