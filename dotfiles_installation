@@ -52,7 +52,7 @@ if [[ "$current_shell" != */zsh ]]; then
     fi
 
     echo "Setting zsh as the default shell"
-    chsh -s $zsh_path
+    chsh -s "$zsh_path"
     echo "Please logout and login again"
     exit 1
 fi
@@ -62,17 +62,27 @@ echo "alias .f='$DOTFILES'" >> "$HOME/.zshrc"
 $DEBUG "Add .f alias in .zshrc"
 
 REPO_DESTINATION="$HOME/.dotfiles"
-git clone --bare $REPOSITORY $REPO_DESTINATION || exit_w_error "Error cloning the repository"
+git clone --bare "$REPOSITORY" "$REPO_DESTINATION" || exit_w_error "Error cloning the repository"
 $DEBUG "Repository copied in $REPO_DESTINATION"
 
 $DOTFILES checkout
-if [ $? = 0 ]; then
+if $DOTFILES checkout; then
     echo "Checked out dotfiles.";
 else
-    $DEBUG "Found some file that overlap with the repository..."
-    mkdir -v -p $BACKUP_FOLDER
-    echo "Backing up overlapping files";
-    $DOTFILES checkout 2>&1 | awk '/^[[:space:]]/ {print $1}' | xargs -I{} mv -v {} $BACKUP_FOLDER/{}
-    $DOTFILES checkout
+    echo "Found some files that overlap with the repository..."
+    mkdir -v -p "$BACKUP_FOLDER"
+    echo "Backing up overlapping files..."
+    $DOTFILES checkout 2>&1 |
+        awk '/^[[:space:]]/ {print $1}' |
+        while IFS= read -r file; do
+            [ -z "$file" ] && continue
+
+            echo "Backing up $HOME/$file"
+
+            mkdir -p "$BACKUP_FOLDER/$(dirname "$file")"
+            mv "$HOME/$file" "$BACKUP_FOLDER/$file"
+        done
+
+    $DOTFILES checkout || exit_w_error "Could not checkout dotfiles"
 fi;
 $DOTFILES config --local status.showUntrackedFiles no
