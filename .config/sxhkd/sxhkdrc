@@ -32,9 +32,9 @@ super + {Return,BackSpace}
 super + w
     zen
 
-# Launch Screenshot application
+# Do a screenshot and open it with ksnip
 super + s
-    ksnip
+    ~/.local/bin/screenshot -k
 
 # Launch image editor
 # wacom-setup is a custom script that configures the wacom tablet buttons and
