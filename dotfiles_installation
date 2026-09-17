@@ -29,7 +29,7 @@ function exit_w_error {
 } >&2
 
 DEBUG=':' # no-op, do nothing command
-while getopts "hvn:" option; do
+while getopts "hvk:" option; do
     case $option in
         h )
             help
