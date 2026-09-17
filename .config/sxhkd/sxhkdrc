@@ -30,7 +30,7 @@ super + {Return,BackSpace}
 
 # Launch a browser
 super + w
-    zen-browser
+    zen
 
 # Launch Screenshot application
 super + s
