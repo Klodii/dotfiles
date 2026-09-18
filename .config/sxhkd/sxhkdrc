@@ -31,6 +31,10 @@ super + {Return,BackSpace}
 # Launch a browser
 super + w
     zen
+#
+# Do a screenshot
+super + 4
+    ~/.local/bin/screenshot
 
 # Do a screenshot and open it with ksnip
 super + s
