@@ -33,11 +33,11 @@ super + w
     zen
 #
 # Do a screenshot
-super + 4
+super + s
     ~/.local/bin/screenshot
 
 # Do a screenshot and open it with ksnip
-super + s
+super + shift + s
     ~/.local/bin/screenshot -k
 
 # Launch image editor
