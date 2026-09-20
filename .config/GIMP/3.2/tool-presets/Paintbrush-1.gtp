@@ -1,0 +1,31 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-paintbrush")
+(icon-pixbuf "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAgCAYAAADqgqNBAAACQUlEQVR4nMWWT6hhURzHvzw9lOypiSaL10yaxShZTEojY5IN2cgGG1mSkqRs7GWhlA1iIVmgKcpiFlaTksVrRqbYKQtZiDDz7qmnMS6uP5fP5t7zO5376XfP7/zhKRSKP7gTPNwBmUwGvV5/e7lSqUQ0GsV4PL6tXKVSIRwOg8/nI5/P306uVqsRCoXw+PiIfr+PZrN5G7lWq0UgEMDDwwNpp1IprNdr9uU6nQ5+vx9cLpe0W60W2u02eWdVbjab4fF4wOFwSHu1WiGdTm/6WZNbrVa43e6tWKPRwHA4ZFdus9ngdDq3YovFArlcbit2dbnD4YDdbt+JV6tVjEYj9uQmk4lWPJvNUCgUduJXk2s0GlJcdGSzWUwmE7Aip7bMYDC4Wcf/MhgMUC6XacddLJdIJIhEImTn+h9qI4nH42SJXV1OCaktUyQS0faXSiV0u9294y+Se71evNwHaPuo9ZzJZA6OP1tOnccGg4G2bz6fIxaLkefV5XK5nGS9j0QiQU6uY5wsFwgEZJ6pJx2VSgX1eh1M4OJExGIxarUaer3eTl+n00EymQRTOOdeIKmTymKxwOVykXdqPft8PkynU8bfYPTbhx+/78Te/fyKYrEIoVAIo9FIrkeniCmOZk4nfuXp+QupaKlUSjI/lYNzvq+oXnl++oblcnmWmOLgb//1nlnVnsteOY/H/t1yr+H3hybuIj9UZNdkq+Co6+0pYllbi0vYZH5qtoruZ8xfzutL2GT+tqNjPOjNj09HTywm/AVZX7+I2LlEVQAAAABJRU5ErkJggg==")
+(name "MyPenBlue")
+(tool-options "GimpPaintOptions"
+    (tool "gimp-paintbrush-tool")
+    (foreground
+        (color "R'G'B'A double" 32 "\0\0\0\100\34\34\234\77\0\0\0\200\331\325\325\77\0\0\0\200\376\374\354\77\0\0\0\0\0\0\360\77" 0))
+    (brush "1. Pixel")
+    (dynamics "Pressure Opacity")
+    (pattern "Pine")
+    (gradient "FG to BG (RGB)")
+    (palette "Color History")
+    (brush-size 6)
+    (brush-spacing 0.20000000000000001)
+    (application-mode incremental)
+    (jitter-amount 0.34999999999999998)
+    (fade-length 138)
+    (fade-unit percent))
+(use-fg-bg yes)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern yes)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file

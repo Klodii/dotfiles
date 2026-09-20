@@ -1,0 +1,31 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-paintbrush")
+(icon-pixbuf "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAgCAYAAADqgqNBAAACPElEQVR4nMWWTchhYRTH/7zy0XjNNItp2LCwtVOyUkpSMk1kMcYGG1mSkqRs7GWhlA2GKSNT2FCWlkqWsmCnLKQZEWbmPtOrMS6uj8t/c5/nnM79dZ6vc3hKpfIXHiQeHiC5XA6DwXB/uEqlQiwWw2QyuS9crVYjEolAIBCgUCjcD67RaBAOh8Hn8zEYDNBqte4D1+l0CAaDeHp6IvN0Oo3NZsM+XK/XIxAIgMvlknm73Uan0yFjVuEWiwVerxccDofM1+s1MpnM1s8a3GazwePx7NiazSZGoxG7cLvdDpfLtWNbLpfI5/M7tpvDnU4nHA7Hnr1Wq2E8HrMHN5vNtOD5fI5isbhnvxlcq9WSw0WnXC6H6XQKVuDUkxkKhbb3+F8Nh0NUKhXauKvhUqkU0WiUvFz/i3pIEokEuWI3h1NA6skUi8W0/nK5jF6vdzD+KrjP58OffoDWR93nbDZ7NP5iOFWPjUYjrW+xWCAej5PvzeEKhYJkfUjJZJJUrlM6Gy4UCsk+U186VatVNBoNMBEXZ0oikaBer6Pf7+/5ut0uUqkUmIpzaQNJVSqr1Qq3203G1H32+/2YzWaM/8Fo2b//2OzZPr9/jVKpBJFIBJPJRNqjc8CUTmZOB37Rp3fP5ETLZDKS+bk6uueHDtWLvoxnWK1WF4EpHV32r5OfYFMHM+fx2O8tDxK+TZd4CPzYIbuldpadam/PAX98vm5rttF/oczB9rcibE4UjlPaZm57I2Ac9OEV92TFYqLf8CLCFfn5WmoAAAAASUVORK5CYII=")
+(name "MyPenRed")
+(tool-options "GimpPaintOptions"
+    (tool "gimp-paintbrush-tool")
+    (foreground
+        (color "HSVA float" 16 "\24\363\175\77m\306a\77\346\243U\77\0\0\200\77" 0))
+    (brush "1. Pixel")
+    (dynamics "Pressure Opacity")
+    (pattern "Pine")
+    (gradient "FG to BG (RGB)")
+    (palette "Color History")
+    (brush-size 6)
+    (brush-spacing 0.20000000000000001)
+    (application-mode incremental)
+    (jitter-amount 0.34999999999999998)
+    (fade-length 138)
+    (fade-unit percent))
+(use-fg-bg yes)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern yes)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file
