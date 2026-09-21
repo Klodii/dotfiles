@@ -55,4 +55,3 @@ $HOME/.config/polybar/launch.sh
 alacritty & # launch terminal at login
 
 $HOME/.local/bin/xsettings
-$HOME/.local/bin/wacom-setup
