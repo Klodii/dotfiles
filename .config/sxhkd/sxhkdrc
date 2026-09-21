@@ -44,7 +44,7 @@ super + shift + s
 # wacom-setup is a custom script that configures the wacom tablet buttons and
 # pen pressure
 super + g
-    ~/.local/bin/wacom-setup > /tmp/wacom.log 2>&1 && gimp
+    ~/.local/bin/wacom-setup > /tmp/wacom.log 2>&1 ; gimp
 
 # Application luncher
 super + p
