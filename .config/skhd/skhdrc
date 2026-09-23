@@ -4,6 +4,9 @@
 # in a terminal and type a key
 
 
+# Restart this configuration
+cmd - escape : skhd --restart-service
+
 
 # Shutdown using AppleScript (osasript)
 alt + shift - s : osascript -e 'tell app "System Events" to shut down'
@@ -17,6 +20,18 @@ alt - w : open -na /Applications/Zen.app # Open browser
 alt - g : open -na /Applications/GIMP.app # Open GIMP
 alt - s : open -na /Applications/ksnip.app # Open Screenshot app
 
+# Toggle camera on/off on Teams
+# shift + cmd + o is the keybinging of teams to turn the camera on/off
+alt - v : skhd -k "shift + cmd - o"
+# Toggle mute/unmute microphone on Teams
+# shift + cmd + m is the keybinging of teams to turn the microphone on/off
+alt - m : skhd -k "shift + cmd - m"
+
+# volume control
+# vc is my script that handles the volume: https://github.com/Klodii/scripts/blob/main/vc
+f9 : vc down
+f10 : vc up
+f11 : vc toggle
 
 # Quickly restart the yabai launch agent
 ctrl + alt + cmd - r : yabai --restart-service
@@ -75,9 +90,3 @@ alt + shift - 0x2F : yabai -m window --display next && yabai -m display --focus 
 # alt + shift - 1 : yabai -m window --display 1 && yabai -m display --focus 1
 # alt + shift - 2 : yabai -m window --display 2 && yabai -m display --focus 2
 # alt + shift - 3 : yabai -m window --display 3 && yabai -m display --focus 3
-
-# volume control
-# vc is my script that handles the volume: https://github.com/Klodii/scripts/blob/main/vc
-f9 : vc down
-f10 : vc up
-f11 : vc toggle

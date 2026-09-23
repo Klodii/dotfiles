@@ -76,7 +76,8 @@ brew install alacritty \
              yt-dlp \
              syncthing \
              git-delta \
-             bat
+             bat \
+             terminal-notifier
 
 brew install --cask pinta
 
