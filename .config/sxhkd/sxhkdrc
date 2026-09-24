@@ -39,6 +39,10 @@ super + s
 # Do a screenshot and open it with ksnip
 super + shift + s
     ~/.local/bin/screenshot -k
+#
+# Do a screenshot and open it with gimp
+super + shift + g
+    ~/.local/bin/screenshot -g
 
 # Launch image editor
 # wacom-setup is a custom script that configures the wacom tablet buttons and
