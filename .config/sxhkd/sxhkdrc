@@ -65,13 +65,13 @@ super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
 # ---- DESKTOPS ----
-# Switch to desktop 1–9
-super + {1-9}
-    bspc desktop -f {1-9}
+# Switch to desktop 0–9
+super + {0-9}
+    bspc desktop -f {0-9}
 
-# Move focused window to desktop 1–9
-super + shift + {1-9}
-    bspc node -d {1-9}
+# Move focused window to desktop 0–9
+super + shift + {0-9}
+    bspc node -d {0-9}
 
 # Change layout to tiled
 super + shift + t

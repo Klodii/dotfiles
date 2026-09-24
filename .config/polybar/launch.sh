@@ -5,16 +5,15 @@ killall -q polybar
 # Wait until shutdown
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-desktop_main_monitor=$(xrandr --query | grep 'DP-2')
-if [[ $desktop_main_monitor = *connected* ]]; then
+if xrandr --query | grep -q '^DP-2 connected'; then
     polybar main &
 fi
-second_monitor=$(xrandr --query | grep 'HDMI-1')
-if [[ $second_monitor = *connected* ]]; then
-    polybar external &
+
+EXTERNAL_MONITOR=$(xrandr --query | awk '/^HDMI-[01] connected/ {print $1; exit}')
+if [ -n "$EXTERNAL_MONITOR" ]; then
+    EXTERNAL_MONITOR="$EXTERNAL_MONITOR" polybar external &
 fi
 
-laptop_monitor=$(xrandr --query | grep 'LVDS-1')
-if [[ $laptop_monitor = *connected* ]]; then
+if xrandr --query | grep -qE '^LVDS-1 connected'; then
     polybar laptop &
 fi

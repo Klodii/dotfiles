@@ -1,21 +1,24 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
+
+# To check the monitor names use xrandr --query
+# To check if bspwm sees them use bspc query -M --names
 
 # Example file in /usr/share/doc/bspwm/examples/bspwmrc
-
-desktop_monitor=$(xrandr --query | grep 'DP-2')
-if [[ $desktop_monitor = *connected* ]]; then
+if xrandr --query | grep -q '^DP-2 connected'; then
     bspc monitor DP-2 -d 1 2 3 4 5
 fi
-second_monitor=$(xrandr --query | grep 'HDMI-1')
-if [[ $second_monitor = *connected* ]]; then
-    bspc monitor HDMI-1 -d 6 7 8 9 0
-fi
 
-laptop_monitor=$(xrandr --query | grep 'LVDS-1')
-if [[ $laptop_monitor = *connected* ]]; then
+# External monitor -- in ubuntu is called HDMI-0 and in fedora is called HDMI-1
+for monitor in HDMI-0 HDMI-1; do
+    if xrandr --query | grep -q "^${monitor} connected"; then
+        bspc monitor "$monitor" -d 6 7 8 9 0
+    fi
+done
+
+# In my thinkpad is called like this
+if xrandr --query | grep -q '^LVDS-1 connected'; then
     bspc monitor LVDS-1 -d 1 2 3 4 5
 fi
-
 
 bspc config border_width        5
 bspc config window_gap          3
