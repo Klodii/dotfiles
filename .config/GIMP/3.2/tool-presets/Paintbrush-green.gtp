@@ -1,0 +1,31 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-paintbrush")
+(icon-pixbuf "iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAABwUlEQVR4nK2UPWvCUBSGXyUqog4OKioUJ3ETodDFWfoPHAsdBPEDpKL+iHasg+LSxUVBJzvqpmChcZFs4hAQBD8g6FBNzS1KgqaJJk8IIYd7nrycXC4VjUZ56IjL5UImk0GlUgEFHfF6vSgUCthut2BZFkbohM/nQ7FYhNPpRL1ex36/1yd5IBBAPp+H3W7HeDzGaDQidc3yYDCIXC4Hq9VK0gqpj2iSh0IhIrZYLOR9MBhgOp1ql4fDYaTTaZhMJvK+2+3QarUka26SC6NIpVInsUCv18NsNtMm9/v9yGazMJvNpxrHcWepr5YL2+y4K8Q0m02s1+vb5UajEclkknxADMMw6Ha7F3tUy+PxOJm1mM1mg2q1SrbgzfJIJIJYLCap8TyPWq2G+Xwu26co93g8SCQSMBgMknqn08FwOPy3V/FsERK2220sl8tTjaZpNBoNpVb55OzH19/zcHNJDv1+H6VSiZx45XJZds5iDJfO86NYTPjlETabDYvFAqvVCmo4G4vD4bi4kH77xGQyUS0WOBsL896FXkjkcqk1yymK0jU1cbrdbny/dhQX3j0/4OdwXSVX84P8T/f44a8TC/wCWUGg8opRjRAAAAAASUVORK5CYII=")
+(name "MyPenGreen")
+(tool-options "GimpPaintOptions"
+    (tool "gimp-paintbrush-tool")
+    (foreground
+        (color "HSVA float" 16 "\6\310\240\76\3Fu\77\176l\136\77\0\0\200\77" 0))
+    (brush "1. Pixel")
+    (dynamics "Pressure Opacity")
+    (pattern "Pine")
+    (gradient "FG to BG (RGB)")
+    (palette "Color History")
+    (brush-size 6)
+    (brush-spacing 0.20000000000000001)
+    (application-mode incremental)
+    (jitter-amount 0.34999999999999998)
+    (fade-length 138)
+    (fade-unit percent))
+(use-fg-bg yes)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern yes)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file
