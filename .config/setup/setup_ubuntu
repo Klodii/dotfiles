@@ -13,8 +13,7 @@ source "$SCRIPT_DIR/utils"
 SCRIPT_NAME=${0##*/}
 
 function help {
-    # here-document used instead of echoing all lines
-   cat <<-HMESSAGE
+    cat <<-HMESSAGE
 Install all the packages I need
 
 Syntax: $SCRIPT_NAME [-h] [-a] [-p] [-d] [-w] [-l] [-s]
@@ -69,7 +68,8 @@ while getopts "hadpwls" option; do
             exit 1;;
     esac
 done
-shift $((OPTIND -1))
+shift $((OPTIND - 1))
+
 
 if [[ $INSTALL_DEPENDENCIES == 'false' ]] &&
    [[ $INSTALL_PACKAGES == 'false' ]] &&
@@ -84,34 +84,50 @@ fi
 log_blue "Deps: $INSTALL_DEPENDENCIES | Packages: $INSTALL_PACKAGES | WM: $INSTALL_WINDOW_MANAGER | Latex: $INSTALL_LATEX | Defaults: $SETUP_DEFAULT_COMMANDS"
 
 
+# -------------------------------------------------------------------
+# System update
+# -------------------------------------------------------------------
+
 log_yellow "Updating and upgrading any already-installed packages"
-sudo dnf upgrade --refresh -y
+
+sudo apt update
+sudo apt upgrade -y
+
+
+# -------------------------------------------------------------------
+# Development dependencies
+# -------------------------------------------------------------------
 
 if [[ $INSTALL_DEPENDENCIES == 'true' ]]; then
     log_yellow "Installing base development packages..."
-    # need to install them to avoid probmles with other installations
-    sudo dnf install -y \
-      gcc \
-      make \
-      zlib-devel \
-      bzip2 \
-      bzip2-devel \
-      readline-devel \
-      sqlite-devel \
-      openssl-devel \
-      libffi-devel \
-      xz-devel \
-      tk-devel \
-      gdbm-devel \
-      ncurses-devel \
-      libuuid-devel \
-      libtirpc-devel \
-      wget
+
+    sudo apt install -y \
+        build-essential \
+        zlib1g-dev \
+        bzip2 \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        libssl-dev \
+        libffi-dev \
+        liblzma-dev \
+        tk-dev \
+        libgdbm-dev \
+        libncurses-dev \
+        uuid-dev \
+        libtirpc-dev \
+        wget
 fi
+
+
+# -------------------------------------------------------------------
+# General packages
+# -------------------------------------------------------------------
 
 if [[ $INSTALL_PACKAGES == 'true' ]]; then
     log_yellow "Installing my chore libraries..."
-    sudo dnf install -y \
+
+    sudo apt install -y \
         cmake \
         xclip \
         alacritty \
@@ -124,94 +140,130 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
         git-delta \
         bat \
         neovim \
-        keepass \
-        tldr \
+        keepass2 \
         newsboat \
         zathura \
-        zathura-pdf-mupdf \
+        zathura-pdf-poppler \
         calibre \
         feh \
-        mpd
+        mpd \
+        gpick \
+        lm-sensors \
+        syncthing \
+        lf
 
-    sudo dnf install -y gpick          # color picker
-    sudo dnf install -y lm_sensors      # used by my script hd-usage to get the CPU temperature
-
-    sudo dnf install -y syncthing
+    # Syncthing user service
     systemctl --user enable syncthing.service
-
-    sudo dnf copr enable pennbauman/ports # to enable the lf installation
-    sudo dnf install -y lf
 fi
+
+
+# -------------------------------------------------------------------
+# Window manager
+# -------------------------------------------------------------------
 
 if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
     log_yellow "Installing window manager..."
-    # Dependencies for my window manager configuration
-    ## install X server: in some cases it is not installed and will prevent to
-    ## diplay the window manager on the window manager list at login
-    sudo dnf install -y \
-        xorg-x11-server-Xorg \
-        xset \
+
+    # Some of the packages comes from the universe repository,
+    # This is why we are adding it
+    sudo add-apt-repository universe
+    sudo apt update
+
+
+    # X server and dependencies for the window manager configuration.
+    sudo apt install -y \
+        xserver-xorg \
+        x11-xserver-utils \
         xdg-utils \
-        xsetroot \
-        xrandr \
-        libX11-devel \
-        libXft-devel \
-        libXinerama-devel \
-        libXrandr-devel \
-        fontconfig-devel \
-        freetype-devel \
-        libXext-devel \
-        pam-devel
+        x11-xserver-utils \
+        x11-utils \
+        x11proto-dev \
+        libx11-dev \
+        libxft-dev \
+        libxinerama-dev \
+        libxrandr-dev \
+        fontconfig \
+        libfontconfig1-dev \
+        libfreetype-dev \
+        libxext-dev \
+        libpam0g-dev
 
-    sudo dnf copr enable linuxredneck/xwallpaper
-    sudo dnf install -y xwallpaper
+    # Wallpaper utility
+    sudo apt install -y xwallpaper
 
-    # For bspwm windows manager installation
-    sudo dnf install -y bspwm   # windows manager
-    sudo dnf install -y sxhkd   # X daemon that enable to bind command to keys
-    sudo dnf install -y polybar # status bar
-    sudo dnf install -y dunst   # notifier
-    sudo dnf install -y rofi    # application luncher
-    sudo dnf install -y i3lock  # lock screen
+    # bspwm window manager and related utilities
+    sudo apt install -y \
+        bspwm \
+        sxhkd \
+        polybar \
+        dunst \
+        rofi \
+        i3lock
 
+
+    # ----------------------------------------------------------------
     # Font installation
+    # ----------------------------------------------------------------
+
     FONT_DIRECTORY="/usr/share/fonts"
+
     NERDFONT_NAME="HackNerdFont-Regular.ttf"
+
     if [ ! -f "${FONT_DIRECTORY}/${NERDFONT_NAME}" ]; then
         log_cyan "Installing HackNerdFont ..."
+
         NERDFONT_FILE="$SCRIPT_DIR/fonts/$NERDFONT_NAME"
-        sudo cp -v $NERDFONT_FILE /usr/share/fonts/
+
+        sudo cp -v "$NERDFONT_FILE" "$FONT_DIRECTORY/"
     fi
+
 
     EMOJI_FONT_NAME="NotoColorEmoji-Regular.ttf"
+
     if [ ! -f "${FONT_DIRECTORY}/${EMOJI_FONT_NAME}" ]; then
         log_cyan "Installing NotoColorEmoji ..."
+
         EMOJI_FILE="$SCRIPT_DIR/fonts/$EMOJI_FONT_NAME"
-        sudo cp -v $EMOJI_FILE /usr/share/fonts/
+
+        sudo cp -v "$EMOJI_FILE" "$FONT_DIRECTORY/"
     fi
 
+    # Update font cache after installing custom fonts.
+    sudo fc-cache -f
 fi
+
+
+# -------------------------------------------------------------------
+# LaTeX
+# -------------------------------------------------------------------
 
 if [[ $INSTALL_LATEX == 'true' ]]; then
     log_yellow "Installing Latex..."
+
     if $(is_installed pdflatex); then
         log_blue "Latex is already installed, the command is called pdflatex"
     else
-        sudo dnf install -y texlive-scheme-full
+        sudo apt install -y texlive-full
 
-        if [ $? -eq 0 ]; then
-            log_info "Latex is installed"
-            echo "To check if it run: pdflatex --version"
-            echo "To compile a file run pdflatex filename.tex"
-        fi
+        log_info "Latex is installed"
+        echo "To check if it runs: pdflatex --version"
+        echo "To compile a file run: pdflatex filename.tex"
     fi
 fi
 
+
+# -------------------------------------------------------------------
+# Default applications
+# -------------------------------------------------------------------
+
 if [[ $SETUP_DEFAULT_COMMANDS == 'true' ]]; then
+
     DEFAULT_PDF_READER=$(xdg-mime query default application/pdf)
     ZATHURA_PDF_READER='org.pwmt.zathura.desktop'
+
     if [ "$DEFAULT_PDF_READER" != "$ZATHURA_PDF_READER" ]; then
         log_yellow "Set zathura as the default PDF reader"
+
         xdg-mime default org.pwmt.zathura.desktop application/pdf
     fi
 fi

@@ -38,7 +38,6 @@ case $(current_os) in
     "ubuntu")
         OS_LABEL="Ubuntu Linux"
         OS="ubuntu"
-        exit_w_error "This OS is not handled yet."
         ;;
     "fedora")
         OS_LABEL="Fedora Linux"
