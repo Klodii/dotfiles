@@ -147,6 +147,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
         calibre \
         feh \
         mpd \
+        mpc \
         gpick \
         lm-sensors \
         syncthing \
@@ -155,7 +156,7 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
     # Syncthing user service
     systemctl --user enable syncthing.service
     # mpd (music player demon)
-    systemctl --user enable mpd
+    systemctl --user enable mpd.service
 fi
 
 
