@@ -151,6 +151,9 @@ if [[ $INSTALL_PACKAGES == 'true' ]]; then
     sudo dnf install -y syncthing
     systemctl --user enable syncthing.service
 
+    # mpd (music player demon)
+    systemctl --user enable mpd
+
     sudo dnf copr enable pennbauman/ports # to enable the lf installation
     sudo dnf install -y lf
 fi
