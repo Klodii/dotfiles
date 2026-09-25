@@ -209,7 +209,7 @@ alias cmyip='curl -4 https://get.geojs.io/v1/ip | cclip' # copy my ip to clipboa
 # Remember that the trailing / on source_dir/ means “copy contents” not the folder itself
 alias rsync='rsync -av --progress'
 
-hash batcat 2> /dev/null && alias bat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
+hash batcat 2> /dev/null && alias bat='batcat'; alias cat='batcat' # normalize 'bat', the command is called batcat in Ubuntu
 hash bat 2> /dev/null && alias cat='bat'
 hash ipython 2> /dev/null && alias python='ipython'
 
