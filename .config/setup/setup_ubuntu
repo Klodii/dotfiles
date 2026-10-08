@@ -181,6 +181,7 @@ if [[ $INSTALL_WINDOW_MANAGER == 'true' ]]; then
         x11-xserver-utils \
         x11-utils \
         x11proto-dev \
+        xdotool \
         libx11-dev \
         libxft-dev \
         libxinerama-dev \
