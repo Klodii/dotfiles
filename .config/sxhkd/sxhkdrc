@@ -54,6 +54,18 @@ super + g
 super + p
     rofi -show combi -modes combi -combi-modes "window,drun,run"
 
+# Toggle camera on/off on Teams
+# ctrl + shift + o is the keybinging of teams to turn the camera on/off
+# the spleep is needed in order to way the release of `alt+o` from the user
+alt + v
+    sleep 0.2; xdotool key --clearmodifiers ctrl+shift+o
+
+# Toggle mute/unmute microphone on Teams
+# sctrl + shift + m is the keybinging of teams to turn the microphone on/off
+# the spleep is needed in order to way the release of `alt+m` from the user
+alt + m
+    sleep 0.2; xdotool key --clearmodifiers ctrl+shift+m
+
 # ---- WINDOW FOCUS ----
 # Focus next/previous window
 super + {j,k}
