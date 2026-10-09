@@ -54,6 +54,17 @@ super + g
 super + p
     rofi -show combi -modes combi -combi-modes "window,drun,run"
 
+# Music
+alt + j
+    ~/.local/bin/mp -n play
+alt + k
+    ~/.local/bin/mp -n pause
+alt + h
+    ~/.local/bin/mp -n prev
+alt + l
+    ~/.local/bin/mp -n next
+
+
 # Toggle camera on/off on Teams
 # ctrl + shift + o is the keybinging of teams to turn the camera on/off
 # the spleep is needed in order to way the release of `alt+o` from the user
