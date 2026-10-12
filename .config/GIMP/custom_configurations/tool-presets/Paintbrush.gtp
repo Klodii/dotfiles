@@ -1,6 +1,7 @@
 # GIMP tool preset file
 
 (icon-name "gimp-tool-paintbrush")
+(icon-pixbuf "iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAABo0lEQVR4nK2VTcsBURTH/zN5SWwsJGysZCd7Sil7K99AyUsp4ZNYkLUNxcqWsqBs2MjWQinlpcSCmee5t2aayYx5/a3mnu75zel0OteRSqV42EggEEC1WkW324UDNhIKhdBsNvF6vXA8HsHCJsLhMFqtFvx+PwaDATiOs6fyaDSKRqMBn8+H3W6H7XZL45blsVgM9XodHo+HVkuqFrAkj8fjVOx2u+l5tVrhcDhYlycSCVQqFTidTnr+fD4Yj8eyO6bkpBXlclkUE+bzOU6nkzV5JBJBrVaDy+USY4/H46tqw3IyZsJUSBmNRrjf7+blLMuiVCrRH0jZ7/eYzWaKObrlhUKB9lrK8/lEr9ejI2hankwmkcvlZDGe59Hv93E+n1XzNOXBYBDFYhEMw8ji0+kU6/X6Z67mbiEVTiYTXK9XMbbZbDAcDrVS1StfLBbiNxm15XKJdrtNN16n01HtsxRGaZ9LxQL5fB5erxeXywW32w16+JIriQX+78IItu1zJWQ9/1W1JbndYgIZXl0PdCaTwfv9hhHYbDareSmdThsWE/4A+w2bPlLYpBkAAAAASUVORK5CYII=")
 (name "MyPen")
 (tool-options "GimpPaintOptions"
     (tool "gimp-paintbrush-tool")
