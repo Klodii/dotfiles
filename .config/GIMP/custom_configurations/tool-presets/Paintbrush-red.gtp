@@ -16,6 +16,7 @@
     (brush-spacing 0.20000000000000001)
     (application-mode incremental)
     (jitter-amount 0.34999999999999998)
+    (dynamics-enabled no)
     (fade-length 138)
     (fade-unit percent))
 (use-fg-bg yes)

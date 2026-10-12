@@ -4,12 +4,11 @@
 (name "Eraser")
 (tool-options "GimpEraserOptions"
     (tool "gimp-eraser-tool")
-    (foreground
-        (color "HSVA float" 16 "\24\363\175\77m\306a\77\346\243U\77\0\0\200\77" 0))
     (brush "2. Block 01")
     (dynamics "Pressure Opacity")
     (palette "Color History")
     (brush-size 80)
+    (dynamics-enabled no)
     (gradient-reverse yes))
 (use-fg-bg no)
 (use-opacity-paint-mode yes)

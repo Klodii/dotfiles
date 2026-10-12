@@ -6,7 +6,7 @@
 (tool-options "GimpPaintOptions"
     (tool "gimp-paintbrush-tool")
     (foreground
-        (color "R'G'B'A double" 32 "\0\0\0\100\34\34\234\77\0\0\0\340\341\325\325\77\0\0\0\40\0\375\354\77\0\0\0\0\0\0\360\77" 0))
+        (color "R'G'B'A double" 32 "\0\0\0\100\34\34\234\77\0\0\0\40\346\325\325\77\0\0\0\40\0\375\354\77\0\0\0\0\0\0\360\77" 0))
     (brush "1. Pixel")
     (dynamics "Pressure Opacity")
     (pattern "Pine")
@@ -16,6 +16,7 @@
     (brush-spacing 0.20000000000000001)
     (application-mode incremental)
     (jitter-amount 0.34999999999999998)
+    (dynamics-enabled no)
     (fade-length 138)
     (fade-unit percent))
 (use-fg-bg yes)
