@@ -134,9 +134,9 @@ XF86AudioMute
 
 # Volume keys with my custom script
 F10
-    vc -n up
-F11
     vc -n down
+F11
+    vc -n up
 F12
     vc -n toggle
 
