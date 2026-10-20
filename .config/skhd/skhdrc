@@ -9,10 +9,10 @@ cmd - escape : skhd --restart-service
 
 
 # Shutdown using AppleScript (osasript)
-alt + shift - s : osascript -e 'tell app "System Events" to shut down'
-alt + shift - r : osascript -e 'tell app "System Events" to restart'
-alt + shift - q : osascript -e 'tell app "System Events" to  «event aevtrlgo»' # logout - "quit"
-alt + shift - l : osascript -e 'tell app "System Events" to keystroke "q" using {control down, command down}' # lock screen
+cmd + shift - s : osascript -e 'tell app "System Events" to shut down'
+cmd + shift - r : osascript -e 'tell app "System Events" to restart'
+cmd + shift - q : osascript -e 'tell app "System Events" to  «event aevtrlgo»' # logout - "quit"
+cmd + shift - l : osascript -e 'tell app "System Events" to keystroke "q" using {control down, command down}' # lock screen
 
 # Applications
 alt - return : open -na alacritty # Open terminal
