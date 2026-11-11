@@ -346,3 +346,6 @@ precmd_functions+=( precmd_vcs_info set_virtualenv calculate_end_time set_prompt
 WORK_CONFIGURATION_PATH="$HOME/work/.zshrc"
 # using if instead of && to prevent the .zshrc to have a exit status different than 0
 if [ -f $WORK_CONFIGURATION_PATH ]; then source $WORK_CONFIGURATION_PATH; fi
+
+# opencode
+export PATH=/Users/klaudjan/.opencode/bin:$PATH
