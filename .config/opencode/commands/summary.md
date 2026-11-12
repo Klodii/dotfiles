@@ -11,7 +11,7 @@ Determine the target filename:
 - Otherwise, slugify the current session title (or topic) followed by `.md` (e.g. `test-summary-command.md`).
 
 Save the summary file to:
-{env:OPENCODE_NOTES}/<filename>
+{env:OPENCODE_NOTES}/summary/<filename>
 
 After writing the file, copy its contents to the clipboard using pbcopy:
-cat "{env:OPENCODE_NOTES}/<filename>" | pbcopy
+cat "{env:OPENCODE_NOTES}/summary/<filename>" | pbcopy
