@@ -16,7 +16,7 @@ Determine the target filename:
 - Otherwise, slugify the current session title (or topic) followed by `.md` (e.g. `test-summary-command.md`).
 
 Save the summary file to:
-{env:OPENCODE_NOTES}/handover/<filename>
+<project_root_directory>/opencode/handovers/<filename>
 
 After writing the file, copy its contents to the clipboard using pbcopy:
-cat "{env:OPENCODE_NOTES}/handover/<filename>" | pbcopy
+cat "<project_root_directory>/opencode/handovers/<filename>" | pbcopy
