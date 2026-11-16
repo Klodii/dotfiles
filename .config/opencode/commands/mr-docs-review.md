@@ -8,20 +8,28 @@ Do NOT modify any files. This is an analysis only.
 ## MR goal (provided by the user)
 $ARGUMENTS
 
-If the above is empty, infer the goal from the branch name, recent commits, and any roadmap, TODO, ticket, or spec documents. State clearly that it is inferred and your confidence level.
+If the above is empty, infer the goal from `docs/STATUS.md`, the branch name, or recent commits. State clearly that it is inferred and your confidence level.
 
 ## Repository context
 Current branch and recent history:
-!`git branch --show-current 2>/dev/null; git log --oneline -15 2>/dev/null || true`
+!`git branch --show-current 2>/dev/null; git log --oneline -10 2>/dev/null || true`
 
 Uncommitted / branch changes so far:
 !`git status --short 2>/dev/null; git diff --stat main...HEAD 2>/dev/null || git diff --stat master...HEAD 2>/dev/null || true`
 
-Documentation files found:
-!`git ls-files '*.md' '*.mdx' '*.rst' 'docs/**' 'doc/**' 2>/dev/null | head -100 || true`
+Status & Active Milestone:
+!`test -f docs/STATUS.md && head -n 45 docs/STATUS.md || true`
+
+## Token Optimization & Reading Strategy
+1. **Target Identification (Single Entry Point)**:
+   - Check `docs/STATUS.md` (or the top of `docs/roadmap.md`) to identify the target/next MR (e.g., "MR 2.5").
+   - Read **ONLY** the specific spec document for this MR (e.g. `docs/milestone-X/mr-X.Y-*.md`).
+   - If needed for context, read only the **most recent** handover file in `docs/handovers/` or `opencode/handovers/`.
+   - **DO NOT** scan or read past milestone folders (`docs/milestone-1/`, etc.) or historical handover analyses.
+2. Skim or check code only when needed to verify a claim made in the docs.
 
 ## Steps
-1. Read the relevant docs (README, docs/, ADRs, specs, CHANGELOG, CONTRIBUTING, SECURITY.md, and anything related to the goal). Skim the code only when needed to verify a claim made in the docs.
+1. Read the target MR spec and any relevant code paths touched by that spec.
 2. Write a clear one-paragraph statement of what the next MR must achieve, plus its scope and non-goals.
 3. Identify what the docs already state that applies to this MR (requirements, constraints, conventions).
 4. Check the documentation for MISSING or WEAK coverage in these areas, specifically as they relate to the MR:
